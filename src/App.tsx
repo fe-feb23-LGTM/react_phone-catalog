@@ -1,4 +1,5 @@
 import './App.scss';
+import { Main } from './main';
 
 const App = () => (
   <div className="App">
