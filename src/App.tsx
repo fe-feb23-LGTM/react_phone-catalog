@@ -1,9 +1,10 @@
 import './App.scss';
+import { Main } from './main';
 
 const App = () => (
   <div className="App">
-    <h1>React Phone Catalog(Test)
-    </h1>
+    <h1>React Phone Catalog(Test)</h1>
+    <Main />
   </div>
 );
 
