@@ -3,9 +3,9 @@ import React from 'react';
 export const Header: React.FC = () => {
   return (
     <header className="header">
-      <a href="#home">
+      <a href="#home" className="header_link">
         <img
-          src="../../img/header/Logo.png"
+          src="../../../public/icons/logo/Nice_Gadget.svg"
           alt="logo"
         />
       </a>
@@ -36,6 +36,14 @@ export const Header: React.FC = () => {
           </li>
         </ul>
       </nav>
+      <div className="header__actions">
+        <a href="#favorites" className="favorites">
+          <img src="" alt="favorites" />
+        </a>
+        <a href="#basket" className="basket">
+          <img src="" alt="basket" />
+        </a>
+      </div>
     </header>
   );
 };
