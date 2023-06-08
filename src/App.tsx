@@ -3,8 +3,7 @@ import { Main } from './main';
 
 const App = () => (
   <div className="App">
-    <h1>React Phone Catalog(Test)</h1>
-    <Main />
+    <h1>React Phone Catalog</h1>
   </div>
 );
 
