@@ -2,7 +2,7 @@ import React from 'react';
 
 export const Header: React.FC = () => {
   return (
-    <header className="header">
+    <header id="header" className="header">
       <a href="#home" className="header_logo">
         {/* <img
           src="#"
