@@ -1,12 +1,15 @@
 import './App.scss';
+import { Outlet, NavLink } from 'react-router-dom';
+
 import { Footer } from './components/Footer';
-import { Main } from './components/main';
 
 const App = () => (
   <div className="App">
-    <h1>React Phone Catalog</h1>
-
-    <Main />
+    <header>
+      <NavLink to="/"> HOME </NavLink>
+      <NavLink to="/catalog"> PHONES </NavLink>
+    </header>
+    <Outlet />
     <Footer />
   </div>
 );
