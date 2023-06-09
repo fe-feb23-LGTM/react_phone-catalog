@@ -3,8 +3,8 @@
   height: 257px;
   display: flex;
   flex-direction: column;
-  background: #FFFFFF;
-  box-shadow: 0px -1px 0px #E2E6E9;
+  background: #fff;
+  box-shadow: 0 -1px 0 #e2e6e9;
 }
 
 @media (min-width: 640px) {
@@ -34,16 +34,15 @@
 
   &__link {
     text-decoration: none;
-    font-family: 'Mont';
+    font-family: "Mont", sans-serif;
     font-style: normal;
     font-weight: 800;
     font-size: 12px;
     line-height: 11px;
     letter-spacing: 0.04em;
     text-transform: uppercase;
-    color: #89939A;
-
-   }
+    color: #89939a;
+  }
 }
 
 @media (min-width: 640px) {
@@ -51,16 +50,6 @@
     display: flex;
     flex-direction: row;
     gap: 13px;
-
-    &__link {
-      text-decoration: none;
-      text-transform: uppercase;
-      color: #89939A;
-      font-family: 'Mont';
-      font-style: normal;
-      font-weight: 800;
-      font-size: 12px;
-     }
   }
 }
 
@@ -69,16 +58,6 @@
     display: flex;
     flex-direction: row;
     gap: 107px;
-
-    &__link {
-      text-decoration: none;
-      text-transform: uppercase;
-      color: #89939A;
-      font-family: 'Mont';
-      font-style: normal;
-      font-weight: 800;
-      font-size: 12px;
-     }
   }
 }
 
@@ -89,8 +68,8 @@
     display: flex;
     justify-content: center;
     text-decoration: none;
-    color: #89939A;
-    font-family: 'Mont';
+    color: #89939a;
+    font-family: "Mont", sans-serif;
     font-style: normal;
     font-weight: 500;
     font-size: 14px;
@@ -102,16 +81,7 @@
 
   .button-back {
     margin-right: 80px;
-    margin-top: 0px;
-
-    &__anchor {
-      color: #89939A;
-      text-decoration: none;
-      font-family: 'Mont';
-      font-style: normal;
-      font-weight: 500;
-      line-height: 15px;
-    }
+    margin-top: 0;
   }
 }
 
@@ -119,16 +89,7 @@
 
   .button-back {
     margin-right: 80px;
-    margin-top: 0px;
-
-    &__anchor {
-      color: #89939A;
-      text-decoration: none;
-      font-family: 'Mont';
-      font-style: normal;
-      font-weight: 500;
-      line-height: 15px;
-    }
+    margin-top: 0;
   }
 
 }
@@ -137,16 +98,7 @@
 
   .button-back {
     margin-right: 200px;
-    margin-top: 0px;
-
-    &__anchor {
-      color: #89939A;
-      text-decoration: none;
-      font-family: 'Mont';
-      font-style: normal;
-      font-weight: 500;
-      line-height: 15px;
-    }
+    margin-top: 0;
   }
 
 }
@@ -158,22 +110,22 @@
 
 @media (min-width: 640px) {
   .logo {
-    margin-top: 0px;
-    margin-bottom: 0px;
+    margin-top: 0;
+    margin-bottom: 0;
     margin-left: 32px;
   }
 }
 
 @media (min-width: 1200px) and (max-width: 1201px) {
   .logo {
-    margin-bottom: 0px;
+    margin-bottom: 0;
     margin-left: 32px;
   }
 }
 
 @media (min-width: 1201px) {
   .logo {
-    margin-bottom: 0px;
+    margin-bottom: 0;
     margin-left: 152px;
   }
 }
