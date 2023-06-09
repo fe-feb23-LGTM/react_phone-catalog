@@ -9,9 +9,9 @@ export const ProductTable = () => {
   return (
     <div className="productTable">
       <div className="productTable__path">
-        <div className="productTable__path__homeIcon" />
+        <div className="icons productTable__path__homeIcon" />
 
-        <div className="productTable__path__arrow" />
+        <div className="icons productTable__path__arrow" />
 
         <span className="productTable__path__text">
           Phones
@@ -22,31 +22,48 @@ export const ProductTable = () => {
         Mobile phones
       </h2>
 
-      <span className="productTable__modelsCount">
+      <div className="productTable__modelsCount">
         95 models
-      </span>
+      </div>
 
-      <div>
-        <label htmlFor="sortBy" className="productTable__sortby">
-          <select name="sortBy" id="sortBy">
-            <option value="newest">Newest</option>
-            <option value="oldest">Oldest</option>
-          </select>
+      <div className="productTable__selects">
+        <label htmlFor="sortBy">
+          <div>
+            <div className="productTable__selects__text">Sort by</div>
+
+            <select
+              name="sortBy"
+              id="sortBy"
+              className="select productTable__selects__sortby"
+            >
+              <option value="newest">Newest</option>
+              <option value="oldest">Oldest</option>
+            </select>
+
+          </div>
         </label>
 
-        <label htmlFor="itemsOnPage" className="productTable__itemsOnPage">
-          <select name="itemsOnPage" id="itemsOnPage">
-            <option value="5">5</option>
-            <option value="10">10</option>
-            <option value="16">16</option>
-          </select>
+        <label htmlFor="itemsOnPage">
+          <div>
+            <div className="productTable__selects__text">Items on page</div>
+
+            <select
+              name="itemsOnPage"
+              id="itemsOnPage"
+              className="select productTable__selects__itemsOnPage"
+            >
+              <option value="5">5</option>
+              <option value="10">10</option>
+              <option value="16">16</option>
+            </select>
+          </div>
         </label>
       </div>
 
       <div className="productTable__productList">
         {
           array.map(num => (
-            <div className="productCard">
+            <div key={num} className="productCard">
               <span className="productCard__content">
                 {num}
               </span>

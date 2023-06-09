@@ -1,6 +1,3 @@
-// productTable__path__homeIcon
-
-
 .productTable {
   max-width: 1200px;
 
@@ -11,23 +8,14 @@
     &__homeIcon {
       height: 14.67px;
       width: 13.33px;
-
       background-image: url('./Plus.svg');
-      background-position: center;
-      background-size: cover;
-      background-repeat: no-repeat;
-      box-sizing: border-box;
     }
 
     &__arrow {
       height: 9.33px;
       width: 5.33px;
       margin: 0 14.67px 0 13.33px;
-
       background-image: url('./Plus.svg');
-      background-position: center;
-      background-size: cover;
-      background-repeat: no-repeat;
     }
 
     &__text {
@@ -42,19 +30,72 @@
     font-weight: 800;
     font-size: 48px;
     line-height: 56px;
+    margin-bottom: 8px;
   }
 
   &__modelsCount {
     font-weight: 600;
     font-size: 14px;
-    line-height: 21px;
+    line-height: 14px;
+    color: #89939A;
+
+    margin-bottom: 40px;
+  }
+
+  &__selects {
+    display: flex;
+    margin-bottom: 24px;
+
+    &__sortby {
+      width: 176px;
+      margin-right: 16px;
+    }
+
+    &__itemsOnPage {
+      width: 128px;
+    }
+
+    &__text {
+      font-style: normal;
+      font-weight: 700;
+      font-size: 12px;
+      line-height: 15px;
+
+      color: #89939A;
+    }
   }
 
   &__productList {
     display: flex;
     flex-wrap: wrap;
+    justify-content: space-around;
   }
 }
+
+.icons {
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.select {
+  height: 40px;
+  border: 1px solid #B4BDC4;
+  border-radius: 8px;
+
+  &:hover {
+    border: 1px solid #89939A;
+  }
+
+  &:focus {
+    border: 1px solid #0F0F11;
+  }
+
+  option:hover {
+    background-color: red;
+  }
+}
+
 
 .productCard {
   width: 272px;
@@ -64,4 +105,7 @@
   border: 1px solid #E2E6E9;
   box-shadow: 0px 2px 16px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
+
+  margin-right: 16px;
+  margin-bottom: 40px;
 }
