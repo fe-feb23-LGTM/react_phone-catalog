@@ -13,18 +13,8 @@ export const Footer = () => {
         >
           github
         </a>
-        <a
-          href="contacts"
-          className="navigation__link"
-        >
-          contacts
-        </a>
-        <a
-          href="rights"
-          className="navigation__link"
-        >
-          rights
-        </a>
+        <a href="contacts" className="navigation__link">contacts</a>
+        <a href="rights" className="navigation__link">rights</a>
       </div>
       <div className="button-back">
         <Link to="#header" className="button-back__anchor">Back to top</Link>
