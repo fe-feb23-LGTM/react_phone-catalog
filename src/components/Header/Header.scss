@@ -5,7 +5,7 @@
 
 .header {
   background: #fff;
-  box-shadow: 0px 1px 0px #e2e6e9;
+  box-shadow: 0 1px 0 #e2e6e9;
 
   height: 64px;
   width: 100%;
@@ -39,7 +39,7 @@
   }
 
   &_link {
-    font-family: "Mont";
+    // font-family: "Mont";
     font-weight: 800;
     font-size: 12px;
 
@@ -66,7 +66,7 @@
 .action {
   height: 64px;
   width: 64px;
-  box-shadow: -1px 0px 0px #e2e6e9;
+  box-shadow: -1px 0 0 #e2e6e9;
 
   @media (max-width: 640px) {
     height: 48px;
