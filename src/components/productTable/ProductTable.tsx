@@ -63,7 +63,7 @@ export const ProductTable = () => {
 
       <div className="pagination_container">
         <nav
-          className="pagination is-rounded"
+          className="pagination is-rounded is-centered is-small"
           role="navigation"
           aria-label="pagination"
         >
