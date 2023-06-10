@@ -10,8 +10,8 @@ ReactDOM.render(
     <Routes>
       <Route path="/" element={<App />}>
         <Route path="/home" element={<Navigate to="/" />} />
-        <Route index element={<Main />} />
-        <Route path="/catalog" element={<h1 className="title">Catalog</h1>} />
+        <Route index element={<h1 className="title">home page</h1>} />
+        <Route path="/phones" element={<Main />} />
         <Route path="*" element={<h1 className="title">Page not found</h1>} />
       </Route>
     </Routes>
