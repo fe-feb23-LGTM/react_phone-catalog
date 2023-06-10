@@ -13,18 +13,12 @@ export const ProductTable = () => {
 
         <div className="icons productTable__path__arrow" />
 
-        <span className="productTable__path__text">
-          Phones
-        </span>
+        <span className="productTable__path__text">Phones</span>
       </div>
 
-      <h2 className="productTable__heading">
-        Mobile phones
-      </h2>
+      <h2 className="productTable__heading">Mobile phones</h2>
 
-      <div className="productTable__modelsCount">
-        95 models
-      </div>
+      <div className="productTable__modelsCount">95 models</div>
 
       <div className="productTable__selects">
         <label htmlFor="sortBy">
@@ -39,7 +33,6 @@ export const ProductTable = () => {
               <option value="newest">Newest</option>
               <option value="oldest">Oldest</option>
             </select>
-
           </div>
         </label>
 
@@ -61,17 +54,55 @@ export const ProductTable = () => {
       </div>
 
       <div className="productTable__productList">
-        {
-          array.map(num => (
-            <div key={num} className="productCard">
-              <span className="productCard__content">
-                {num}
-              </span>
-            </div>
-          ))
-        }
+        {array.map((num) => (
+          <div key={num} className="productCard">
+            <span className="productCard__content">{num}</span>
+          </div>
+        ))}
       </div>
 
+      <div className="pagination_container">
+        <nav
+          className="pagination is-rounded"
+          role="navigation"
+          aria-label="pagination"
+        >
+          <a className="pagination-previous" href="/">prev</a>
+          <ul className="pagination-list">
+            <li>
+              <a className="pagination-link" aria-label="Goto page 1" href="/">
+                1
+              </a>
+            </li>
+            <li>
+              <a className="pagination-link" aria-label="Goto page 45" href="/">
+                45
+              </a>
+            </li>
+            <li>
+              <a
+                className="pagination-link is-current"
+                aria-label="Page 46"
+                aria-current="page"
+                href="/"
+              >
+                46
+              </a>
+            </li>
+            <li>
+              <a className="pagination-link" aria-label="Goto page 47" href="/">
+                47
+              </a>
+            </li>
+            <li>
+              <a className="pagination-link" aria-label="Goto page 86" href="/">
+                86
+              </a>
+            </li>
+          </ul>
+          <a className="pagination-next" href="/">next</a>
+        </nav>
+      </div>
     </div>
   );
 };
