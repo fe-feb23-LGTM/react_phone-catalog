@@ -1,60 +1,61 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 
 export const Header: React.FC = () => {
   return (
     <header id="header" className="header">
-      <a href="#home" className="header_logo">
+      <NavLink to="/" className="header_logo">
         {/* <img
           src="#"
           alt="logo"
         /> */}
         Nice Gadjet
-      </a>
+      </NavLink>
       <nav className="nav">
         <ul className="nav_list">
           <li className="nav_item is-active">
-            <a className="nav_link" href="#home">
+            <NavLink className="nav_link" to="/">
               Home
-            </a>
+            </NavLink>
           </li>
 
           <li className="nav_item">
-            <a className="nav_link" href="#phones">
+            <NavLink className="nav_link" to="/phones">
               Phones
-            </a>
+            </NavLink>
           </li>
 
           <li className="nav_item">
-            <a className="nav_link" href="#tablets">
+            <NavLink className="nav_link" to="/tablets">
               Tablets
-            </a>
+            </NavLink>
           </li>
 
           <li className="nav_item">
-            <a className="nav_link" href="#accessories">
+            <NavLink className="nav_link" to="/accessories">
               Accessories
-            </a>
+            </NavLink>
           </li>
         </ul>
       </nav>
       <div className="header__actions">
-        <a href="#favorites" className="action">
+        <NavLink to="/favourites" className="action">
           {/* <img
             src=""
-            alt="favorites"
+            alt="favourites"
             className="action__favourites"
           /> */}
-          favorites
-        </a>
+          favourites
+        </NavLink>
 
-        <a href="#basket" className="action">
+        <NavLink to="/cart" className="action">
           {/* <img
             src=""
-            alt="basket"
-            className="action__basket"
+            alt="cart"
+            className="action__cart"
           /> */}
-          basket
-        </a>
+          cart
+        </NavLink>
       </div>
     </header>
   );
