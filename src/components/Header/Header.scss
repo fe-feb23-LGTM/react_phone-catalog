@@ -14,15 +14,23 @@
   justify-content: space-between;
   align-items: center;
 
+  @media (max-width: 1200px) {
+    height: 48px;
+  }
+
   &_logo {
     min-width: 80px;
-    margin: 0 auto;
+    margin-left: 24px;
     text-decoration: none;
   }
 }
 
 .nav {
   flex-grow: 1;
+
+  @media (max-width: 640px) {
+    display: none;
+  }
 
   &_list {
     display: flex;
@@ -33,7 +41,7 @@
     list-style-type: none;
     margin-right: 64px;
 
-    @media (max-width: 640px) {
+    @media (max-width: 1200px) {
       margin-right: 32px;
     }
   }
@@ -68,10 +76,28 @@
   width: 64px;
   box-shadow: -1px 0 0 #e2e6e9;
 
-  @media (max-width: 640px) {
+  @media (max-width: 1200px) {
     height: 48px;
     width: 48px;
   }
+
+  @media (max-width: 640px) {
+    display: none;
+  }
+}
+
+.burger-button {
+  display: none;
+  height: 48px;
+  width: 48px;
+
+  box-shadow: -1px 0 0 #e2e6e9;
+
+  @media (max-width: 640px) {
+    display: block;
+    margin-right: 0;
+  }
+
 }
 
 .is-active {
@@ -83,10 +109,13 @@
   content: "";
   position: absolute;
   width: 100%;
-  height: 2px;
+  height: 3px;
   left: 0;
-  top: 30px;
+  top: 36px;
   display: block;
   background: #0f0f11;
 
+  @media (max-width: 1200px) {
+    top: 28px;
+  }
 }
