@@ -1,0 +1,90 @@
+.menu {
+  position: relative;
+  width: 320px;
+  height: 568px;
+  border: 1px solid #E2E6E9;
+  margin-top: 10px;
+
+  &__top {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 16px;
+    margin-bottom: 24px;
+
+    height: 49px;
+    left: 0px;
+    top: 0px;
+
+
+    border-bottom: 1px solid #E2E6E9;
+
+    &__close {
+      box-sizing: border-box;
+
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      padding: 0px;
+
+      width: 48px;
+      height: 48px;
+
+      background: #FFFFFF;
+
+      border-left: 1px solid #E2E6E9;
+    }
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 0px;
+    left: 16px;
+
+    position: absolute;
+    width: 288px;
+    height: 156px;
+
+    &__list{
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 0px;
+
+      &__item {
+        list-style: none;
+        padding-bottom: 20px;
+
+        &__link {
+          display: inline-block;
+          padding-bottom: 8px;
+          border-bottom: 3px solid transparent;
+
+          font-family: 'Mont';
+          font-style: normal;
+          font-weight: 800;
+          font-size: 12px;
+          line-height: 11px;
+          text-decoration: none;
+
+          letter-spacing: 0.04em;
+          text-transform: uppercase;
+
+          color: #89939A;;
+
+          &:hover {
+            color: #313237;;
+            border-color: #313237;;
+          }
+        }
+      }
+    }
+  }
+}
