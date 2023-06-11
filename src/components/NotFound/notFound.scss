@@ -1,0 +1,11 @@
+.image-container {
+  height: calc(100vh - 150px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.image404 {
+  max-height: 100%;
+  max-width: 100%;
+}
