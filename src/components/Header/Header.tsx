@@ -1,5 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import classNames from 'classnames';
 
 export const Header: React.FC = () => {
   return (
@@ -13,26 +14,50 @@ export const Header: React.FC = () => {
       </NavLink>
       <nav className="nav">
         <ul className="nav_list">
-          <li className="nav_item is-active">
-            <NavLink className="nav_link" to="/">
+          <li className="nav_item">
+            <NavLink
+              className={({ isActive }) => classNames(
+                'nav_link',
+                { 'is-active': isActive },
+              )}
+              to="/"
+            >
               Home
             </NavLink>
           </li>
 
           <li className="nav_item">
-            <NavLink className="nav_link" to="/phones">
+            <NavLink
+              className={({ isActive }) => classNames(
+                'nav_link',
+                { 'is-active': isActive },
+              )}
+              to="/phones"
+            >
               Phones
             </NavLink>
           </li>
 
           <li className="nav_item">
-            <NavLink className="nav_link" to="/tablets">
+            <NavLink
+              className={({ isActive }) => classNames(
+                'nav_link',
+                { 'is-active': isActive },
+              )}
+              to="/tablets"
+            >
               Tablets
             </NavLink>
           </li>
 
           <li className="nav_item">
-            <NavLink className="nav_link" to="/accessories">
+            <NavLink
+              className={({ isActive }) => classNames(
+                'nav_link',
+                { 'is-active': isActive },
+              )}
+              to="/accessories"
+            >
               Accessories
             </NavLink>
           </li>
@@ -55,6 +80,15 @@ export const Header: React.FC = () => {
             className="action__cart"
           /> */}
           cart
+        </NavLink>
+
+        <NavLink to="#menu" className="action burger-button">
+          {/* <img
+            src=""
+            alt="burger-icon"
+            className="action__burger"
+          /> */}
+          burger
         </NavLink>
       </div>
     </header>
