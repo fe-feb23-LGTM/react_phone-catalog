@@ -4,6 +4,7 @@ build
 dist
 node_modules
 .DS_Store
+.env
 
 npm-debug.log*
 yarn-debug.log*
@@ -13,4 +14,3 @@ raw_reports
 reports
 cypress/screenshots
 cypress/videos
-package-lock.json
