@@ -1,0 +1,121 @@
+// @font-face {
+//   font-family: "Mont";
+//   src: url(../../../public/fonts/Mont-Regular.otf);
+// }
+
+.header {
+  background: #fff;
+  box-shadow: 0 1px 0 #e2e6e9;
+
+  height: 64px;
+  width: 100%;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  @media (max-width: 1200px) {
+    height: 48px;
+  }
+
+  &_logo {
+    min-width: 80px;
+    margin-left: 24px;
+    text-decoration: none;
+  }
+}
+
+.nav {
+  flex-grow: 1;
+
+  @media (max-width: 640px) {
+    display: none;
+  }
+
+  &_list {
+    display: flex;
+    justify-content: flex-start;
+  }
+
+  &_item {
+    list-style-type: none;
+    margin-right: 64px;
+
+    @media (max-width: 1200px) {
+      margin-right: 32px;
+    }
+  }
+
+  &_link {
+    // font-family: "Mont";
+    font-weight: 800;
+    font-size: 12px;
+
+    line-height: 11px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    text-decoration: none;
+
+    height: 100%;
+    color: #89939a;
+
+    &:hover {
+      color: #0f0f11;
+
+    }
+  }
+}
+
+.header__actions {
+  display: flex;
+  align-items: center;
+}
+
+.action {
+  height: 64px;
+  width: 64px;
+  box-shadow: -1px 0 0 #e2e6e9;
+
+  @media (max-width: 1200px) {
+    height: 48px;
+    width: 48px;
+  }
+
+  @media (max-width: 640px) {
+    display: none;
+  }
+}
+
+.burger-button {
+  display: none;
+  height: 48px;
+  width: 48px;
+
+  box-shadow: -1px 0 0 #e2e6e9;
+
+  @media (max-width: 640px) {
+    display: block;
+    margin-right: 0;
+  }
+
+}
+
+.is-active {
+  position: relative;
+  color: #0f0f11;
+}
+
+.is-active:after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 3px;
+  left: 0;
+  top: 36px;
+  display: block;
+  background: #0f0f11;
+
+  @media (max-width: 1200px) {
+    top: 28px;
+  }
+}
