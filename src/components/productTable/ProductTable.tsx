@@ -1,9 +1,9 @@
 export const ProductTable = () => {
-  const array = [];
+  const productKeys = [];
 
   // eslint-disable-next-line no-plusplus
   for (let i = 1; i < 20; i++) {
-    array.push(i);
+    productKeys.push(i);
   }
 
   return (
@@ -54,9 +54,9 @@ export const ProductTable = () => {
       </div>
 
       <div className="productTable__productList">
-        {array.map((num) => (
-          <div key={num} className="productCard">
-            <span className="productCard__content">{num}</span>
+        {productKeys.map((productKey) => (
+          <div key={productKey} className="productCard">
+            <span className="productCard__content">{productKey}</span>
           </div>
         ))}
       </div>
