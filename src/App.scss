@@ -1,11 +1,12 @@
 @import "~bulma/bulma";
-html {
-  scroll-behavior: smooth;
-}
-
 @import "./components/main/main.scss";
 @import "./components/Header/Header.scss";
 @import "./components/productTable/productTable.scss";
 @import "./components/Footer/footer.scss";
 @import "./components/BurgerMenu/BurgerMenu.scss";
-@import "./components/NotFound/notFound.scss"
+@import "./components/NotFound/notFound.scss";
+@import "./components/Cart/cart.scss";
+
+html {
+  scroll-behavior: smooth;
+}

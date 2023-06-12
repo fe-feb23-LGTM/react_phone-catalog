@@ -1,4 +1,4 @@
-import { ProductTable } from '../productTable';
+import { ProductTable } from '../ProductTable';
 
 export const Main = () => {
   return (

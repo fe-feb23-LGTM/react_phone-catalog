@@ -1,0 +1,127 @@
+.cartWraper {
+  @media (min-width: 1200px) {
+    display: flex;
+    justify-content: center;
+  }
+}
+
+.cart {
+  display: flex;
+  flex-flow: column;
+  padding: 27.33px 16px 60px;
+
+  min-width: 320px;
+  max-width: 1200px;
+
+  @media (min-width: 639px) {
+    padding: 27.33px 24px 60px;
+  }
+
+  &__backIcon {
+    background-color: red;
+    width: 5.33px;
+    height: 9.33;
+    box-sizing: border-box;
+
+    // background-image: url('./Plus.svg');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+
+  &__backBtn {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 15px;
+    color: #89939A;
+
+    margin-left: 9px;
+  }
+
+  &__heading {
+    font-style: normal;
+    font-weight: 800;
+    font-size: 32px;
+    line-height: 41px;
+
+    letter-spacing: -0.01em;
+    color: #0F0F11;
+    margin: 24px 0 32px;
+  }
+
+  &__listAndCheckout {
+    display: flex;
+    flex-direction: column;
+
+    @media (min-width: 1199px) {
+      flex-direction: row;
+      justify-content: center;
+    }
+  }
+
+  &__itemList {
+    @media (min-width: 1199px) {
+      width: 752px;
+    }
+  }
+
+  &__checkout {
+    border: 1px solid #E2E6E9;
+    border-radius: 16px;
+    padding: 10px;
+    margin: 16px 0 0 16px;
+    margin-left: 16px;
+
+    @media (min-width: 1199px) {
+      width: 368px;
+      height: 206px;
+      margin: 0 0 0 16px;
+    }
+  }
+
+  &__checkoutTotal {
+    font-style: normal;
+    font-weight: 800;
+    font-size: 32px;
+    line-height: 41px;
+
+    text-align: center;
+    letter-spacing: -0.01em;
+    color: #0F0F11;
+  }
+
+  &__checkoutCount {
+    font-style: normal;
+      font-weight: 600;
+      font-size: 14px;
+      line-height: 21px;
+
+      text-align: center;
+      color: #89939A;
+      margin-bottom: 16px;
+  }
+
+    &__checkoutBtn {
+      height: 48px;
+      background: #4219D0;
+      border-radius: 48px;
+      margin-top: 15px;
+
+      color: #FFFFFF;
+      font-style: normal;
+      font-weight: 700;
+      font-size: 14px;
+      line-height: 48px;
+      text-align: center;
+    }
+
+  &__item {
+    height: 128px;
+    background: #FFFFFF;
+    border: 1px solid #E2E6E9;
+    border-radius: 16px;
+
+    margin-bottom: 16px;
+  }
+}
