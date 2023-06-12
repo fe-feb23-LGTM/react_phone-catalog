@@ -1,10 +1,43 @@
+/* eslint-disable react/jsx-no-comment-textnodes */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 import { NavLink } from 'react-router-dom';
 import classNames from 'classnames';
 
-/* eslint-disable jsx-a11y/anchor-is-valid */
-export const BurgerMenu = () => {
+interface Props {
+  isMenuOpen: boolean;
+  onMenuToggle: () => void;
+}
+export const BurgerMenu: React.FC<Props> = ({
+  isMenuOpen,
+  onMenuToggle,
+}) => {
   return (
-    <div className="menu">
+    <div className={classNames(
+      'menu',
+      { 'menu--active': isMenuOpen },
+    )}
+    >
+      <div className="menu__top">
+        <div className="menu__top__logo">
+          <NavLink
+            to="/"
+            className="menu__top__logo__icon"
+            onClick={onMenuToggle}
+          >
+            Nise Gadjet
+          </NavLink>
+        </div>
+        <div className="menu__top__close">
+          <span
+            className="menu__top__close__icon"
+            onClick={onMenuToggle}
+            role="button"
+            tabIndex={0}
+          >
+            X
+          </span>
+        </div>
+      </div>
       <div className="menu__content">
         <ul className="menu__content__list">
           <li className="menu__content__item">
@@ -14,6 +47,7 @@ export const BurgerMenu = () => {
                 'menu__content__item__link',
                 { 'is-active': isActive },
               )}
+              onClick={onMenuToggle}
             >
               Home
             </NavLink>
@@ -25,6 +59,7 @@ export const BurgerMenu = () => {
                 'menu__content__item__link',
                 { 'is-active': isActive },
               )}
+              onClick={onMenuToggle}
             >
               Phones
             </NavLink>
@@ -36,6 +71,7 @@ export const BurgerMenu = () => {
                 'menu__content__item__link',
                 { 'is-active': isActive },
               )}
+              onClick={onMenuToggle}
             >
               Tablets
             </NavLink>
@@ -47,6 +83,7 @@ export const BurgerMenu = () => {
                 'menu__content__item__link',
                 { 'is-active': isActive },
               )}
+              onClick={onMenuToggle}
             >
               Accessories
             </NavLink>
@@ -58,8 +95,9 @@ export const BurgerMenu = () => {
           to="/favourites"
           className={({ isActive }) => classNames(
             'menu__bottom__item',
-            { 'is-active': isActive },
+            { 'bottom-active': isActive },
           )}
+          onClick={onMenuToggle}
         >
           Favourites
         </NavLink>
@@ -68,8 +106,9 @@ export const BurgerMenu = () => {
           to="/cart"
           className={({ isActive }) => classNames(
             'menu__bottom__item',
-            { 'is-active': isActive },
+            { 'bottom-active': isActive },
           )}
+          onClick={onMenuToggle}
         >
           Cart
         </NavLink>
