@@ -5,11 +5,11 @@ import classNames from 'classnames';
 
 interface Props {
   isMenuOpen: boolean;
-  onMenuToggle: () => void;
+  onMenuClose: () => void;
 }
 export const BurgerMenu: React.FC<Props> = ({
   isMenuOpen,
-  onMenuToggle,
+  onMenuClose,
 }) => {
   return (
     <div className={classNames(
@@ -22,7 +22,7 @@ export const BurgerMenu: React.FC<Props> = ({
           <NavLink
             to="/"
             className="menu__top__logo__icon"
-            onClick={onMenuToggle}
+            onClick={onMenuClose}
           >
             Nise Gadjet
           </NavLink>
@@ -30,7 +30,7 @@ export const BurgerMenu: React.FC<Props> = ({
         <div className="menu__top__close">
           <span
             className="menu__top__close__icon"
-            onClick={onMenuToggle}
+            onClick={onMenuClose}
             role="button"
             tabIndex={0}
           >
@@ -47,7 +47,7 @@ export const BurgerMenu: React.FC<Props> = ({
                 'menu__content__item__link',
                 { 'is-active': isActive },
               )}
-              onClick={onMenuToggle}
+              onClick={onMenuClose}
             >
               Home
             </NavLink>
@@ -59,7 +59,7 @@ export const BurgerMenu: React.FC<Props> = ({
                 'menu__content__item__link',
                 { 'is-active': isActive },
               )}
-              onClick={onMenuToggle}
+              onClick={onMenuClose}
             >
               Phones
             </NavLink>
@@ -71,7 +71,7 @@ export const BurgerMenu: React.FC<Props> = ({
                 'menu__content__item__link',
                 { 'is-active': isActive },
               )}
-              onClick={onMenuToggle}
+              onClick={onMenuClose}
             >
               Tablets
             </NavLink>
@@ -83,7 +83,7 @@ export const BurgerMenu: React.FC<Props> = ({
                 'menu__content__item__link',
                 { 'is-active': isActive },
               )}
-              onClick={onMenuToggle}
+              onClick={onMenuClose}
             >
               Accessories
             </NavLink>
@@ -97,7 +97,7 @@ export const BurgerMenu: React.FC<Props> = ({
             'menu__bottom__item',
             { 'bottom-active': isActive },
           )}
-          onClick={onMenuToggle}
+          onClick={onMenuClose}
         >
           Favourites
         </NavLink>
@@ -108,7 +108,7 @@ export const BurgerMenu: React.FC<Props> = ({
             'menu__bottom__item',
             { 'bottom-active': isActive },
           )}
-          onClick={onMenuToggle}
+          onClick={onMenuClose}
         >
           Cart
         </NavLink>
