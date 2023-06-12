@@ -4,7 +4,7 @@ import {
 } from 'react-router-dom';
 import App from './App';
 import { Main } from './components/main';
-import { NotFound } from './components/NotFound/notFound';
+import { NotFound } from './components/NotFound/NotFound';
 
 ReactDOM.render(
   <HashRouter>
@@ -18,7 +18,6 @@ ReactDOM.render(
         <Route path="/favourites" element={<h1>favourites</h1>} />
         <Route path="/cart" element={<h1 className="title">cart</h1>} />
         <Route path="*" element={<NotFound />} />
-        {/* <Route path="*" element={<h1 className="title">Page not found</h1>} /> */}
       </Route>
     </Routes>
   </HashRouter>,

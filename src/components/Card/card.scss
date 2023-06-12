@@ -1,0 +1,67 @@
+.card {
+  width: 272px;
+  height: 506px;
+  padding: 32px;
+  background-color: $cWhite;
+  display: block;
+
+  border: 1px solid $cGrayElements;
+  border-radius: 8px;
+
+  &__img--div {
+    width: 208px;
+    height: 196px;
+    display: flex;
+    justify-content: center;
+  }
+
+  &__img {
+    height: 100%;
+    margin: auto;
+  }
+
+  &__name {
+    padding-top: 24px;
+    font-family: 'Mont';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+    text-align: center;
+  }
+
+  &__prices {
+    height: 31px;
+    padding: 8px;
+    display: flex;
+    justify-content: space-between;
+    gap: 5px;
+  }
+
+  &__price {
+    width: 50px;
+    height: 100%;
+
+    font-family: 'Mont';
+    font-style: normal;
+    font-weight: 800;
+    font-size: 22px;
+    line-height: 140%;
+  }
+
+  &__full-price {
+    width: 50px;
+    height: 28px;
+
+    font-family: 'Mont';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 22px;
+    line-height: 28px;
+    text-decoration-line: line-through;
+
+
+    color: $cGraySecondary;
+
+  }
+}
