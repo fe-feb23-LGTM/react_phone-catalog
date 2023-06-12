@@ -24,18 +24,24 @@ export const BurgerMenu: React.FC<Props> = ({
             className="menu__top__logo__icon"
             onClick={onMenuClose}
           >
-            Nise Gadjet
+            <img
+              src="icons/logo/Logo.svg"
+              alt="logo"
+            />
           </NavLink>
         </div>
         <div className="menu__top__close">
-          <span
+          <div
             className="menu__top__close__icon"
             onClick={onMenuClose}
             role="button"
             tabIndex={0}
           >
-            X
-          </span>
+            <img
+              src="icons/Close.svg"
+              alt="Close"
+            />
+          </div>
         </div>
       </div>
       <div className="menu__content">
@@ -99,7 +105,10 @@ export const BurgerMenu: React.FC<Props> = ({
           )}
           onClick={onMenuClose}
         >
-          Favourites
+          <img
+            src="icons/Favourites.svg"
+            alt="favourites"
+          />
         </NavLink>
 
         <NavLink
@@ -110,7 +119,10 @@ export const BurgerMenu: React.FC<Props> = ({
           )}
           onClick={onMenuClose}
         >
-          Cart
+          <img
+            src="icons/Shopping_bag(Cart).svg"
+            alt="cart"
+          />
         </NavLink>
       </div>
     </div>

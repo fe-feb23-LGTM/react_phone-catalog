@@ -21,12 +21,16 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    padding-left: 16px;
     margin-bottom: 24px;
 
     height: 49px;
 
     border-bottom: 1px solid #e2e6e9;
+
+    &__logo__icon {
+      min-width: 80px;
+      margin: 0 48px 0 24px;
+    }
 
     &__close {
       box-sizing: border-box;
@@ -36,9 +40,13 @@
       align-items: center;
       height: 48px;
       width: 48px;
-
-      border-left: 1px solid #e2e6e9;
+      box-shadow: -1px 0 0 #e2e6e9;
       cursor: pointer;
+
+      &__icon {
+        width: 16px;
+        height: 16px;
+      }
     }
   }
 

@@ -29,11 +29,10 @@ export const Header: React.FC = () => {
   return (
     <header id="header" className="header">
       <NavLink to="/" className="header_logo">
-        {/* <img
-          src="#"
+        <img
+          src="icons/logo/Logo.svg"
           alt="logo"
-        /> */}
-        Nice Gadjet
+        />
       </NavLink>
       <nav className="nav">
         <ul className="nav_list">
@@ -88,21 +87,19 @@ export const Header: React.FC = () => {
       </nav>
       <div className="header__actions">
         <NavLink to="/favourites" className="action">
-          {/* <img
-            src=""
+          <img
+            src="icons/Favourites.svg"
             alt="favourites"
             className="action__favourites"
-          /> */}
-          favs
+          />
         </NavLink>
 
         <NavLink to="/cart" className="action">
-          {/* <img
-            src=""
+          <img
+            src="icons/Shopping_bag(Cart).svg"
             alt="cart"
             className="action__cart"
-          /> */}
-          cart
+          />
         </NavLink>
 
         <NavLink
@@ -110,12 +107,11 @@ export const Header: React.FC = () => {
           className="action burger-button"
           onClick={openMenu}
         >
-          {/* <img
-            src=""
+          <img
+            src="icons/Menu.svg"
             alt="burger-icon"
             className="action__burger"
-          /> */}
-          burger
+          />
         </NavLink>
       </div>
       {isOpen && (
