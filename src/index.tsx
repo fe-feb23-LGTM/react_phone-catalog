@@ -1,6 +1,9 @@
 import ReactDOM from 'react-dom';
 import {
-  HashRouter, Navigate, Route, Routes,
+  HashRouter,
+  Navigate,
+  Route,
+  Routes,
 } from 'react-router-dom';
 import App from './App';
 import { Main } from './components/Main';
