@@ -5,9 +5,10 @@ import {
   Route,
   Routes,
 } from 'react-router-dom';
+
 import App from './App';
+import { NotFound } from './components/NotFound/NotFound';
 import { Main } from './components/Main';
-import { NotFound } from './components/NotFound/notFound';
 import { Cart } from './components/Cart';
 
 ReactDOM.render(
@@ -22,7 +23,6 @@ ReactDOM.render(
         <Route path="/favourites" element={<h1>favourites</h1>} />
         <Route path="/cart" element={<Cart />} />
         <Route path="*" element={<NotFound />} />
-        {/* <Route path="*" element={<h1 className="title">Page not found</h1>} /> */}
       </Route>
     </Routes>
   </HashRouter>,
