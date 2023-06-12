@@ -10,12 +10,13 @@ import App from './App';
 import { NotFound } from './components/NotFound/NotFound';
 import { Main } from './components/Main';
 import { Cart } from './components/Cart';
+import { Home } from './components/Home/Home';
 
 ReactDOM.render(
   <HashRouter>
     <Routes>
       <Route path="/" element={<App />}>
-        <Route index element={<h1 className="title">home page</h1>} />
+        <Route index element={<Home />} />
         <Route path="/home" element={<Navigate to="/" />} />
         <Route path="/phones" element={<Main />} />
         <Route path="/tablets" element={<h1>tablets</h1>} />
