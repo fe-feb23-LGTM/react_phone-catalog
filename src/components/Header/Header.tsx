@@ -70,7 +70,7 @@ export const Header: React.FC = () => {
             alt="favourites"
             className="action__favourites"
           /> */}
-          favourites
+          favs
         </NavLink>
 
         <NavLink to="/cart" className="action">
