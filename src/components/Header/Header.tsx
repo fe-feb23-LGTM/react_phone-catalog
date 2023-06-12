@@ -1,8 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import classNames from 'classnames';
+import { BurgerMenu } from '../BurgerMenu';
 
 export const Header: React.FC = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const handleMenuToggle = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
   return (
     <header id="header" className="header">
       <NavLink to="/" className="header_logo">
@@ -70,7 +77,7 @@ export const Header: React.FC = () => {
             alt="favourites"
             className="action__favourites"
           /> */}
-          favourites
+          favs
         </NavLink>
 
         <NavLink to="/cart" className="action">
@@ -82,7 +89,11 @@ export const Header: React.FC = () => {
           cart
         </NavLink>
 
-        <NavLink to="#menu" className="action burger-button">
+        <NavLink
+          to="#menu"
+          className="action burger-button"
+          onClick={handleMenuToggle}
+        >
           {/* <img
             src=""
             alt="burger-icon"
@@ -91,6 +102,12 @@ export const Header: React.FC = () => {
           burger
         </NavLink>
       </div>
+      {isMenuOpen && (
+        <BurgerMenu
+          isMenuOpen={isMenuOpen}
+          onMenuToggle={handleMenuToggle}
+        />
+      )}
     </header>
   );
 };

@@ -1,5 +1,6 @@
 .productTable {
   max-width: 1200px;
+  padding: 30px 0 80px;
 
   &__path {
     display: flex;
@@ -8,14 +9,16 @@
     &__homeIcon {
       height: 14.67px;
       width: 13.33px;
-      background-image: url('./Plus.svg');
+      background-color: yellow;
+      // background-image: url('./Plus.svg');
     }
 
     &__arrow {
       height: 9.33px;
       width: 5.33px;
       margin: 0 14.67px 0 13.33px;
-      background-image: url('./Plus.svg');
+      background-color: yellow;
+      // background-image: url('./Plus.svg');
     }
 
     &__text {

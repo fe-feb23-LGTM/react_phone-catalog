@@ -1,10 +1,15 @@
 import ReactDOM from 'react-dom';
 import {
-  HashRouter, Navigate, Route, Routes,
+  HashRouter,
+  Navigate,
+  Route,
+  Routes,
 } from 'react-router-dom';
+
 import App from './App';
-import { Main } from './components/main';
 import { NotFound } from './components/NotFound/NotFound';
+import { Main } from './components/Main';
+import { Cart } from './components/Cart';
 
 ReactDOM.render(
   <HashRouter>
@@ -16,7 +21,7 @@ ReactDOM.render(
         <Route path="/tablets" element={<h1>tablets</h1>} />
         <Route path="/accessories" element={<h1>accessories</h1>} />
         <Route path="/favourites" element={<h1>favourites</h1>} />
-        <Route path="/cart" element={<h1 className="title">cart</h1>} />
+        <Route path="/cart" element={<Cart />} />
         <Route path="*" element={<NotFound />} />
       </Route>
     </Routes>
