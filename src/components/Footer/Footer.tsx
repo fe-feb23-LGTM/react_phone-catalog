@@ -19,8 +19,8 @@ export const Footer = () => {
         >
           github
         </a>
-        <a href="contacts" className="navigation__link">Contacts</a>
-        <a href="rights" className="navigation__link">Rights</a>
+        <NavLink to="contacts" className="navigation__link">Contacts</NavLink>
+        <NavLink to="rights" className="navigation__link">Rights</NavLink>
       </div>
       <div className="button-back">
         <Link

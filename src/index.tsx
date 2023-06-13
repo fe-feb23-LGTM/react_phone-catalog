@@ -11,6 +11,7 @@ import { Main } from './components/Main/Main';
 import { Cart } from './components/Cart';
 import { Home } from './components/Home/Home';
 import { NotFound } from './components/NotFound/NotFound';
+import { License } from './components/License/License';
 
 ReactDOM.render(
   <HashRouter>
@@ -23,6 +24,9 @@ ReactDOM.render(
         <Route path="/accessories" element={<h1>accessories</h1>} />
         <Route path="/favourites" element={<h1>favourites</h1>} />
         <Route path="/cart" element={<Cart />} />
+
+        <Route path="/contacts" element={<h1>contacts</h1>} />
+        <Route path="/rights" element={<License />} />
         <Route path="*" element={<NotFound />} />
       </Route>
     </Routes>
