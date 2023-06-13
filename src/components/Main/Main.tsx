@@ -1,4 +1,4 @@
-import { ProductTable } from '../TempProductTable/ProductTable';
+import { ProductTable } from '../ProductTable/ProductTable';
 
 export const Main = () => {
   return (
