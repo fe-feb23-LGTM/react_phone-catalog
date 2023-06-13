@@ -81,12 +81,12 @@
   width: 64px;
   box-shadow: -1px 0 0 $cGrayElements;
 
-  border-bottom: 2px solid transparent;
+  border-bottom: 3px solid transparent;
 
   transition: border-bottom 0.3s;
 
   &:hover {
-    border-bottom: 2px solid $cGrayPrimary;
+    border-bottom: 3px solid $cGrayPrimary;
   }
 
   @media (max-width: 1200px) {
@@ -132,5 +132,39 @@
 
   @media (max-width: 1200px) {
     top: 28px;
+  }
+}
+
+.counter {
+  position: relative;
+  width: 18px;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &__img {
+    position: relative;
+  }
+
+  &__number {
+    position: absolute;
+    box-sizing: border-box;
+    width: 14px;
+    height: 14px;
+    background-color: $cBlueAccent;
+    border: 1px solid $cWhite;
+    border-radius: 50%;
+
+    font-family: "Mont", Arial, sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 9px;
+    line-height: 12px;
+    text-align: center;
+    left: 9px;
+    bottom: 9px;
+
+    color: $cWhite;
   }
 }

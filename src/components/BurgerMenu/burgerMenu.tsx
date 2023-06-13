@@ -1,4 +1,3 @@
-/* eslint-disable react/jsx-no-comment-textnodes */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import { NavLink } from 'react-router-dom';
 import classNames from 'classnames';
@@ -105,10 +104,16 @@ export const BurgerMenu: React.FC<Props> = ({
           )}
           onClick={onMenuClose}
         >
-          <img
-            src="icons/Favourites.svg"
-            alt="favourites"
-          />
+          <div className="counter">
+            <img
+              src="icons/Favourites.svg"
+              alt="favourites"
+              className="counter__img"
+            />
+            <div className="counter__number">
+              1
+            </div>
+          </div>
         </NavLink>
 
         <NavLink
@@ -119,10 +124,16 @@ export const BurgerMenu: React.FC<Props> = ({
           )}
           onClick={onMenuClose}
         >
-          <img
-            src="icons/Shopping_bag(Cart).svg"
-            alt="cart"
-          />
+          <div className="counter">
+            <img
+              src="icons/Shopping_bag(Cart).svg"
+              alt="cart"
+              className="counter__img"
+            />
+            <div className="counter__number">
+              1
+            </div>
+          </div>
         </NavLink>
       </div>
     </div>

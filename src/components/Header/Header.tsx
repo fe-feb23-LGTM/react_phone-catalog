@@ -17,12 +17,18 @@ export const Header: React.FC = () => {
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = 'hidden';
+      document.body.style.position = 'fixed';
+      document.body.style.width = '100%';
     } else {
       document.body.style.overflow = 'auto';
+      document.body.style.position = 'static';
+      document.body.style.width = 'auto';
     }
 
     return () => {
       document.body.style.overflow = 'auto';
+      document.body.style.position = 'static';
+      document.body.style.width = 'auto';
     };
   }, [isOpen]);
 
@@ -93,11 +99,16 @@ export const Header: React.FC = () => {
             { 'bottom-active': isActive },
           )}
         >
-          <img
-            src="icons/Favourites.svg"
-            alt="favourites"
-            className="action__favourites"
-          />
+          <div className="counter">
+            <img
+              src="icons/Favourites.svg"
+              alt="favourites"
+              className="counter__img"
+            />
+            <div className="counter__number">
+              1
+            </div>
+          </div>
         </NavLink>
 
         <NavLink
@@ -107,11 +118,16 @@ export const Header: React.FC = () => {
             { 'bottom-active': isActive },
           )}
         >
-          <img
-            src="icons/Shopping_bag(Cart).svg"
-            alt="cart"
-            className="action__cart"
-          />
+          <div className="counter">
+            <img
+              src="icons/Shopping_bag(Cart).svg"
+              alt="cart"
+              className="counter__img"
+            />
+            <div className="counter__number">
+              2
+            </div>
+          </div>
         </NavLink>
 
         <NavLink
