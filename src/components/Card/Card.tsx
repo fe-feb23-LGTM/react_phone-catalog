@@ -10,9 +10,9 @@ export const Card: React.FC<Props> = ({ phone }) => {
     name,
     fullPrice,
     price,
-    // screen,
-    // capacity,
-    // ram,
+    screen,
+    capacity,
+    ram,
   } = phone;
 
   return (
@@ -25,14 +25,40 @@ export const Card: React.FC<Props> = ({ phone }) => {
         <h2 className="card__name">{name}</h2>
 
         <div className="card__prices">
-          <h2 className="card__price">{price}</h2>
-          <h2 className="card__full-price">{fullPrice}</h2>
+          <h2 className="card__price">
+            {`$${price}`}
+          </h2>
+          <h2 className="card__full-price">
+            {`$${fullPrice}`}
+          </h2>
         </div>
-        <img
-          src="icons/Buttons/addedToFavorit.svg"
-          alt=""
-          className="card__like"
-        />
+
+        <div className="card__line" />
+
+        <div className="card__details">
+          <span className="card__label">Screen</span>
+          <span className="card__value">{screen}</span>
+        </div>
+
+        <div className="card__details">
+          <span className="card__label">Capacity</span>
+          <span className="card__value">{capacity}</span>
+        </div>
+
+        <div className="card__details">
+          <span className="card__label">RAM</span>
+          <span className="card__value">{ram}</span>
+        </div>
+
+        <div className="card__buttons">
+          <button className="card__add" type="button">Add to card</button>
+
+          <img
+            src="icons/Buttons/addedToFavorit.svg"
+            alt="like"
+            className="card__like"
+          />
+        </div>
       </div>
     </div>
   );

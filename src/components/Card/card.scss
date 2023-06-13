@@ -7,6 +7,11 @@
 
   border: 1px solid $cGrayElements;
   border-radius: 8px;
+  font-family: "Mont", Arial, Helvetica, sans-serif;
+
+  & * {
+    font-family: "Mont", Arial, Helvetica, sans-serif;
+  }
 
   &__img--div {
     width: 208px;
@@ -22,27 +27,25 @@
 
   &__name {
     padding-top: 24px;
-    font-family: 'Mont';
     font-style: normal;
     font-weight: 600;
     font-size: 14px;
     line-height: 21px;
-    text-align: center;
+    text-align: left;
   }
 
   &__prices {
     height: 31px;
-    padding: 8px;
-    display: flex;
-    justify-content: space-between;
-    gap: 5px;
+    padding: 8px 0 0;
   }
 
   &__price {
-    width: 50px;
     height: 100%;
+    margin: 0;
+    margin-right: 8px;
+    padding: 0;
+    display: inline-block;
 
-    font-family: 'Mont';
     font-style: normal;
     font-weight: 800;
     font-size: 22px;
@@ -52,16 +55,83 @@
   &__full-price {
     width: 50px;
     height: 28px;
+    margin: 0;
+    padding: 0;
 
-    font-family: 'Mont';
+    display: inline-block;
+
     font-style: normal;
     font-weight: 500;
     font-size: 22px;
     line-height: 28px;
     text-decoration-line: line-through;
+    color: $cGraySecondary;
+  }
 
+  &__line {
+    width: 208px;
+    height: 0;
+    margin: 20px 0 16px;
+
+    border: 1px solid $cGrayElements;
+
+    flex: none;
+    order: 3;
+    align-self: stretch;
+    flex-grow: 0;
+  }
+
+  &__details {
+    margin-top: 8px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__label {
+    width: 43px;
+    height: 15px;
 
     color: $cGraySecondary;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 15px;
+  }
 
+  &__value {
+    color: $cGrayPrimary;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 15px;
+    letter-spacing: 0;
+  }
+
+  &__add {
+    width: 160px;
+    height: 40px;
+    border-radius: 48px;
+
+    color: $cWhite;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 21px;
+    letter-spacing: 0;
+    text-align: center;
+    background-color: $cBlueAccent;
+    border: none;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: #6b48ff;
+      cursor: pointer;
+      box-shadow: 0 0 8px rgba(0, 0, 0, 0.6);
+    }
+  }
+
+  &__buttons {
+    padding-top: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
   }
 }
