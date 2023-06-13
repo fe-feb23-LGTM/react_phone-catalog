@@ -5,12 +5,11 @@ import {
   Route,
   Routes,
 } from 'react-router-dom';
-
 import App from './App';
-import { NotFound } from './components/NotFound/NotFound';
-import { Main } from './components/Main';
 import { Cart } from './components/Cart';
 import { Home } from './components/Home/Home';
+import { NotFound } from './components/NotFound/notFound';
+import { ProductTable } from './components/ProductTable';
 
 ReactDOM.render(
   <HashRouter>
@@ -18,7 +17,7 @@ ReactDOM.render(
       <Route path="/" element={<App />}>
         <Route index element={<Home />} />
         <Route path="/home" element={<Navigate to="/" />} />
-        <Route path="/phones" element={<Main />} />
+        <Route path="/phones" element={<ProductTable />} />
         <Route path="/tablets" element={<h1>tablets</h1>} />
         <Route path="/accessories" element={<h1>accessories</h1>} />
         <Route path="/favourites" element={<h1>favourites</h1>} />
