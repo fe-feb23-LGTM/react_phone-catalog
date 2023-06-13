@@ -25,7 +25,7 @@ export const CheckoutModal: React.FC<Props> = ({ onClear, onClose }) => {
 
         <div className="modal_btns">
           <Link to="/" className="modal_btn">
-            Go back home
+            Back home
           </Link>
           <div
             tabIndex={0}
