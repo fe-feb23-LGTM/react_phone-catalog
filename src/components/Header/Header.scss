@@ -59,6 +59,8 @@
     height: 100%;
     color: $cGraySecondary;
 
+    transition: color 0.3s;
+
     &:hover {
       color: $cGrayPrimary;
 
@@ -78,6 +80,14 @@
   height: 64px;
   width: 64px;
   box-shadow: -1px 0 0 $cGrayElements;
+
+  border-bottom: 2px solid transparent;
+
+  transition: border-bottom 0.3s;
+
+  &:hover {
+    border-bottom: 2px solid $cGrayPrimary;
+  }
 
   @media (max-width: 1200px) {
     height: 48px;

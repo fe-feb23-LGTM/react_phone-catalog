@@ -43,6 +43,14 @@
       box-shadow: -1px 0 0 $cGrayElements;
       cursor: pointer;
 
+      border-bottom: 2px solid transparent;
+
+      transition: border-bottom 0.3s;
+
+      &:hover {
+        border-bottom: 2px solid $cGrayPrimary;
+      }
+
       &__icon {
         width: 16px;
         height: 16px;

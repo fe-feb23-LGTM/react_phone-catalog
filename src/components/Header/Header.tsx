@@ -86,7 +86,13 @@ export const Header: React.FC = () => {
         </ul>
       </nav>
       <div className="header__actions">
-        <NavLink to="/favourites" className="action">
+        <NavLink
+          to="/favourites"
+          className={({ isActive }) => classNames(
+            'action',
+            { 'bottom-active': isActive },
+          )}
+        >
           <img
             src="icons/Favourites.svg"
             alt="favourites"
@@ -94,7 +100,13 @@ export const Header: React.FC = () => {
           />
         </NavLink>
 
-        <NavLink to="/cart" className="action">
+        <NavLink
+          to="/cart"
+          className={({ isActive }) => classNames(
+            'action',
+            { 'bottom-active': isActive },
+          )}
+        >
           <img
             src="icons/Shopping_bag(Cart).svg"
             alt="cart"
