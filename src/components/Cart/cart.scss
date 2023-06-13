@@ -35,8 +35,12 @@
     font-size: 12px;
     line-height: 15px;
     color: $cGraySecondary;
-
     margin-left: 9px;
+    transition: color 0.3s;
+
+    &:hover {
+      color: $cGrayPrimary;
+    }
   }
 
   &__heading {
@@ -105,7 +109,7 @@
     height: 48px;
     background: $cBlueAccent;
     border-radius: 48px;
-    margin-top: 15px;
+    margin-top: 24px;
     cursor: pointer;
 
     color: $cWhite;
