@@ -1,5 +1,23 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+import { useState } from 'react';
+import { CheckoutModal } from '../CheckoutModal';
+
 export const Cart = () => {
-  const cartItems = [1, 2, 3, 4, 5];
+  const [cartItems, setCartItems] = useState([1, 2, 3, 4, 5]);
+  const [showModal, setShowModal] = useState(false);
+
+  const handleClearCart = () => {
+    setCartItems([]);
+    setShowModal(false);
+  };
+
+  const handleOpenModal = () => {
+    setShowModal(true);
+  };
+
+  const handleCloseModal = () => {
+    setShowModal(false);
+  };
 
   return (
     <div className="cartWraper">
@@ -30,9 +48,21 @@ export const Cart = () => {
               {`Total for ${cartItems.length} items`}
             </div>
             <hr className="is-marginless" />
-            <div className="cart__checkoutBtn">
+            <div
+              tabIndex={0}
+              role="button"
+              className="cart__checkoutBtn"
+              onClick={handleOpenModal}
+            >
               Checkout
             </div>
+            {showModal && (
+              <CheckoutModal
+                cartItems={cartItems}
+                onClear={handleClearCart}
+                onClose={handleCloseModal}
+              />
+            )}
           </div>
         </div>
       </div>

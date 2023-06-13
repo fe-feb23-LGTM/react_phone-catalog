@@ -1,0 +1,87 @@
+.modal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.8);
+
+  &_wrapper {
+    width: 30%;
+    height: 40%;
+    box-sizing: border-box;
+    padding: 16px;
+    background: $cWhite;
+    border: 1px solid rgba(226, 230, 233, 1);
+    border-radius: 16px;
+
+    @media (max-width: 900px) {
+      width: 50%;
+      height: 40%;
+    }
+
+    @media (max-width: 500px) {
+      width: 75%;
+      height: 40%;
+    }
+  }
+
+  &_close {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 6px;
+    margin-left: auto;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    border: 1px solid rgba(226, 230, 233, 1);
+    cursor: pointer;
+    transition: background-color 0.3s;
+
+    &:hover {
+      background-color: rgb(200, 203, 206);
+    }
+  }
+
+  &_title {
+    width: 95%;
+    margin: 0 auto 16px;
+    text-align: center;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    color: $cGrayPrimary;
+    font-size: 16px;
+    line-height: 18px;
+  }
+
+  &_btns {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 100px;
+
+    @media (max-width: 500px) {
+      margin-top: 80px;
+    }
+  }
+
+  &_btn {
+    display: block;
+    padding: 12px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 14px;
+    text-align: center;
+    color: $cWhite;
+    background: $cBlueAccent;
+    border-radius: 48px;
+    cursor: pointer;
+
+    transition: box-shadow 0.5s,
+      color 0.5s;
+
+    &:hover {
+      box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.4);
+      color: $cWhite;
+    }
+  }
+}
