@@ -10,7 +10,7 @@ import App from './App';
 import { Main } from './components/Main/Main';
 import { Cart } from './components/Cart';
 import { Home } from './components/Home/Home';
-import { NotFound } from './components/NotFound/NotFound';
+import { NotFound } from './components/NotFound/TempNotFound';
 
 ReactDOM.render(
   <HashRouter>
