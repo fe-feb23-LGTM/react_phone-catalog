@@ -1,0 +1,38 @@
+$primary-color: #337ab7;
+$secondary-color: #555;
+$font-size: 16px;
+$line-height: 1.5;
+
+.license-text {
+  text-align: center;
+  font-family: Arial, sans-serif;
+  margin: 20px;
+}
+
+h3 {
+  color: $primary-color;
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+h4 {
+  color: $secondary-color;
+  font-size: 20px;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+p {
+  font-size: $font-size;
+  line-height: $line-height;
+  margin-bottom: 10px;
+}
+
+a {
+  color: $primary-color;
+  text-decoration: none;
+  &:hover {
+    text-decoration: underline;
+  }
+}
