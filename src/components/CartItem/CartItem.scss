@@ -71,14 +71,14 @@
     transition: all 0.3, ease;
 
     :hover {
-      height: 32px;
-      min-width: 32px;
-      border: 2px solid $cBlueAccent;
+      height: 30px;
+      min-width: 30px;
+      border: 1px solid $cBlueAccent;
       border-radius: 50%;
     }
 
     :active {
-      border: 4px solid $cBlueAccent;
+      border: 2px solid $cBlueAccent;
     }
   }
 
