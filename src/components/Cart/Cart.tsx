@@ -1,5 +1,7 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { CheckoutModal } from '../CheckoutModal';
 
 export const Cart = () => {
@@ -22,10 +24,15 @@ export const Cart = () => {
   return (
     <div className="cartWraper">
       <div className="cart">
-        <div className="cart__back">
-          <div className="cart__backIcon" />
-          <span className="cart__backBtn">Back</span>
-        </div>
+        <Link
+          to="#"
+          onClick={() => window.history.back()}
+        >
+          <div className="cart__back">
+            <img src="icons/Vector(Stroke).svg" alt="imgBack" />
+            <span className="cart__backBtn">Back</span>
+          </div>
+        </Link>
 
         <div className="cart__heading">
           Cart
