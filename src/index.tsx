@@ -7,7 +7,7 @@ import {
 } from 'react-router-dom';
 
 import App from './App';
-import { Main } from './components/Main/Main';
+import { Main } from './components/TempMain/Main';
 import { Cart } from './components/Cart';
 import { Home } from './components/Home/Home';
 import { NotFound } from './components/NotFound/NotFound';
