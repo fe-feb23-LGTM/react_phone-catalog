@@ -7,6 +7,7 @@ import { CartCounter } from '../CartCounter';
 
 export const Header: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [isSticky, setIsSticky] = useState(false);
 
   const openMenu = () => {
     setIsOpen(true);
@@ -34,8 +35,28 @@ export const Header: React.FC = () => {
     };
   }, [isOpen]);
 
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollTop = window.scrollY || document.documentElement.scrollTop;
+
+      setIsSticky(scrollTop > 0);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
   return (
-    <header id="header" className="header">
+    <header
+      id="header"
+      className={classNames(
+        'header',
+        { sticky: isSticky },
+      )}
+    >
       <NavLink to="/" className="header_logo">
         <img
           src="icons/logo/Logo.svg"

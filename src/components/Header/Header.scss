@@ -112,7 +112,6 @@
     align-items: center;
     justify-content: center;
   }
-
 }
 
 .is-active {
@@ -133,4 +132,15 @@
   @media (max-width: 1200px) {
     top: 28px;
   }
+}
+
+.menu-open {
+  overflow: hidden;
+}
+
+.header.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 10;
 }
