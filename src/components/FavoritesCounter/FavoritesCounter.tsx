@@ -1,15 +1,15 @@
-import { useState } from 'react';
+// import { useState } from 'react';
 
 export const FavoritesCounter: React.FC = () => {
-  const [favCount, setFavCount] = useState(0);
+  // const [favCount, setFavCount] = useState(0);
 
-  const getFavCount = () => {
-    setFavCount(JSON.parse(localStorage.getItem('fav') || '').length);
-  };
+  // const getFavCount = () => {
+  //   setFavCount(JSON.parse(localStorage.getItem('fav') || '').length);
+  // };
 
-  setInterval(() => {
-    getFavCount();
-  }, 1000);
+  // setInterval(() => {
+  //   getFavCount();
+  // }, 1000);
 
   return (
     <div className="counter">
@@ -18,11 +18,11 @@ export const FavoritesCounter: React.FC = () => {
         alt="favourites"
         className="counter__img"
       />
-      {favCount !== 0 && (
+      {/* {favCount !== 0 && (
         <div className="counter__number">
           {favCount}
         </div>
-      )}
+      )} */}
     </div>
   );
 };
