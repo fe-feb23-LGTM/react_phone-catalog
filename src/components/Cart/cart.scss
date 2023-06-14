@@ -1,4 +1,5 @@
 .cartWraper {
+  background-color: $cWhiteHower;
   @media (min-width: 1200px) {
     display: flex;
     justify-content: center;
@@ -34,9 +35,13 @@
     font-weight: 700;
     font-size: 12px;
     line-height: 15px;
-    color: #89939A;
-
+    color: $cGraySecondary;
     margin-left: 9px;
+    transition: color 0.3s;
+
+    &:hover {
+      color: $cGrayPrimary;
+    }
   }
 
   &__heading {
@@ -46,7 +51,7 @@
     line-height: 41px;
 
     letter-spacing: -0.01em;
-    color: #0F0F11;
+    color: $cGrayPrimary;
     margin: 24px 0 32px;
   }
 
@@ -67,7 +72,7 @@
   }
 
   &__checkout {
-    border: 1px solid #E2E6E9;
+    border: 1px solid $cGrayElements;
     border-radius: 16px;
     padding: 10px;
     margin-top: 16px;
@@ -87,38 +92,39 @@
 
     text-align: center;
     letter-spacing: -0.01em;
-    color: #0F0F11;
+    color: $cGrayPrimary;
   }
 
   &__checkoutCount {
     font-style: normal;
-      font-weight: 600;
-      font-size: 14px;
-      line-height: 21px;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
 
-      text-align: center;
-      color: #89939A;
-      margin-bottom: 16px;
+    text-align: center;
+    color: $cGraySecondary;
+    margin-bottom: 16px;
   }
 
-    &__checkoutBtn {
-      height: 48px;
-      background: #4219D0;
-      border-radius: 48px;
-      margin-top: 15px;
+  &__checkoutBtn {
+    height: 48px;
+    background: $cBlueAccent;
+    border-radius: 48px;
+    margin-top: 24px;
+    cursor: pointer;
 
-      color: #FFFFFF;
-      font-style: normal;
-      font-weight: 700;
-      font-size: 14px;
-      line-height: 48px;
-      text-align: center;
-    }
+    color: $cWhite;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 48px;
+    text-align: center;
+  }
 
   &__item {
     height: 128px;
-    background: #FFFFFF;
-    border: 1px solid #E2E6E9;
+    background: $cWhite;
+    border: 1px solid $cGrayElements;
     border-radius: 16px;
 
     margin-bottom: 16px;

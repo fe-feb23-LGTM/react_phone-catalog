@@ -8,6 +8,12 @@
 @import "./components/Card/card.scss";
 @import "./components/Cart/cart.scss";
 @import "./components/Loader/loader.scss";
+@import "./components/License/license.scss";
+@import "./components/CheckoutModal/CheckoutModal.scss";
+@import "./components/CartItem/CartItem.scss";
+@import "./components/FavoritesCounter/FavoritesCounter.scss";
+@import "./components/ProductPage/ProductPage.scss";
+@import "./components/Recommended/Recommended.scss";
 
 html {
   scroll-behavior: smooth;

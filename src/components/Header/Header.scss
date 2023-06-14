@@ -1,6 +1,6 @@
 .header {
-  background: #fff;
-  box-shadow: 0 1px 0 #e2e6e9;
+  background: $cWhite;
+  box-shadow: 0 1px 0 $cGrayElements;
 
   height: 64px;
   width: 100%;
@@ -16,7 +16,12 @@
   &_logo {
     min-width: 80px;
     margin-left: 24px;
+    margin-right: 48px;
     text-decoration: none;
+
+    @media (max-width: 1200px) {
+      margin-right: 32px;
+    }
   }
 }
 
@@ -52,10 +57,12 @@
     text-decoration: none;
 
     height: 100%;
-    color: #89939a;
+    color: $cGraySecondary;
+
+    transition: color 0.3s;
 
     &:hover {
-      color: #0f0f11;
+      color: $cGrayPrimary;
 
     }
   }
@@ -67,9 +74,20 @@
 }
 
 .action {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   height: 64px;
   width: 64px;
-  box-shadow: -1px 0 0 #e2e6e9;
+  box-shadow: -1px 0 0 $cGrayElements;
+
+  border-bottom: 3px solid transparent;
+
+  transition: border-bottom 0.3s;
+
+  &:hover {
+    border-bottom: 3px solid $cGrayPrimary;
+  }
 
   @media (max-width: 1200px) {
     height: 48px;
@@ -86,18 +104,20 @@
   height: 48px;
   width: 48px;
 
-  box-shadow: -1px 0 0 #e2e6e9;
+  box-shadow: -1px 0 0 $cGrayElements;
 
   @media (max-width: 640px) {
-    display: block;
     margin-right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
 }
 
 .is-active {
   position: relative;
-  color: #0f0f11;
+  color: $cGrayPrimary;
 }
 
 .is-active:after {
@@ -108,7 +128,7 @@
   left: 0;
   top: 36px;
   display: block;
-  background: #0f0f11;
+  background: $cGrayPrimary;
 
   @media (max-width: 1200px) {
     top: 28px;

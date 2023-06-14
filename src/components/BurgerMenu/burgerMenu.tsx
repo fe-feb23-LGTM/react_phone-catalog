@@ -1,15 +1,16 @@
-/* eslint-disable react/jsx-no-comment-textnodes */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import { NavLink } from 'react-router-dom';
 import classNames from 'classnames';
+import { FavoritesCounter } from '../FavoritesCounter/FavoritesCounter';
+import { CartCounter } from '../CartCounter';
 
 interface Props {
   isMenuOpen: boolean;
-  onMenuToggle: () => void;
+  onMenuClose: () => void;
 }
 export const BurgerMenu: React.FC<Props> = ({
   isMenuOpen,
-  onMenuToggle,
+  onMenuClose,
 }) => {
   return (
     <div className={classNames(
@@ -22,20 +23,26 @@ export const BurgerMenu: React.FC<Props> = ({
           <NavLink
             to="/"
             className="menu__top__logo__icon"
-            onClick={onMenuToggle}
+            onClick={onMenuClose}
           >
-            Nise Gadjet
+            <img
+              src="icons/logo/Logo.svg"
+              alt="logo"
+            />
           </NavLink>
         </div>
         <div className="menu__top__close">
-          <span
+          <div
             className="menu__top__close__icon"
-            onClick={onMenuToggle}
+            onClick={onMenuClose}
             role="button"
             tabIndex={0}
           >
-            X
-          </span>
+            <img
+              src="icons/Close.svg"
+              alt="Close"
+            />
+          </div>
         </div>
       </div>
       <div className="menu__content">
@@ -47,7 +54,7 @@ export const BurgerMenu: React.FC<Props> = ({
                 'menu__content__item__link',
                 { 'is-active': isActive },
               )}
-              onClick={onMenuToggle}
+              onClick={onMenuClose}
             >
               Home
             </NavLink>
@@ -59,7 +66,7 @@ export const BurgerMenu: React.FC<Props> = ({
                 'menu__content__item__link',
                 { 'is-active': isActive },
               )}
-              onClick={onMenuToggle}
+              onClick={onMenuClose}
             >
               Phones
             </NavLink>
@@ -71,7 +78,7 @@ export const BurgerMenu: React.FC<Props> = ({
                 'menu__content__item__link',
                 { 'is-active': isActive },
               )}
-              onClick={onMenuToggle}
+              onClick={onMenuClose}
             >
               Tablets
             </NavLink>
@@ -83,7 +90,7 @@ export const BurgerMenu: React.FC<Props> = ({
                 'menu__content__item__link',
                 { 'is-active': isActive },
               )}
-              onClick={onMenuToggle}
+              onClick={onMenuClose}
             >
               Accessories
             </NavLink>
@@ -97,9 +104,9 @@ export const BurgerMenu: React.FC<Props> = ({
             'menu__bottom__item',
             { 'bottom-active': isActive },
           )}
-          onClick={onMenuToggle}
+          onClick={onMenuClose}
         >
-          Favourites
+          <FavoritesCounter />
         </NavLink>
 
         <NavLink
@@ -108,9 +115,9 @@ export const BurgerMenu: React.FC<Props> = ({
             'menu__bottom__item',
             { 'bottom-active': isActive },
           )}
-          onClick={onMenuToggle}
+          onClick={onMenuClose}
         >
-          Cart
+          <CartCounter />
         </NavLink>
       </div>
     </div>

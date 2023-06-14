@@ -1,23 +1,46 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import classNames from 'classnames';
 import { BurgerMenu } from '../BurgerMenu';
+import { FavoritesCounter } from '../FavoritesCounter/FavoritesCounter';
+import { CartCounter } from '../CartCounter';
 
 export const Header: React.FC = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
-  const handleMenuToggle = () => {
-    setIsMenuOpen(!isMenuOpen);
+  const openMenu = () => {
+    setIsOpen(true);
   };
+
+  const closeMenu = () => {
+    setIsOpen(false);
+  };
+
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+      document.body.style.position = 'fixed';
+      document.body.style.width = '100%';
+    } else {
+      document.body.style.overflow = 'auto';
+      document.body.style.position = 'static';
+      document.body.style.width = 'auto';
+    }
+
+    return () => {
+      document.body.style.overflow = 'auto';
+      document.body.style.position = 'static';
+      document.body.style.width = 'auto';
+    };
+  }, [isOpen]);
 
   return (
     <header id="header" className="header">
       <NavLink to="/" className="header_logo">
-        {/* <img
-          src="#"
+        <img
+          src="icons/logo/Logo.svg"
           alt="logo"
-        /> */}
-        Nice Gadjet
+        />
       </NavLink>
       <nav className="nav">
         <ul className="nav_list">
@@ -71,41 +94,42 @@ export const Header: React.FC = () => {
         </ul>
       </nav>
       <div className="header__actions">
-        <NavLink to="/favourites" className="action">
-          {/* <img
-            src=""
-            alt="favourites"
-            className="action__favourites"
-          /> */}
-          favs
+        <NavLink
+          to="/favourites"
+          className={({ isActive }) => classNames(
+            'action',
+            { 'bottom-active': isActive },
+          )}
+        >
+          <FavoritesCounter />
         </NavLink>
 
-        <NavLink to="/cart" className="action">
-          {/* <img
-            src=""
-            alt="cart"
-            className="action__cart"
-          /> */}
-          cart
+        <NavLink
+          to="/cart"
+          className={({ isActive }) => classNames(
+            'action',
+            { 'bottom-active': isActive },
+          )}
+        >
+          <CartCounter />
         </NavLink>
 
         <NavLink
           to="#menu"
           className="action burger-button"
-          onClick={handleMenuToggle}
+          onClick={openMenu}
         >
-          {/* <img
-            src=""
+          <img
+            src="icons/Menu.svg"
             alt="burger-icon"
             className="action__burger"
-          /> */}
-          burger
+          />
         </NavLink>
       </div>
-      {isMenuOpen && (
+      {isOpen && (
         <BurgerMenu
-          isMenuOpen={isMenuOpen}
-          onMenuToggle={handleMenuToggle}
+          isMenuOpen={isOpen}
+          onMenuClose={closeMenu}
         />
       )}
     </header>
