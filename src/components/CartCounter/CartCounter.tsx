@@ -1,15 +1,15 @@
-// import { useState } from 'react';
+import { useState } from 'react';
 
 export const CartCounter: React.FC = () => {
-  // const [cartCount, setCartCount] = useState(0);
+  const [cartCount, setCartCount] = useState(0);
 
-  // const getCartCount = () => {
-  //   setCartCount(JSON.parse(localStorage.getItem('cart') || '').length);
-  // };
+  const getCartCount = () => {
+    setCartCount(JSON.parse(localStorage.getItem('cart') || '').length);
+  };
 
-  // setInterval(() => {
-  //   getCartCount();
-  // }, 1000);
+  setInterval(() => {
+    getCartCount();
+  }, 1000);
 
   return (
     <div className="counter">
@@ -18,11 +18,11 @@ export const CartCounter: React.FC = () => {
         alt="cart"
         className="counter__img"
       />
-      {/* {cartCount !== 0 && (
+      {cartCount !== 0 && (
         <div className="counter__number">
           {cartCount}
         </div>
-      )} */}
+      )}
     </div>
   );
 };
