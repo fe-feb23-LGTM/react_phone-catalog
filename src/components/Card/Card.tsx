@@ -1,4 +1,5 @@
 import { Phone } from '../../types/Phone';
+import { AddToCartFav } from '../AddToCartFav/AddToCartFav';
 
 interface Props {
   phone: Phone;
@@ -50,15 +51,7 @@ export const Card: React.FC<Props> = ({ phone }) => {
           <span className="card__value">{ram}</span>
         </div>
 
-        <div className="card__buttons">
-          <button className="card__add" type="button">Add to card</button>
-
-          <img
-            src="icons/Buttons/addedToFavorit.svg"
-            alt="like"
-            className="card__like"
-          />
-        </div>
+        <AddToCartFav phone={phone} />
       </div>
     </div>
   );

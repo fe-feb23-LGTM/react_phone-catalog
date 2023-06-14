@@ -105,33 +105,4 @@
     line-height: 15px;
     letter-spacing: 0;
   }
-
-  &__add {
-    width: 160px;
-    height: 40px;
-    border-radius: 48px;
-
-    color: $cWhite;
-    font-size: 14px;
-    font-weight: 700;
-    line-height: 21px;
-    letter-spacing: 0;
-    text-align: center;
-    background-color: $cBlueAccent;
-    border: none;
-    transition: background-color 0.3s ease;
-
-    &:hover {
-      background-color: #6b48ff;
-      cursor: pointer;
-      box-shadow: 0 0 8px rgba(0, 0, 0, 0.6);
-    }
-  }
-
-  &__buttons {
-    padding-top: 16px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
 }
