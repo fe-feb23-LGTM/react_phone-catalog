@@ -1,29 +1,29 @@
 export const License = () => (
   <div className="license-text" dir="ltr">
-    <h3 className="center">GNU GENERAL PUBLIC LICENSE</h3>
-    <p className="center">Version 3, 29 June 2007</p>
+    <h3 className=" title">GNU GENERAL PUBLIC LICENSE</h3>
+    <p className="text">Version 3, 29 June 2007</p>
 
-    <p>
+    <p className="text">
       Copyright © 2007 Free Software Foundation, Inc.
       &lt;
-      <a href="https://fsf.org/">https://fsf.org/</a>
+      <a className="link" href="https://fsf.org/">https://fsf.org/</a>
       &gt;
 
     </p>
-    <p>
+    <p className="text">
       Everyone is permitted to copy and distribute verbatim copies
       of this license document, but changing it is not allowed.
     </p>
 
-    <h4 id="preamble">Preamble</h4>
+    <h4 className=" title--small" id="preamble">Preamble</h4>
 
-    <p>
+    <p className="text">
       The GNU General Public License is a free, copyleft license for
       software and other kinds of works.
 
     </p>
     <br />
-    <p>
+    <p className="text">
       The licenses for most software and other practical works are designed
       to take away your freedom to share and change the works.  By contrast,
       the GNU General Public License is intended to guarantee your freedom to
@@ -35,7 +35,7 @@ export const License = () => (
 
     </p>
 
-    <p>
+    <p className="text">
       When we speak of free software, we are referring to freedom, not
       price.  Our General Public Licenses are designed to make sure that you
       have the freedom to distribute copies of free software (and charge for
@@ -45,7 +45,7 @@ export const License = () => (
 
     </p>
 
-    <p>
+    <p className="text">
       To protect your rights, we need to prevent others from denying you
       these rights or asking you to surrender the rights.  Therefore, you have
       certain responsibilities if you distribute copies of the software, or if
@@ -53,7 +53,7 @@ export const License = () => (
 
     </p>
 
-    <p>
+    <p className="text">
       For example, if you distribute copies of such a program, whether
       gratis or for a fee, you must pass on to the recipients the same
       freedoms that you received.  You must make sure that they, too, receive
@@ -62,14 +62,14 @@ export const License = () => (
 
     </p>
 
-    <p>
+    <p className="text">
       Developers that use the GNU GPL protect your rights with two steps:
       (1) assert copyright on the software, and (2) offer you this License
       giving you legal permission to copy, distribute and/or modify it.
 
     </p>
 
-    <p>
+    <p className="text">
       For the developers&#39; and authors&#39; protection, the GPL clearly
       explains
       that there is no warranty for this free software.  For both users&#39; and
@@ -79,7 +79,7 @@ export const License = () => (
 
     </p>
 
-    <p>
+    <p className="text">
       Some devices are designed to deny users access to install or run
       modified versions of the software inside them, although the manufacturer
       can do so.  This is fundamentally incompatible with the aim of
@@ -93,7 +93,7 @@ export const License = () => (
 
     </p>
 
-    <p>
+    <p className="text">
       Finally, every program is threatened constantly by software patents.
       States should not allow patents to restrict development and use of
       software on general-purpose computers, but in those that do, we wish to
@@ -103,32 +103,34 @@ export const License = () => (
 
     </p>
 
-    <p>
+    <p className="text">
       The precise terms and conditions for copying, distribution and
       modification follow.
 
     </p>
 
-    <h4 id="terms">TERMS AND CONDITIONS</h4>
+    <h4 className=" title--small" id="terms">TERMS AND CONDITIONS</h4>
 
     <h5 id="section0">0. Definitions.</h5>
 
-    <p>“This License” refers to version 3 of the GNU General Public License.</p>
+    <p className="text">
+      “This License” refers to version 3 of the GNU General Public License.
+    </p>
 
-    <p>
+    <p className="text">
       “Copyright” also means copyright-like laws that apply to other kinds of
       works, such as semiconductor masks.
 
     </p>
 
-    <p>
+    <p className="text">
       “The Program” refers to any copyrightable work licensed under this
       License.  Each licensee is addressed as “you”.  “Licensees” and
       “recipients” may be individuals or organizations.
 
     </p>
 
-    <p>
+    <p className="text">
       To “modify” a work means to copy from or adapt all or part of the work
       in a fashion requiring copyright permission, other than the making of an
       exact copy.  The resulting work is called a “modified version” of the
@@ -136,13 +138,13 @@ export const License = () => (
 
     </p>
 
-    <p>
+    <p className="text">
       A “covered work” means either the unmodified Program or a work based
       on the Program.
 
     </p>
 
-    <p>
+    <p className="text">
       To “propagate” a work means to do anything with it that, without
       permission, would make you directly or secondarily liable for
       infringement under applicable copyright law, except executing it on a
@@ -152,14 +154,14 @@ export const License = () => (
 
     </p>
 
-    <p>
+    <p className="text">
       To “convey” a work means any kind of propagation that enables other
       parties to make or receive copies.  Mere interaction with a user through
       a computer network, with no transfer of a copy, is not conveying.
 
     </p>
 
-    <p>
+    <p className="text">
       An interactive user interface displays “Appropriate Legal Notices”
       to the extent that it includes a convenient and prominently visible
       feature that (1) displays an appropriate copyright notice, and (2)
@@ -173,14 +175,14 @@ export const License = () => (
 
     <h5 id="section1">1. Source Code.</h5>
 
-    <p>
+    <p className="text">
       The “source code” for a work means the preferred form of the work
       for making modifications to it.  “Object code” means any non-source
       form of a work.
 
     </p>
 
-    <p>
+    <p className="text">
       A “Standard Interface” means an interface that either is an official
       standard defined by a recognized standards body, or, in the case of
       interfaces specified for a particular programming language, one that
@@ -188,7 +190,7 @@ export const License = () => (
 
     </p>
 
-    <p>
+    <p className="text">
       The “System Libraries” of an executable work include anything, other
       than the work as a whole, that (a) is included in the normal form of
       packaging a Major Component, but which is not part of that Major
@@ -202,7 +204,7 @@ export const License = () => (
 
     </p>
 
-    <p>
+    <p className="text">
       The “Corresponding Source” for a work in object code form means all
       the source code needed to generate, install, and (for an executable
       work) run the object code and to modify the work, including scripts to
@@ -218,14 +220,14 @@ export const License = () => (
 
     </p>
 
-    <p>
+    <p className="text">
       The Corresponding Source need not include anything that users
       can regenerate automatically from other parts of the Corresponding
       Source.
 
     </p>
 
-    <p>
+    <p className="text">
       The Corresponding Source for a work in source code form is that
       same work.
 
@@ -233,7 +235,7 @@ export const License = () => (
 
     <h5 id="section2">2. Basic Permissions.</h5>
 
-    <p>
+    <p className="text">
       All rights granted under this License are granted for the term of
       copyright on the Program, and are irrevocable provided the stated
       conditions are met.  This License explicitly affirms your unlimited
@@ -244,7 +246,7 @@ export const License = () => (
 
     </p>
 
-    <p>
+    <p className="text">
       You may make, run and propagate covered works that you do not
       convey, without conditions so long as your license otherwise remains
       in force.  You may convey covered works to others for the sole purpose
@@ -258,7 +260,7 @@ export const License = () => (
 
     </p>
 
-    <p>
+    <p className="text">
       Conveying under any other circumstances is permitted solely under
       the conditions stated below.  Sublicensing is not allowed; section 10
       makes it unnecessary.
@@ -271,7 +273,7 @@ export const License = () => (
 
     </h5>
 
-    <p>
+    <p className="text">
       No covered work shall be deemed part of an effective technological
       measure under any applicable law fulfilling obligations under article
       11 of the WIPO copyright treaty adopted on 20 December 1996, or
@@ -280,7 +282,7 @@ export const License = () => (
 
     </p>
 
-    <p>
+    <p className="text">
       When you convey a covered work, you waive any legal power to forbid
       circumvention of technological measures to the extent such circumvention
       is effected by exercising rights under this License with respect to
@@ -293,7 +295,7 @@ export const License = () => (
 
     <h5 id="section4">4. Conveying Verbatim Copies.</h5>
 
-    <p>
+    <p className="text">
       You may convey verbatim copies of the Program&#39;s source code as you
       receive it, in any medium, provided that you conspicuously and
       appropriately publish on each copy an appropriate copyright notice;
@@ -304,7 +306,7 @@ export const License = () => (
 
     </p>
 
-    <p>
+    <p className="text">
       You may charge any price or no price for each copy that you convey,
       and you may offer support or warranty protection for a fee.
 
@@ -312,7 +314,7 @@ export const License = () => (
 
     <h5 id="section5">5. Conveying Modified Source Versions.</h5>
 
-    <p>
+    <p className="text">
       You may convey a work based on the Program, or the modifications to
       produce it from the Program, in the form of source code under the
       terms of section 4, provided that you also meet all of these conditions:
@@ -354,7 +356,7 @@ export const License = () => (
       </li>
     </ul>
 
-    <p>
+    <p className="text">
       A compilation of a covered work with other separate and independent
       works, which are not by their nature extensions of the covered work,
       and which are not combined with it such as to form a larger program,
@@ -369,7 +371,7 @@ export const License = () => (
 
     <h5 id="section6">6. Conveying Non-Source Forms.</h5>
 
-    <p>
+    <p className="text">
       You may convey a covered work in object code form under the terms
       of sections 4 and 5, provided that you also convey the
       machine-readable Corresponding Source under the terms of this License,
@@ -435,14 +437,14 @@ export const License = () => (
       </li>
     </ul>
 
-    <p>
+    <p className="text">
       A separable portion of the object code, whose source code is excluded
       from the Corresponding Source as a System Library, need not be
       included in conveying the object code work.
 
     </p>
 
-    <p>
+    <p className="text">
       A “User Product” is either (1) a “consumer product”, which means any
       tangible personal property which is normally used for personal, family,
       or household purposes, or (2) anything designed or sold for incorporation
@@ -458,7 +460,7 @@ export const License = () => (
 
     </p>
 
-    <p>
+    <p className="text">
       “Installation Information” for a User Product means any methods,
       procedures, authorization keys, or other information required to install
       and execute modified versions of a covered work in that User Product from
@@ -469,7 +471,7 @@ export const License = () => (
 
     </p>
 
-    <p>
+    <p className="text">
       If you convey an object code work under this section in, or with, or
       specifically for use in, a User Product, and the conveying occurs as
       part of a transaction in which the right of possession and use of the
@@ -483,7 +485,7 @@ export const License = () => (
 
     </p>
 
-    <p>
+    <p className="text">
       The requirement to provide Installation Information does not include a
       requirement to continue to provide support service, warranty, or updates
       for a work that has been modified or installed by the recipient, or for
@@ -494,7 +496,7 @@ export const License = () => (
 
     </p>
 
-    <p>
+    <p className="text">
       Corresponding Source conveyed, and Installation Information provided,
       in accord with this section must be in a format that is publicly
       documented (and with an implementation available to the public in
@@ -505,7 +507,7 @@ export const License = () => (
 
     <h5 id="section7">7. Additional Terms.</h5>
 
-    <p>
+    <p className="text">
       “Additional permissions” are terms that supplement the terms of this
       License by making exceptions from one or more of its conditions.
       Additional permissions that are applicable to the entire Program shall
@@ -517,7 +519,7 @@ export const License = () => (
 
     </p>
 
-    <p>
+    <p className="text">
       When you convey a copy of a covered work, you may at your option
       remove any additional permissions from that copy, or from any part of
       it.  (Additional permissions may be written to require their own
@@ -527,7 +529,7 @@ export const License = () => (
 
     </p>
 
-    <p>
+    <p className="text">
       Notwithstanding any other provision of this License, for material you
       add to a covered work, you may (if authorized by the copyright holders of
       that material) supplement the terms of this License with terms:
@@ -577,7 +579,7 @@ export const License = () => (
       </li>
     </ul>
 
-    <p>
+    <p className="text">
       All other non-permissive additional terms are considered “further
       restrictions” within the meaning of section 10.  If the Program as you
       received it, or any part of it, contains a notice stating that it is
@@ -590,7 +592,7 @@ export const License = () => (
 
     </p>
 
-    <p>
+    <p className="text">
       If you add terms to a covered work in accord with this section, you
       must place, in the relevant source files, a statement of the
       additional terms that apply to those files, or a notice indicating
@@ -598,7 +600,7 @@ export const License = () => (
 
     </p>
 
-    <p>
+    <p className="text">
       Additional terms, permissive or non-permissive, may be stated in the
       form of a separately written license, or stated as exceptions;
       the above requirements apply either way.
@@ -607,7 +609,7 @@ export const License = () => (
 
     <h5 id="section8">8. Termination.</h5>
 
-    <p>
+    <p className="text">
       You may not propagate or modify a covered work except as expressly
       provided under this License.  Any attempt otherwise to propagate or
       modify it is void, and will automatically terminate your rights under
@@ -616,7 +618,7 @@ export const License = () => (
 
     </p>
 
-    <p>
+    <p className="text">
       However, if you cease all violation of this License, then your
       license from a particular copyright holder is reinstated (a)
       provisionally, unless and until the copyright holder explicitly and
@@ -626,7 +628,7 @@ export const License = () => (
 
     </p>
 
-    <p>
+    <p className="text">
       Moreover, your license from a particular copyright holder is
       reinstated permanently if the copyright holder notifies you of the
       violation by some reasonable means, this is the first time you have
@@ -636,7 +638,7 @@ export const License = () => (
 
     </p>
 
-    <p>
+    <p className="text">
       Termination of your rights under this section does not terminate the
       licenses of parties who have received copies or rights from you under
       this License.  If your rights have been terminated and not permanently
@@ -647,7 +649,7 @@ export const License = () => (
 
     <h5 id="section9">9. Acceptance Not Required for Having Copies.</h5>
 
-    <p>
+    <p className="text">
       You are not required to accept this License in order to receive or
       run a copy of the Program.  Ancillary propagation of a covered work
       occurring solely as a consequence of using peer-to-peer transmission
@@ -661,7 +663,7 @@ export const License = () => (
 
     <h5 id="section10">10. Automatic Licensing of Downstream Recipients.</h5>
 
-    <p>
+    <p className="text">
       Each time you convey a covered work, the recipient automatically
       receives a license from the original licensors, to run, modify and
       propagate that work, subject to this License.  You are not responsible
@@ -669,7 +671,7 @@ export const License = () => (
 
     </p>
 
-    <p>
+    <p className="text">
       An “entity transaction” is a transaction transferring control of an
       organization, or substantially all assets of one, or subdividing an
       organization, or merging organizations.  If propagation of a covered
@@ -682,7 +684,7 @@ export const License = () => (
 
     </p>
 
-    <p>
+    <p className="text">
       You may not impose any further restrictions on the exercise of the
       rights granted or affirmed under this License.  For example, you may
       not impose a license fee, royalty, or other charge for exercise of
@@ -695,14 +697,14 @@ export const License = () => (
 
     <h5 id="section11">11. Patents.</h5>
 
-    <p>
+    <p className="text">
       A “contributor” is a copyright holder who authorizes use under this
       License of the Program or a work on which the Program is based.  The
       work thus licensed is called the contributor&#39;s “contributor version”.
 
     </p>
 
-    <p>
+    <p className="text">
       A contributor&#39;s “essential patent claims” are all patent claims
       owned or controlled by the contributor, whether already acquired or
       hereafter acquired, that would be infringed by some manner, permitted
@@ -715,7 +717,7 @@ export const License = () => (
 
     </p>
 
-    <p>
+    <p className="text">
       Each contributor grants you a non-exclusive, worldwide, royalty-free
       patent license under the contributor&#39;s essential patent claims, to
       make, use, sell, offer for sale, import and otherwise run, modify and
@@ -723,7 +725,7 @@ export const License = () => (
 
     </p>
 
-    <p>
+    <p className="text">
       In the following three paragraphs, a “patent license” is any express
       agreement or commitment, however denominated, not to enforce a patent
       (such as an express permission to practice a patent or covenant not to
@@ -733,7 +735,7 @@ export const License = () => (
 
     </p>
 
-    <p>
+    <p className="text">
       If you convey a covered work, knowingly relying on a patent license,
       and the Corresponding Source of the work is not available for anyone
       to copy, free of charge and under the terms of this License, through a
@@ -750,7 +752,7 @@ export const License = () => (
 
     </p>
 
-    <p>
+    <p className="text">
       If, pursuant to or in connection with a single transaction or
       arrangement, you convey, or propagate by procuring conveyance of, a
       covered work, and grant a patent license to some of the parties
@@ -761,7 +763,7 @@ export const License = () => (
 
     </p>
 
-    <p>
+    <p className="text">
       A patent license is “discriminatory” if it does not include within
       the scope of its coverage, prohibits the exercise of, or is
       conditioned on the non-exercise of one or more of the rights that are
@@ -779,7 +781,7 @@ export const License = () => (
 
     </p>
 
-    <p>
+    <p className="text">
       Nothing in this License shall be construed as excluding or limiting
       any implied license or other defenses to infringement that may
       otherwise be available to you under applicable patent law.
@@ -788,7 +790,7 @@ export const License = () => (
 
     <h5 id="section12">12. No Surrender of Others&#39; Freedom.</h5>
 
-    <p>
+    <p className="text">
       If conditions are imposed on you (whether by court order, agreement or
       otherwise) that contradict the conditions of this License, they do not
       excuse you from the conditions of this License.  If you cannot convey a
@@ -804,7 +806,7 @@ export const License = () => (
 
     <h5 id="section13">13. Use with the GNU Affero General Public License.</h5>
 
-    <p>
+    <p className="text">
       Notwithstanding any other provision of this License, you have
       permission to link or combine any covered work with a work licensed
       under version 3 of the GNU Affero General Public License into a single
@@ -818,7 +820,7 @@ export const License = () => (
 
     <h5 id="section14">14. Revised Versions of this License.</h5>
 
-    <p>
+    <p className="text">
       The Free Software Foundation may publish revised and/or new versions of
       the GNU General Public License from time to time.  Such new versions will
       be similar in spirit to the present version, but may differ in detail to
@@ -826,7 +828,7 @@ export const License = () => (
 
     </p>
 
-    <p>
+    <p className="text">
       Each version is given a distinguishing version number.  If the
       Program specifies that a certain numbered version of the GNU General
       Public License “or any later version” applies to it, you have the
@@ -838,7 +840,7 @@ export const License = () => (
 
     </p>
 
-    <p>
+    <p className="text">
       If the Program specifies that a proxy can decide which future
       versions of the GNU General Public License can be used, that proxy&#39;s
       public statement of acceptance of a version permanently authorizes you
@@ -846,7 +848,7 @@ export const License = () => (
 
     </p>
 
-    <p>
+    <p className="text">
       Later license versions may give you additional or different
       permissions.  However, no additional obligations are imposed on any
       author or copyright holder as a result of your choosing to follow a
@@ -856,7 +858,7 @@ export const License = () => (
 
     <h5 id="section15">15. Disclaimer of Warranty.</h5>
 
-    <p>
+    <p className="text">
       THERE IS NO WARRANTY FOR THE PROGRAM, TO THE EXTENT PERMITTED BY
       APPLICABLE LAW.  EXCEPT WHEN OTHERWISE STATED IN WRITING THE COPYRIGHT
       HOLDERS AND/OR OTHER PARTIES PROVIDE THE PROGRAM “AS IS” WITHOUT WARRANTY
@@ -870,7 +872,7 @@ export const License = () => (
 
     <h5 id="section16">16. Limitation of Liability.</h5>
 
-    <p>
+    <p className="text">
       IN NO EVENT UNLESS REQUIRED BY APPLICABLE LAW OR AGREED TO IN WRITING
       WILL ANY COPYRIGHT HOLDER, OR ANY OTHER PARTY WHO MODIFIES AND/OR CONVEYS
       THE PROGRAM AS PERMITTED ABOVE, BE LIABLE TO YOU FOR DAMAGES, INCLUDING
@@ -886,7 +888,7 @@ export const License = () => (
 
     <h5 id="section17">17. Interpretation of Sections 15 and 16.</h5>
 
-    <p>
+    <p className="text">
       If the disclaimer of warranty and limitation of liability provided
       above cannot be given local legal effect according to their terms,
       reviewing courts shall apply local law that most closely approximates
@@ -896,11 +898,13 @@ export const License = () => (
 
     </p>
 
-    <p>END OF TERMS AND CONDITIONS</p>
+    <p className="text">END OF TERMS AND CONDITIONS</p>
 
-    <h4 id="howto">How to Apply These Terms to Your New Programs</h4>
+    <h4 className=" title--small">
+      How to Apply These Terms to Your New Programs
+    </h4>
 
-    <p>
+    <p className="text">
       If you develop a new program, and you want it to be of the greatest
       possible use to the public, the best way to achieve this is to make it
       free software which everyone can redistribute and change under these
@@ -908,7 +912,7 @@ export const License = () => (
 
     </p>
 
-    <p>
+    <p className="text">
       To do so, attach the following notices to the program.  It is safest
       to attach them to the start of each source file to most effectively
       state the exclusion of warranty; and each file should have at least
@@ -916,7 +920,7 @@ export const License = () => (
 
     </p>
 
-    <pre>
+    <p className="text">
       {' '}
       &lt;one line to give the program&#39;s name and a brief idea of what it
       does.&gt;
@@ -935,37 +939,31 @@ export const License = () => (
       You should have received a copy of the GNU General Public License
       along with this program.  If not,
       see &lt;https://www.gnu.org/licenses/&gt;.
-    </pre>
+    </p>
 
-    <p>
+    <p className="text">
       Also add information on how to contact you by electronic and paper mail.
     </p>
 
-    <p>
+    <p className="text">
       If the program does terminal interaction, make it output a short
       notice like this when it starts in an interactive mode:
 
     </p>
 
-    {/* <pre>
-      {&#39; &#39;}
-      &lt;program&gt;  Copyright (C) &lt;year&gt;  &lt;name of author&gt;
-      This program comes with ABSOLUTELY NO WARRANTY; for details type `show w&#39;.
-      This is free software, and you are welcome to redistribute it
-      under certain conditions; type `show c&#39; for details.
-    </pre> */}
-
-    <p>
+    <p className="text">
       You should also get your employer (if you work as a programmer) or school,
       if any, to sign a “copyright disclaimer” for the program, if necessary.
       For more information on this, and how to apply and follow the GNU GPL, see
       &lt;
-      <a href="https://www.gnu.org/licenses/">https://www.gnu.org/licenses/</a>
+      <a className="link" href="https://www.gnu.org/licenses/">
+        https://www.gnu.org/licenses/
+      </a>
       &gt;.
 
     </p>
 
-    <p>
+    <p className="text">
       The GNU General Public License does not permit incorporating your program
       into proprietary programs.  If your program is a subroutine library, you
       may consider it more useful to permit linking proprietary applications
