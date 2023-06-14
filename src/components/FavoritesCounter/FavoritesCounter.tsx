@@ -1,4 +1,16 @@
+import { useState } from 'react';
+
 export const FavoritesCounter: React.FC = () => {
+  const [favCount, setFavCount] = useState(0);
+
+  const getFavCount = () => {
+    setFavCount(JSON.parse(localStorage.getItem('fav') || '').length);
+  };
+
+  setInterval(() => {
+    getFavCount();
+  }, 1000);
+
   return (
     <div className="counter">
       <img
@@ -6,9 +18,11 @@ export const FavoritesCounter: React.FC = () => {
         alt="favourites"
         className="counter__img"
       />
-      <div className="counter__number">
-        1
-      </div>
+      {favCount !== 0 && (
+        <div className="counter__number">
+          {favCount}
+        </div>
+      )}
     </div>
   );
 };
