@@ -28,7 +28,9 @@ export const ProductTable = () => {
 
       setPhones(phonesFromServer);
       setIsLoading(false);
-    } catch {
+    } catch (err) {
+      // eslint-disable-next-line no-console
+      console.log(err);
       setError('can not load phones error!');
     }
   };
@@ -47,8 +49,6 @@ export const ProductTable = () => {
   };
 
   useEffect(() => {
-    // eslint-disable-next-line no-console
-    console.log(currentPage);
     getPhonesFromServer();
     setPagination();
   }, [sortBy, itemsOnPage, currentPage]);
@@ -127,7 +127,9 @@ export const ProductTable = () => {
 
           <div className="productTable__productList">
             {phones.map((phone) => (
-              <Card phone={phone} key={phone.id} />
+              <>
+                <Card phone={phone} key={phone.id} />
+              </>
             ))}
           </div>
 
