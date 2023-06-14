@@ -29,7 +29,7 @@
       font-weight: 600;
       font-size: 12px;
       line-height: 15px;
-      color: #89939A;
+      color: $cGraySecondary;
     }
   }
 
@@ -38,7 +38,7 @@
     font-size: 48px;
     line-height: 56px;
     margin-bottom: 8px;
-    color: #0F0F11;
+    color: $cGrayPrimary;
 
     @media (max-width: 639px) {
       font-size: 32px;
@@ -51,7 +51,7 @@
     font-weight: 600;
     font-size: 14px;
     line-height: 14px;
-    color: #89939A;
+    color: $cGraySecondary;
 
     margin-bottom: 40px;
   }
@@ -79,7 +79,7 @@
       font-size: 12px;
       line-height: 15px;
 
-      color: #89939A;
+      color: $cGraySecondary;
     }
   }
 
@@ -90,23 +90,17 @@
   }
 }
 
-// .icons {
-//   background-position: center;
-//   background-size: cover;
-//   background-repeat: no-repeat;
-// }
-
 .select {
   height: 40px;
-  border: 1px solid #B4BDC4;
+  border: 1px solid $cGrayIcon;
   border-radius: 8px;
 
   &:hover {
-    border: 1px solid #89939A;
+    border: 1px solid $cGraySecondary;
   }
 
   &:focus {
-    border: 1px solid #0F0F11;
+    border: 1px solid $cGrayPrimary;
   }
 
   option:hover {
@@ -133,7 +127,7 @@
 }
 
 .pagination-link.is-current {
-  background-color: #0F0F11;
-  border-color: #0F0F11;
+  background-color: $cGrayPrimary;
+  border-color: $cGrayPrimary;
   color: #fff;
 }

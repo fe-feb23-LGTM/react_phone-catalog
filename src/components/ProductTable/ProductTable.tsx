@@ -6,11 +6,12 @@ import cn from 'classnames';
 import { getPhones, getAllPhones } from '../../api/phones';
 import { Phone } from '../../types/Phone';
 import { Loader } from '../Loader';
+import { Card } from '../Card/Card';
 
 export const ProductTable = () => {
   const [phones, setPhones] = useState<Phone[]>([]);
   const [error, setError] = useState('');
-  const [sortBy, setSortBy] = useState('newest');
+  const [sortBy, setSortBy] = useState('');
   const [itemsOnPage, setItemsOnPage] = useState('8');
   const [currentPage, setCurrentPage] = useState('1');
   const [allPageCount, setAllPageCount] = useState<string[]>([]);
@@ -89,6 +90,7 @@ export const ProductTable = () => {
                   name="sortBy"
                   id="sortBy"
                   className="select productTable__selects__sortby"
+                  value={sortBy}
                   onChange={(event) => {
                     setSortBy(event.target.value);
                   }}
@@ -109,6 +111,7 @@ export const ProductTable = () => {
                   name="itemsOnPage"
                   id="itemsOnPage"
                   className="select productTable__selects__itemsOnPage"
+                  value={itemsOnPage}
                   onChange={(event) => {
                     setItemsOnPage(event.target.value);
                   }}
@@ -124,9 +127,7 @@ export const ProductTable = () => {
 
           <div className="productTable__productList">
             {phones.map((phone) => (
-              <div key={phone.id} className="productCard">
-                <span className="productCard__content">{phone.name}</span>
-              </div>
+              <Card phone={phone} key={phone.id} />
             ))}
           </div>
 
