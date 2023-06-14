@@ -2,6 +2,10 @@ import { NavLink } from 'react-router-dom';
 import { HashLink as Link } from 'react-router-hash-link';
 
 export const Footer = () => {
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
     <div className="wrapper">
       <NavLink to="/" className="logo">
@@ -24,14 +28,16 @@ export const Footer = () => {
       </div>
       <div className="button-back">
         <Link
-          to="#header"
+          to="#top"
           className="button-back__anchor"
+          onClick={scrollToTop}
         >
           Back to top
         </Link>
         <Link
-          to="#header"
+          to="#top"
           className="button-back__anchor"
+          onClick={scrollToTop}
         >
           <div className="button-back__wrapper">
             <img
