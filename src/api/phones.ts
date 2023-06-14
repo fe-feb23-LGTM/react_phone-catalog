@@ -19,6 +19,12 @@ const sortBySwitch = (sortby: string) => {
   }
 };
 
+const wait = (delay: number) => {
+  return new Promise(resolve => {
+    setTimeout(resolve, delay);
+  });
+};
+
 export const getPhones = async (
   sortby: string,
   itemsOnPage: string,
@@ -29,7 +35,8 @@ export const getPhones = async (
   const startAndQuantity = `&from=${startItem}&to=${itemsOnPage}`;
   const URL = phonesUrl + sortByCase + startAndQuantity;
 
-  return fetch(URL)
+  return wait(100)
+    .then(() => fetch(URL))
     .then(response => {
       if (!response.ok) {
         throw new Error();
