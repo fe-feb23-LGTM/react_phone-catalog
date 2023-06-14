@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import classNames from 'classnames';
 import { BurgerMenu } from '../BurgerMenu';
+import { FavoritesCounter } from '../FavoritesCounter/FavoritesCounter';
+import { CartCounter } from '../CartCounter';
 
 export const Header: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -99,16 +101,7 @@ export const Header: React.FC = () => {
             { 'bottom-active': isActive },
           )}
         >
-          <div className="counter">
-            <img
-              src="icons/Favourites.svg"
-              alt="favourites"
-              className="counter__img"
-            />
-            <div className="counter__number">
-              1
-            </div>
-          </div>
+          <FavoritesCounter />
         </NavLink>
 
         <NavLink
@@ -118,16 +111,7 @@ export const Header: React.FC = () => {
             { 'bottom-active': isActive },
           )}
         >
-          <div className="counter">
-            <img
-              src="icons/Shopping_bag(Cart).svg"
-              alt="cart"
-              className="counter__img"
-            />
-            <div className="counter__number">
-              2
-            </div>
-          </div>
+          <CartCounter />
         </NavLink>
 
         <NavLink

@@ -9,27 +9,27 @@ $line-height: 1.5;
   margin: 20px;
 }
 
-h3 {
+.title {
   color: $primary-color;
   font-size: 24px;
   font-weight: bold;
   margin-bottom: 10px;
 }
 
-h4 {
+.title--small {
   color: $secondary-color;
   font-size: 20px;
   margin-top: 20px;
   margin-bottom: 10px;
 }
 
-p {
+.text {
   font-size: $font-size;
   line-height: $line-height;
   margin-bottom: 10px;
 }
 
-a {
+.link {
   color: $primary-color;
   text-decoration: none;
   &:hover {
