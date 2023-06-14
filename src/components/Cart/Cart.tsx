@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { CheckoutModal } from '../CheckoutModal';
+import { CartItem } from '../CartItem';
 
 export const Cart = () => {
   const [cartItems, setCartItems] = useState([1, 2, 3, 4, 5]);
@@ -41,9 +42,7 @@ export const Cart = () => {
         <div className="cart__listAndCheckout">
           <div className="cart__itemList">
             {cartItems.map(item => (
-              <div key={item} className="cart__item">
-                {item}
-              </div>
+              <CartItem key={item} />
             ))}
           </div>
 
