@@ -55,6 +55,7 @@
     letter-spacing: 0.04em;
     text-transform: uppercase;
     text-decoration: none;
+    padding-bottom: 20px;
 
     height: 100%;
     color: $cGraySecondary;
@@ -63,7 +64,6 @@
 
     &:hover {
       color: $cGrayPrimary;
-
     }
   }
 }
