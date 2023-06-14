@@ -30,7 +30,10 @@ export const getPhones = async (
   itemsOnPage: string,
   page: string,
 ): Promise<Phone[]> => {
-  const startItem = (Number(itemsOnPage) * Number(page)).toString();
+  const startItem = page === '1'
+    ? '1'
+    : (Number(itemsOnPage) * Number(page)).toString();
+
   const sortByCase = sortBySwitch(sortby);
   const startAndQuantity = `&from=${startItem}&to=${itemsOnPage}`;
   const URL = phonesUrl + sortByCase + startAndQuantity;
