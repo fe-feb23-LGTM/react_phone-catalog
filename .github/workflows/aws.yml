@@ -20,7 +20,7 @@ jobs:
         npm install
         npm run-script build
       env:
-        EACT_APP_AWS_ACCESS_KEY_ID: ${{ secrets.REACT_APP_AWS_ACCESS_KEY_ID }}
+        REACT_APP_AWS_ACCESS_KEY_ID: ${{ secrets.REACT_APP_AWS_ACCESS_KEY_ID }}
         REACT_APP_AWS_SECRET_ACCESS_KEY: ${{ secrets.REACT_APP_AWS_SECRET_ACCESS_KEY }}
         REACT_APP_AWS_REGION: ${{ secrets.REACT_APP_AWS_REGION }}
 
