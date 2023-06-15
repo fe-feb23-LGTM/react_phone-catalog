@@ -81,7 +81,7 @@ export const AddToCartFav: React.FC<Props> = ({ phone }) => {
         type="button"
         onClick={handleCardButton}
       >
-        {isAddedToCart ? 'Added' : 'Add to cart'}
+        {isAddedToCart ? 'Remove' : 'Add to cart'}
         {' '}
       </button>
 
