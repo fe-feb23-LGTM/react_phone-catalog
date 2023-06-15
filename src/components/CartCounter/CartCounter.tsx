@@ -1,15 +1,25 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 export const CartCounter: React.FC = () => {
   const [cartCount, setCartCount] = useState(0);
 
-  const getCartCount = () => {
-    setCartCount(JSON.parse(localStorage.getItem('cart') || '').length);
-  };
+  useEffect(() => {
+    const getCartCount = () => {
+      const cartData = localStorage.getItem('cart');
 
-  setInterval(() => {
-    getCartCount();
-  }, 1000);
+      if (cartData !== null) {
+        const parsedData = JSON.parse(cartData);
+
+        setCartCount(parsedData.length);
+      }
+    };
+
+    const intervalId = setInterval(getCartCount, 1000);
+
+    return () => {
+      clearInterval(intervalId);
+    };
+  }, []);
 
   return (
     <div className="counter">
