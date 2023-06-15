@@ -90,28 +90,49 @@
 
   &__image-main {
     margin: 0 auto;
-    width: 150px;
-    height: 150px;
-    // background-color: black;
-    margin-bottom: 23px;
+    width: 250px;
+    height: 250px;
+    margin-bottom: 100px;
   }
 
   &__image-container {
     display: flex;
-    flex-direction: row;
+    justify-content: center;
     gap: 8px;
   }
 
   &__image-option {
-    border: solid $cGrayElements 1px;
+    border: 1px solid $cGrayElements;
     border-radius: 4px;
-    width: 49px;
-    height: 47px;
-  }
-
-  &__image {
     width: 50px;
-    height: 40px;
-    background-color: black;
+    height: 49px;
+    padding: 5px;
   }
+}
+
+.colors-container {
+  display: flex;
+  gap: 105px;
+  margin-bottom: 25px;
+  margin-top: 40px;
+}
+
+.colors__items-wrapper {
+  display: flex;
+  flex-direction: row;
+  margin-top: 9px;
+  gap: 10px;
+}
+
+.color {
+  border: 1px solid $cGrayElements;
+  border-radius: 48px;
+}
+
+.phoneId {
+  color: $cGrayIcon;
+}
+
+.colors__title {
+  color: $cGraySecondary;
 }

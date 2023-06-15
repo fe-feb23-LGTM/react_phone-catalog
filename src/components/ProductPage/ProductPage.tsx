@@ -7,24 +7,13 @@ import { Recommended } from '../Recommended/Recommended';
 import { awsGetPhoto } from '../../_utils/awsGetPhoto';
 
 export const ProductPage = () => {
-  const [img, setImg] = useState<null | string>(null);
+  const [img, setImg] = useState<string[]>([]);
 
-  useEffect(() => {
-    const fetchPhoto = async () => {
-      try {
-        const getImg = await awsGetPhoto(
-          'img/phones/apple-iphone-11-pro/silver/00.jpg',
-        );
+  const getPhoneId = () => {
+    const phoneID = Math.random().toString().slice(-6);
 
-        setImg(getImg);
-      } catch (error) {
-        // eslint-disable-next-line no-console
-        console.log(error);
-      }
-    };
-
-    fetchPhoto();
-  }, []);
+    return phoneID;
+  };
 
   const phone: ProductPhone = {
     id: 'apple-iphone-11-pro-64gb-gold',
@@ -70,6 +59,21 @@ export const ProductPage = () => {
     zoom: 'Digital, 10x / Optical, 2x',
     cell: ['GPRS', 'EDGE', 'WCDMA', 'UMTS', 'HSPA', 'LTE'],
   };
+
+  useEffect(() => {
+    const fetchPhoto = async () => {
+      try {
+        const getImg = await Promise.all(phone.images.map(image => awsGetPhoto(image)));
+
+        setImg(getImg);
+      } catch (error) {
+        // eslint-disable-next-line no-console
+        console.error(error);
+      }
+    };
+
+    fetchPhoto();
+  }, []);
 
   return (
     <div className="product-wrapper">
@@ -125,22 +129,98 @@ export const ProductPage = () => {
         <div className="phone__images">
           <div className="phone__image-main">
             <div>
-              <img src={`${img}`} alt="" />
+              <img src={`${img[0]}`} alt="IphoneImg" />
             </div>
           </div>
+
           <div className="phone__image-container">
             <div className="phone__image-option">
-              <div className="phone__image">Photo</div>
+              <div
+                style={
+                  {
+                    backgroundImage: `url(${img[0]})`,
+                    backgroundSize: 'contain',
+                    backgroundPosition: 'center',
+                    backgroundRepeat: 'no-repeat',
+                    height: '100%',
+                  }
+                }
+              />
             </div>
+
             <div className="phone__image-option">
-              <div className="phone__image">Photo</div>
+              <div
+                style={
+                  {
+                    backgroundImage: `url(${img[1]})`,
+                    backgroundSize: 'contain',
+                    backgroundPosition: 'center',
+                    backgroundRepeat: 'no-repeat',
+                    height: '100%',
+                  }
+                }
+              />
             </div>
+
             <div className="phone__image-option">
-              <div className="phone__image">Photo</div>
+              <div
+                style={
+                  {
+                    backgroundImage: `url(${img[2]})`,
+                    backgroundSize: 'contain',
+                    backgroundPosition: 'center',
+                    backgroundRepeat: 'no-repeat',
+                    height: '100%',
+                  }
+                }
+              />
             </div>
           </div>
         </div>
+
+        <div className="colors-container">
+          <div className="colors">
+            <div className="colors__title">Available colors</div>
+            <div className="colors__items-wrapper">
+              <div className="colors__item">
+                <img
+                  src="icons/colors/Midnight.svg"
+                  alt="midnightColor"
+                  className="color"
+                />
+              </div>
+              <div className="colors__item">
+                <img
+                  src="icons/colors/Silver.svg"
+                  alt="midnightColor"
+                  className="color"
+                />
+              </div>
+              <div className="colors__item">
+                <img
+                  src="icons/colors/Gold.svg"
+                  alt="midnightColor"
+                  className="color"
+                />
+              </div>
+              <div className="colors__item">
+                <img
+                  src="icons/colors/Green.svg"
+                  alt="midnightColor"
+                  className="color"
+                />
+              </div>
+            </div>
+          </div>
+
+          <div className="phoneId">
+            ID:
+            {' '}
+            {getPhoneId()}
+          </div>
+        </div>
       </div>
+      <hr className="is-marginless" />
 
       <Recommended />
     </div>
