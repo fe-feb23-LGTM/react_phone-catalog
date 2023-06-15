@@ -37,9 +37,10 @@ export function togglePhone(to: string, isAdd: boolean, phone: Phone) {
 
 interface Props {
   phone: Phone;
+  width: string;
 }
 
-export const AddToCartFav: React.FC<Props> = ({ phone }) => {
+export const AddToCartFav: React.FC<Props> = ({ phone, width }) => {
   const [isAddedToFav, setIsAddedToFav] = useState(
     isPhoneAdded(phone.id, 'fav'),
   );
@@ -78,6 +79,7 @@ export const AddToCartFav: React.FC<Props> = ({ phone }) => {
         className={classNames('addToCartFav__add', {
           'addToCartFav__add--added': isAddedToCart,
         })}
+        style={{ width: `${width}` }}
         type="button"
         onClick={handleCardButton}
       >
