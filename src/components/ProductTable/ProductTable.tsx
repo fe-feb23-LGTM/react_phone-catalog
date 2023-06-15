@@ -130,9 +130,7 @@ export const ProductTable = () => {
 
           <div className="productTable__productList">
             {phones.map((phone) => (
-              <>
-                <Card phone={phone} key={phone.id} />
-              </>
+              <Card phone={phone} key={phone.id} />
             ))}
           </div>
 
@@ -143,11 +141,11 @@ export const ProductTable = () => {
               aria-label="pagination"
             >
               <ul className="pagination-list">
-                <li className="pagination-previous">
+                <li className="pagination-link">
                   <img
                     alt="Vector(Stroke)"
                     src="icons/Vector(Stroke).svg"
-                    className="pagination-prev-icon"
+                    className="pagination-icon"
                     onClick={() => {
                       if (currentPage === '1') {
                         return;
