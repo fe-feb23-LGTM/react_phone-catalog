@@ -16,6 +16,7 @@ export const ProductTable = () => {
   const [currentPage, setCurrentPage] = useState('1');
   const [allPageCount, setAllPageCount] = useState<string[]>([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [phonesTotalCount, setPhonesTotalCount] = useState('');
 
   const getPhonesFromServer = async () => {
     try {
@@ -37,7 +38,7 @@ export const ProductTable = () => {
 
   const setPagination = async () => {
     const allPhones = await getAllPhones();
-    const pageCount = allPhones.length / Number(itemsOnPage);
+    const pageCount = (allPhones.length / Number(itemsOnPage)) + 1;
     const pageCountArr = [];
 
     // eslint-disable-next-line no-plusplus
@@ -45,6 +46,7 @@ export const ProductTable = () => {
       pageCountArr.push(i.toString());
     }
 
+    setPhonesTotalCount(allPhones.length.toString());
     setAllPageCount(pageCountArr);
   };
 
@@ -79,7 +81,7 @@ export const ProductTable = () => {
 
           <h2 className="productTable__heading">Mobile phones</h2>
 
-          <div className="productTable__modelsCount">95 models</div>
+          <div className="productTable__modelsCount">{`${phonesTotalCount} models`}</div>
 
           <div className="productTable__selects">
             <label htmlFor="sortBy">
@@ -113,6 +115,7 @@ export const ProductTable = () => {
                   className="select productTable__selects__itemsOnPage"
                   value={itemsOnPage}
                   onChange={(event) => {
+                    setPagination();
                     setItemsOnPage(event.target.value);
                   }}
                 >
