@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable max-len */
 import { useEffect, useState } from 'react';
@@ -66,9 +67,10 @@ export const ProductPage = () => {
       try {
         const getImg = await Promise.all(phone.images.map(image => awsGetPhoto(image)));
 
+        console.log(img);
         setImg(getImg);
       } catch (error) {
-        // eslint-disable-next-line no-console
+        console.log(img);
         console.error(error);
       }
     };
@@ -78,8 +80,9 @@ export const ProductPage = () => {
 
   const favPhone = {
     id: Math.random() * 10,
-    name: phone.id,
+    name: phone.id.split('-').join(' '),
     price: phone.priceDiscount,
+    fullPrice: phone.priceRegular,
     screen: phone.screen,
     capacity: phone.capacity,
     ram: phone.ram,
