@@ -141,18 +141,20 @@ export const ProductTable = () => {
               aria-label="pagination"
             >
               <ul className="pagination-list">
-                <li className="pagination-link">
+                <li
+                  className="pagination-link"
+                  onClick={() => {
+                    if (currentPage === '1') {
+                      return;
+                    }
+
+                    setCurrentPage((prev) => (Number(prev) - 1).toString());
+                  }}
+                >
                   <img
                     alt="Vector(Stroke)"
                     src="icons/Vector(Stroke).svg"
                     className="pagination-icon"
-                    onClick={() => {
-                      if (currentPage === '1') {
-                        return;
-                      }
-
-                      setCurrentPage((prev) => (Number(prev) - 1).toString());
-                    }}
                   />
                 </li>
 
@@ -171,18 +173,20 @@ export const ProductTable = () => {
                   </li>
                 ))}
 
-                <li className="pagination-next">
+                <li
+                  className="pagination-next"
+                  onClick={() => {
+                    if (currentPage === allPageCount.length.toString()) {
+                      return;
+                    }
+
+                    setCurrentPage((prev) => (Number(prev) + 1).toString());
+                  }}
+                >
                   <img
                     alt="Vector(Stroke)"
                     src="icons/Vector(Stroke).svg"
                     className="pagination-next-icon"
-                    onClick={() => {
-                      if (currentPage === allPageCount.length.toString()) {
-                        return;
-                      }
-
-                      setCurrentPage((prev) => (Number(prev) + 1).toString());
-                    }}
                   />
                 </li>
               </ul>
