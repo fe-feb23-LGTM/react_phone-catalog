@@ -1,5 +1,6 @@
 import { Phone } from '../../types/Phone';
 import { Card } from '../Card/Card';
+import { HomeSlider } from '../HomeSlider';
 
 export const Home: React.FC = () => {
   const phone: Phone = {
@@ -18,5 +19,10 @@ export const Home: React.FC = () => {
     image: 'img/phones/apple-iphone-7/black/00.jpg',
   };
 
-  return <Card phone={phone} />;
+  return (
+    <div className="home">
+      <HomeSlider />
+      <Card phone={phone} />
+    </div>
+  );
 };
