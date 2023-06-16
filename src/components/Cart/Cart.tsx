@@ -41,7 +41,7 @@ function getPhonesFromLocalStorage() {
 
   return JSON.parse(phoneStr)
     .filter((el: Phone, ind: number, arr: Phone[]) => (
-      ind === arr.findIndex(findEl => findEl.id === el.id)))
+      ind === arr.findIndex(findEl => findEl.name === el.name)))
     .sort((a: Phone, b: Phone) => a.id - b.id);
 }
 

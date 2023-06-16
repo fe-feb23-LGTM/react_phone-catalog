@@ -11,7 +11,7 @@ function isPhoneAdded(name: string, to: string) {
     ? JSON.parse(localStorage.getItem(to) || '')
     : [];
 
-  return phones.some((phone: Phone) => phone.name === name);
+  return phones.some((phone: Phone) => phone.name === name.toLowerCase());
 }
 
 // isAdd if equal to true then phone will be add to 'to'
@@ -22,14 +22,16 @@ export function togglePhone(to: string, isAdd: boolean, phone: Phone) {
     : [];
 
   if (isAdd) {
-    phones.push(phone);
+    const phoneWithLowerName = { ...phone, name: phone.name.toLowerCase() };
+
+    phones.push(phoneWithLowerName);
     localStorage.setItem(to, JSON.stringify(phones));
 
     return;
   }
 
   const indPhoneDel = phones.findIndex(
-    phoneFilter => phoneFilter.name === phone.name,
+    phoneFilter => phoneFilter.name === phone.name.toLowerCase(),
   );
 
   if (indPhoneDel === -1) {

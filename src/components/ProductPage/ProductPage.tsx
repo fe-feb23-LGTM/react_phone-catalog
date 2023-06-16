@@ -86,7 +86,7 @@ export const ProductPage = () => {
     screen: phone.screen,
     capacity: phone.capacity,
     ram: phone.ram,
-    image: img[0],
+    image: phone.images[0],
   };
 
   return (
