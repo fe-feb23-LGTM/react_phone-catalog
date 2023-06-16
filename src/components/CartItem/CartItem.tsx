@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import classNames from 'classnames';
 import { Phone } from '../../types/Phone';
 import { togglePhone } from '../AddToCartFav/AddToCartFav';
 
@@ -87,13 +88,14 @@ export const CartItem: React.FC<Props> = ({ phone, image }) => {
         <div className="cart__item-wrapper-counter">
           <button
             type="button"
-            className="cart__item-button"
+            className={classNames('cart__item-button', {
+              'cart__item--disable': countPhones === 1,
+            })}
             onClick={removePhoneFromLocaleStorage}
           >
             <img
               alt="-"
               src="icons/Minus.svg"
-              // className="cart__item-button_img"
             />
           </button>
 
@@ -109,12 +111,11 @@ export const CartItem: React.FC<Props> = ({ phone, image }) => {
             <img
               alt="+"
               src="icons/Plus.svg"
-              // className="cart__item-button_img"
             />
           </button>
         </div>
         <span className="cart__item-price">
-          {price}
+          {`$${price}`}
         </span>
       </div>
     </div>

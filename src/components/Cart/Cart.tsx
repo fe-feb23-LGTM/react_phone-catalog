@@ -119,7 +119,7 @@ export const Cart = () => {
 
           <div className="cart__checkout">
             <div className="cart__checkoutTotal">
-              {totalPrice}
+              {`$${totalPrice}`}
             </div>
             <div className="cart__checkoutCount">
               {`Total for ${countItems} items`}
