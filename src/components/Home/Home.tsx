@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Phone } from '../../types/Phone';
+import { Card } from '../Card/Card';
+import { HomeSlider } from '../HomeSlider';
 import { Slider } from '../Slider';
 import { getAllPhones } from '../../api/phones';
 
@@ -39,7 +41,7 @@ export const Home: React.FC = () => {
       <h1 className="home__heading">Welcome to Nice Gadgets Store</h1>
 
       <div className="home__topSlider">
-        Top slider!!! 340px high
+        <HomeSlider />
       </div>
 
       <div className="home__newSlider">
