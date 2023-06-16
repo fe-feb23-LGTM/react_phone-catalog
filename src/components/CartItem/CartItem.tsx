@@ -17,7 +17,7 @@ function deleteSelectedPhonesFromLS(name: string) {
   }
 
   const phones = JSON.parse(phoneStr)
-    .filter((phone: Phone) => phone.name !== name);
+    .filter((phone: Phone) => phone.name.toLowerCase() !== name.toLowerCase());
 
   localStorage.setItem('cart', JSON.stringify(phones));
 }
@@ -25,7 +25,7 @@ function deleteSelectedPhonesFromLS(name: string) {
 function countCurrentAddedPhone(name: string) {
   const phones: Phone[] = JSON.parse(localStorage.getItem('cart') || '[]');
 
-  return phones.filter(phone => phone.name === name)
+  return phones.filter(phone => phone.name.toLowerCase() === name.toLowerCase())
     .length;
 }
 
