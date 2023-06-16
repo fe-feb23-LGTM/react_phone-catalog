@@ -167,8 +167,18 @@ export const ProductPage = () => {
           <div>
             <div className="phone__images">
               <div className="phone__image-main">
-                <div>
-                  <img src={`${mainImage}`} alt="IphoneImg" />
+                <div
+                  style={
+                    {
+                      backgroundImage: `url(${mainImage})`,
+                      backgroundSize: 'contain',
+                      backgroundPosition: 'center',
+                      backgroundRepeat: 'no-repeat',
+                      height: '100%',
+                    }
+                  }
+                >
+                  {/* <img src={`${mainImage}`} alt="IphoneImg" /> */}
                 </div>
               </div>
 

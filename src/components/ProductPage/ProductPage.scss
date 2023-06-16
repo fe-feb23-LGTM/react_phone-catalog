@@ -90,7 +90,7 @@
     margin: 0 auto;
     width: 250px;
     height: 250px;
-    margin-bottom: 100px;
+    margin-bottom: 23px;
   }
 
   &__image-container {
@@ -195,6 +195,8 @@
   margin-top: 8px;
   background-color: $cGrayPrimary;
   color: $cWhite;
+  transition: background-color 0.3s,
+    color 0.3s;
 }
 
 .price {
@@ -353,7 +355,8 @@
   }
 
   .tablet-wrapper__aside {
-    margin-left: 50px;
+    margin-top: -40px;
+    margin-left: 10px;
   }
 
   .phone__image-container {
@@ -364,12 +367,12 @@
   .phone__images {
     display: flex;
     flex-direction: row-reverse;
-    gap: 30px;
+    gap: 10px;
   }
 
   .phone__image-main {
-    width: 200px;
-    height: 200px;
+    width: 250px;
+    height: 250px;
   }
 
   .phone__image-option {
@@ -414,7 +417,7 @@
   .phone__images {
     display: flex;
     flex-direction: row-reverse;
-    gap: 80px;
+    gap: 30px;
   }
 
   .phone__image-main {
