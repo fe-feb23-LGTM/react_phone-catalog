@@ -28,11 +28,17 @@ export function togglePhone(to: string, isAdd: boolean, phone: Phone) {
     return;
   }
 
-  const filteredPhones = phones.filter(
-    phoneFilter => phoneFilter.id !== phone.id,
+  const indPhoneDel = phones.findIndex(
+    phoneFilter => phoneFilter.id === phone.id,
   );
 
-  localStorage.setItem(to, JSON.stringify(filteredPhones));
+  if (indPhoneDel === -1) {
+    return;
+  }
+
+  phones.splice(indPhoneDel, 1);
+
+  localStorage.setItem(to, JSON.stringify(phones));
 }
 
 interface Props {
