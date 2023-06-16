@@ -36,7 +36,6 @@
 
   &-phone {
     text-transform: capitalize;
-    font-family: "Mont", sans-serif;
     font-style: normal;
     font-weight: 600;
     font-size: 15px;
@@ -80,8 +79,6 @@
     text-transform: capitalize;
     margin-top: 16px;
     margin-bottom: 38px;
-
-    font-family: "Mont", sans-serif;
     font-style: normal;
     font-weight: 800;
     font-size: 22px;
@@ -108,7 +105,18 @@
     width: 50px;
     height: 49px;
     padding: 5px;
+    cursor: pointer;
+    transition: border 0.3s;
+
+    &:hover {
+      border: 1px solid $cGraySecondary;
+    }
   }
+}
+
+.activeImage {
+  border: 1px solid $cGrayPrimary;
+  border-radius: 4px;
 }
 
 .colors {
@@ -133,6 +141,16 @@
 
 .color {
   border: 1px solid $cGrayElements;
+  border-radius: 48px;
+  transition: border 0.3s;
+
+  &:hover {
+    border: 1px solid $cGraySecondary;
+  }
+}
+
+.activeColor {
+  border: 1px solid $cGrayPrimary;
   border-radius: 48px;
 }
 
@@ -169,11 +187,20 @@
   }
 }
 
+.activeCapacity {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 7px 8px 4px;
+  margin-top: 8px;
+  background-color: $cGrayPrimary;
+  color: $cWhite;
+}
+
 .price {
   display: flex;
   align-items: center;
   gap: 8px;
-  font-family: "Mont", sans-serif;
   font-style: normal;
   margin-top: 32px;
 
@@ -213,7 +240,6 @@
   display: flex;
   justify-content: space-between;
   margin-top: 32px;
-  font-family: "Mont", sans-serif;
   font-style: normal;
 
   &__title {
@@ -240,7 +266,6 @@
 
 .about {
   margin-top: 56px;
-  font-family: "Mont", sans-serif;
   font-style: normal;
 
   &__main-title {
@@ -274,7 +299,6 @@
 }
 
 .tech-specs {
-  font-family: "Mont", sans-serif;
   font-style: normal;
   margin: 56px 0;
 
@@ -315,6 +339,15 @@
 }
 
 @media (min-width: 641px) {
+  .activeImage {
+    border: 1px solid $cGrayPrimary;
+    border-radius: 4px;
+    width: 50px;
+    height: 49px;
+    padding: 5px;
+    cursor: pointer;
+  }
+
   .tablet-wrapper {
     display: flex;
   }
@@ -341,6 +374,11 @@
 
   .phone__image-option {
     margin-left: 15px;
+    transition: border 0.3s;
+
+    &:hover {
+      border: 1px solid $cGraySecondary;
+    }
   }
 }
 
@@ -391,6 +429,21 @@
     width: 80px;
     height: 80px;
     padding: 5px;
+    transition: border 0.3s;
+
+    &:hover {
+      border: 1px solid $cGraySecondary;
+    }
+  }
+
+  .activeImage {
+    margin-left: 32px;
+    border: 1px solid $cGrayPrimary;
+    border-radius: 4px;
+    width: 80px;
+    height: 80px;
+    padding: 5px;
+    cursor: pointer;
   }
 
   .colors-container {
@@ -412,6 +465,6 @@
   }
 
   .tech-specs__table {
-    gap: 210px;
+    gap: 100px;
   }
 }

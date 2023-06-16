@@ -1,8 +1,11 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/control-has-associated-label */
 /* eslint-disable no-console */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable max-len */
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useMemo } from 'react';
 import { Link } from 'react-router-dom';
+import cn from 'classnames';
 import { ProductPhone } from '../../types/ProductPhone';
 import { Recommended } from '../Recommended/Recommended';
 import { awsGetPhoto } from '../../_utils/awsGetPhoto';
@@ -10,12 +13,10 @@ import { AddToCartFav } from '../AddToCartFav/AddToCartFav';
 
 export const ProductPage = () => {
   const [img, setImg] = useState<string[]>([]);
-
-  const getPhoneId = () => {
-    const phoneID = Math.random().toString().slice(-6);
-
-    return phoneID;
-  };
+  const [mainImage, setMainImage] = useState<string | null>(null);
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const [selectedColor, setSelectedColor] = useState<string | null>(null);
+  const [selectedCapacity, setSelectedCapacity] = useState<string | null>(null);
 
   const phone: ProductPhone = {
     id: 'apple-iphone-11-pro-64gb-gold',
@@ -62,13 +63,22 @@ export const ProductPage = () => {
     cell: ['GPRS', 'EDGE', 'WCDMA', 'UMTS', 'HSPA', 'LTE'],
   };
 
+  const getPhoneId = () => {
+    const phoneID = Math.random().toString().slice(-6);
+
+    return phoneID;
+  };
+
   useEffect(() => {
     const fetchPhoto = async () => {
       try {
         const getImg = await Promise.all(phone.images.map(image => awsGetPhoto(image)));
 
-        console.log(img);
         setImg(getImg);
+        setMainImage(getImg[0]);
+        setSelectedImage(getImg[0]);
+        setSelectedColor(phone.color);
+        setSelectedCapacity(phone.capacity);
       } catch (error) {
         console.log(img);
         console.error(error);
@@ -87,6 +97,19 @@ export const ProductPage = () => {
     capacity: phone.capacity,
     ram: phone.ram,
     image: phone.images[0],
+  };
+
+  const onPhotoSelect = (image: string) => {
+    setSelectedImage(image);
+    setMainImage(image);
+  };
+
+  const onColorSelect = (color: string) => {
+    setSelectedColor(color);
+  };
+
+  const onCapacitySelect = (capacity: string) => {
+    setSelectedCapacity(capacity);
   };
 
   return (
@@ -145,14 +168,21 @@ export const ProductPage = () => {
             <div className="phone__images">
               <div className="phone__image-main">
                 <div>
-                  <img src={`${img[0]}`} alt="IphoneImg" />
+                  <img src={`${mainImage}`} alt="IphoneImg" />
                 </div>
               </div>
 
               <div className="phone__image-container">
                 {img.map(phoneImage => (
-                  <div className="phone__image-option" key={phoneImage}>
+                  <div
+                    className={cn('phone__image-option', {
+                      activeImage: selectedImage === phoneImage,
+                    })}
+                    key={phoneImage}
+                  >
                     <div
+                      tabIndex={0}
+                      role="button"
                       style={
                         {
                           backgroundImage: `url(${phoneImage})`,
@@ -162,6 +192,7 @@ export const ProductPage = () => {
                           height: '100%',
                         }
                       }
+                      onClick={() => onPhotoSelect(phoneImage)}
                     />
                   </div>
                 ))}
@@ -175,11 +206,19 @@ export const ProductPage = () => {
                 <div className="colors__title">Available colors</div>
                 <div className="colors__items-wrapper">
                   {phone.colorsAvailable.map(color => (
-                    <div className="colors__item" key={color}>
+                    <div
+                      role="button"
+                      tabIndex={0}
+                      className="colors__item"
+                      key={color}
+                      onClick={() => onColorSelect(color)}
+                    >
                       <img
                         src={`icons/colors/${color}.svg`}
                         alt={`${color}`}
-                        className="color"
+                        className={cn('color', {
+                          activeColor: selectedColor === color,
+                        })}
                       />
                     </div>
                   ))}
@@ -189,7 +228,7 @@ export const ProductPage = () => {
               <div className="phoneId">
                 ID:
                 {' '}
-                {getPhoneId()}
+                {useMemo(() => getPhoneId(), [])}
               </div>
             </div>
 
@@ -199,7 +238,15 @@ export const ProductPage = () => {
               <div className="capacity__title">Select capacity</div>
               <div className="capacity__wrapper">
                 {phone.capacityAvailable.map(memory => (
-                  <div className="capacity__item" key={memory}>
+                  <div
+                    role="button"
+                    tabIndex={0}
+                    className={cn('capacity__item', {
+                      activeCapacity: selectedCapacity === memory,
+                    })}
+                    key={memory}
+                    onClick={() => onCapacitySelect(memory)}
+                  >
                     {memory}
                   </div>
                 ))}
