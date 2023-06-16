@@ -1,11 +1,7 @@
 .home {
-  &__wraper {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    min-width: 370px;
-  }
+  min-width: 370px;
+  max-width: 1136px;
+  margin: 0 auto;
 
   &__heading {
     font-style: normal;
@@ -27,10 +23,6 @@
   }
 
   &__newSlider {
-    height: 500px;
-
-    background-color: yellow;
-    margin: 0 16px;
     margin-bottom: 57px;
   }
 
@@ -48,7 +40,6 @@
         gap: 16px;
       }
     }
-
 
     &__heading {
       font-style: normal;
@@ -87,13 +78,24 @@
         height: 368px;
       }
     }
+
+    &__heading {
+      font-style: normal;
+      font-weight: 700;
+      font-size: 20px;
+      line-height: 26px;color: $cGrayPrimary;
+    }
+
+    &__count {
+      font-style: normal;
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 21px;
+      color: $cGraySecondary;
+    }
   }
 
   &__hotSlider {
-    height: 500px;
-
-    background-color: yellow;
-    margin: 0 16px;
     margin-bottom: 64px;
   }
 }

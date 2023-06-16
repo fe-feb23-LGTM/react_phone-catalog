@@ -1,20 +1,52 @@
-// import { Phone } from '../../types/Phone';
+import { useEffect, useState } from 'react';
+import { Phone } from '../../types/Phone';
+import { Slider } from '../Slider';
+import { getAllPhones } from '../../api/phones';
 
 export const Home: React.FC = () => {
+  const [brandNewModels, setBrandNewModels] = useState<Phone[]>([]);
+  const [hotPriceModels, setHotPriceModels] = useState<Phone[]>([]);
+
+  const getAll = async () => {
+    try {
+      const phones = await getAllPhones();
+
+      setBrandNewModels(phones.sort(
+        (a, b) => Number(b.year) - Number(a.year),
+      ).slice(8));
+
+      setHotPriceModels(phones.sort(
+        (a, b) => {
+          if (a.fullPrice && b.fullPrice) {
+            return (b.fullPrice - b.price) - (a.fullPrice - a.price);
+          }
+
+          return -1;
+        },
+      ));
+    } catch (err) {
+      // eslint-disable-next-line no-console
+      console.log(`homePage fetch error ${err}`);
+    }
+  };
+
+  useEffect(() => {
+    getAll();
+  }, []);
+
   return (
-    <div className="home__wrapper">
-      <div className="home">
-        <h1 className="home__heading">Welcome to Nice Gadgets Store</h1>
+    <div className="home">
+      <h1 className="home__heading">Welcome to Nice Gadgets Store</h1>
 
-        <div className="home__topSlider">
-          Top slider!!! 340px high
-        </div>
+      <div className="home__topSlider">
+        Top slider!!! 340px high
+      </div>
 
-        <div className="home__newSlider">
-          brand new models!!! 500px high
-        </div>
+      <div className="home__newSlider">
+        <Slider title="Brand new models" selectedPhones={brandNewModels} />
+      </div>
 
-        <div className="home__categorys">
+      <div className="home__categorys">
           <h2 className="home__categorys__heading">Shop by category</h2>
 
           <div className="home__categorys__wraper">
@@ -47,12 +79,11 @@ export const Home: React.FC = () => {
               <h3 className="home__categorysItem__heading">Accessories</h3>
               <span className="home__categorysItem__count">0 models</span>
             </div>
-          </div>
         </div>
+      </div>
 
-        <div className="home__hotSlider">
-          hot Prices!!! 500px high
-        </div>
+      <div className="home__hotSlider">
+        <Slider title="Hot prices" selectedPhones={hotPriceModels} />
       </div>
     </div>
   );
