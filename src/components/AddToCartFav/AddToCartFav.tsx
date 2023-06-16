@@ -2,7 +2,7 @@ import classNames from 'classnames';
 import { useState } from 'react';
 import { Phone } from '../../types/Phone';
 
-function isPhoneAdded(id: number, to: string) {
+function isPhoneAdded(name: string, to: string) {
   if (!localStorage.getItem(to)) {
     return false;
   }
@@ -11,7 +11,7 @@ function isPhoneAdded(id: number, to: string) {
     ? JSON.parse(localStorage.getItem(to) || '')
     : [];
 
-  return phones.some((phone: Phone) => phone.id === id);
+  return phones.some((phone: Phone) => phone.name === name);
 }
 
 // isAdd if equal to true then phone will be add to 'to'
@@ -29,7 +29,7 @@ export function togglePhone(to: string, isAdd: boolean, phone: Phone) {
   }
 
   const indPhoneDel = phones.findIndex(
-    phoneFilter => phoneFilter.id === phone.id,
+    phoneFilter => phoneFilter.name === phone.name,
   );
 
   if (indPhoneDel === -1) {
@@ -47,10 +47,10 @@ interface Props {
 
 export const AddToCartFav: React.FC<Props> = ({ phone }) => {
   const [isAddedToFav, setIsAddedToFav] = useState(
-    isPhoneAdded(phone.id, 'fav'),
+    isPhoneAdded(phone.name, 'fav'),
   );
   const [isAddedToCart, setIsAddedToCart] = useState(
-    isPhoneAdded(phone.id, 'cart'),
+    isPhoneAdded(phone.name, 'cart'),
   );
 
   const handleCardButton = () => {
