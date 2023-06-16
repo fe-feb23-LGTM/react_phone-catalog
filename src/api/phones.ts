@@ -59,3 +59,14 @@ export const getAllPhones = async (): Promise<Phone[]> => {
       return response.json();
     });
 };
+
+export const getPhoneById = async (id: string): Promise<Phone> => {
+  return fetch(`${phonesUrl}/${id}`)
+    .then(response => {
+      if (!response.ok) {
+        throw new Error();
+      }
+
+      return response.json();
+    });
+};
