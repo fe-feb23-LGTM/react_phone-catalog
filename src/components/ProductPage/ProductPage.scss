@@ -1,6 +1,7 @@
 .product-wrapper {
   margin-left: 21px;
   margin-right: 17px;
+  max-width: 1136px;
 }
 
 .product__navigation {
@@ -344,6 +345,10 @@
 }
 
 @media (min-width: 1201px) {
+  .product-wrapper {
+    margin: 0 auto;
+  }
+
   .phone {
     display: block;
 
