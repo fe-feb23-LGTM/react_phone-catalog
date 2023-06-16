@@ -178,7 +178,7 @@ export const ProductPage = () => {
                     <div className="colors__item" key={color}>
                       <img
                         src={`icons/colors/${color}.svg`}
-                        alt="midnightColor"
+                        alt={`${color}`}
                         className="color"
                       />
                     </div>
