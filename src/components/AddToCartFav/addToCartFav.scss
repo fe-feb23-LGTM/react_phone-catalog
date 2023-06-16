@@ -25,6 +25,11 @@
     border: 1px solid $cGrayElements;
     color: $cBlueAccent;
     background: $cWhite;
+
+    &:hover {
+      color: white;
+      border: 1px solid $cGrayElements;
+    }
   }
 
   &__buttons {
@@ -39,6 +44,10 @@
     height: 40px;
     border: 1px solid $cGrayIcon;
     border-radius: 48px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
     background: $cWhite;
     // border: none;
     padding: 0;

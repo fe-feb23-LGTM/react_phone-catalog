@@ -51,7 +51,7 @@ export const Card: React.FC<Props> = ({ phone }) => {
           <span className="card__value">{ram}</span>
         </div>
 
-        <AddToCartFav phone={phone} />
+        <AddToCartFav phone={phone} width="160px" />
       </div>
     </div>
   );

@@ -1,15 +1,25 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 export const FavoritesCounter: React.FC = () => {
   const [favCount, setFavCount] = useState(0);
 
-  const getFavCount = () => {
-    setFavCount(JSON.parse(localStorage.getItem('fav') || '').length);
-  };
+  useEffect(() => {
+    const getFavCount = () => {
+      const favData = localStorage.getItem('fav');
 
-  setInterval(() => {
-    getFavCount();
-  }, 1000);
+      if (favData !== null) {
+        const parsedData = JSON.parse(favData);
+
+        setFavCount(parsedData.length);
+      }
+    };
+
+    const intervalId = setInterval(getFavCount, 1000);
+
+    return () => {
+      clearInterval(intervalId);
+    };
+  }, []);
 
   return (
     <div className="counter">
