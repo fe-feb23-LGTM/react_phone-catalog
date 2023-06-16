@@ -47,38 +47,38 @@ export const Home: React.FC = () => {
       </div>
 
       <div className="home__categorys">
-          <h2 className="home__categorys__heading">Shop by category</h2>
+        <h2 className="home__categorys__heading">Shop by category</h2>
 
-          <div className="home__categorys__wraper">
-            <div className="home__categorysItem">
-              <img
-                className="home__categorysItem__img img_bc_1"
-                src="img/catphones.png"
-                alt="categorysItemImg"
-              />
-              <h3 className="home__categorysItem__heading">Mobile phones</h3>
-              <span className="home__categorysItem__count">71 models</span>
-            </div>
+        <div className="home__categorys__wraper">
+          <div className="home__categorysItem">
+            <img
+              className="home__categorysItem__img img_bc_1"
+              src="img/catphones.png"
+              alt="categorysItemImg"
+            />
+            <h3 className="home__categorysItem__heading">Mobile phones</h3>
+            <span className="home__categorysItem__count">71 models</span>
+          </div>
 
-            <div className="home__categorysItem">
-              <img
-                className="home__categorysItem__img img_bc_2"
-                src="img/cattablets.png"
-                alt="categorysItemImg"
-              />
-              <h3 className="home__categorysItem__heading">Tablets</h3>
-              <span className="home__categorysItem__count">0 models</span>
-            </div>
+          <div className="home__categorysItem">
+            <img
+              className="home__categorysItem__img img_bc_2"
+              src="img/cattablets.png"
+              alt="categorysItemImg"
+            />
+            <h3 className="home__categorysItem__heading">Tablets</h3>
+            <span className="home__categorysItem__count">0 models</span>
+          </div>
 
-            <div className="home__categorysItem">
-              <img
-                className="home__categorysItem__img img_bc_3"
-                src="img/catacc.png"
-                alt="categorysItemImg"
-              />
-              <h3 className="home__categorysItem__heading">Accessories</h3>
-              <span className="home__categorysItem__count">0 models</span>
-            </div>
+          <div className="home__categorysItem">
+            <img
+              className="home__categorysItem__img img_bc_3"
+              src="img/catacc.png"
+              alt="categorysItemImg"
+            />
+            <h3 className="home__categorysItem__heading">Accessories</h3>
+            <span className="home__categorysItem__count">0 models</span>
+          </div>
         </div>
       </div>
 
