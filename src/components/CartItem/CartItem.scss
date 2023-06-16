@@ -106,3 +106,9 @@
     margin-left: 40px;
   }
 }
+
+.cart__item--disable {
+  cursor: not-allowed;
+  opacity: 0.5;
+  pointer-events: none;
+}

@@ -41,7 +41,9 @@ function getPhonesFromLocalStorage() {
 
   return JSON.parse(phoneStr)
     .filter((el: Phone, ind: number, arr: Phone[]) => (
-      ind === arr.findIndex(findEl => findEl.id === el.id)))
+      ind === arr.findIndex(findEl => (
+        findEl.name.toLowerCase() === el.name.toLowerCase()
+      ))))
     .sort((a: Phone, b: Phone) => a.id - b.id);
 }
 
@@ -119,7 +121,7 @@ export const Cart = () => {
 
           <div className="cart__checkout">
             <div className="cart__checkoutTotal">
-              {totalPrice}
+              {`$${totalPrice}`}
             </div>
             <div className="cart__checkoutCount">
               {`Total for ${countItems} items`}

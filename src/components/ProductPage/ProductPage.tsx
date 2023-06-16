@@ -86,7 +86,7 @@ export const ProductPage = () => {
     screen: phone.screen,
     capacity: phone.capacity,
     ram: phone.ram,
-    image: img[0],
+    image: phone.images[0],
   };
 
   return (
@@ -178,7 +178,7 @@ export const ProductPage = () => {
                     <div className="colors__item" key={color}>
                       <img
                         src={`icons/colors/${color}.svg`}
-                        alt="midnightColor"
+                        alt={`${color}`}
                         className="color"
                       />
                     </div>

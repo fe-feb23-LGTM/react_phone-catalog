@@ -7,10 +7,6 @@ export const Home: React.FC = () => {
   const [brandNewModels, setBrandNewModels] = useState<Phone[]>([]);
   const [hotPriceModels, setHotPriceModels] = useState<Phone[]>([]);
 
-  // const filterHotPrice = (phones: Phone[]) => {
-  //   return phones.filter
-  // };
-
   const getAll = async () => {
     try {
       const phones = await getAllPhones();
@@ -51,7 +47,6 @@ export const Home: React.FC = () => {
       </div>
 
       <div className="home__categorys">
-        <div className="home__categorys__wraper2">
           <h2 className="home__categorys__heading">Shop by category</h2>
 
           <div className="home__categorys__wraper">
@@ -84,7 +79,6 @@ export const Home: React.FC = () => {
               <h3 className="home__categorysItem__heading">Accessories</h3>
               <span className="home__categorysItem__count">0 models</span>
             </div>
-          </div>
         </div>
       </div>
 

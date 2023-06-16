@@ -17,9 +17,27 @@
 @import "./components/Favorites/favorites.scss";
 @import "./components/Home/home.scss";
 @import "./components/Slider/Slider.scss";
-
 @import "./components/Home/home.scss";
+
+@font-face {
+  font-family: "Mont";
+  src: url("./_utils/fonts/Mont-Bold.otf");
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: "Mont";
+  src: url("./_utils/fonts/Mont-SemiBold.otf");
+  font-weight: 600;
+}
+
+@font-face {
+  font-family: "Mont";
+  src: url("./_utils/fonts/Mont-Regular.otf");
+  font-weight: normal;
+}
 
 html {
   scroll-behavior: smooth;
+  font-family: "Mont", sans-serif;
 }

@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import classNames from 'classnames';
 import { Phone } from '../../types/Phone';
 import { togglePhone } from '../AddToCartFav/AddToCartFav';
 
@@ -8,7 +9,7 @@ interface Props {
   image: string | null;
 }
 
-function deleteSelectedPhonesFromLS(id: number) {
+function deleteSelectedPhonesFromLS(name: string) {
   const phoneStr = localStorage.getItem('cart');
 
   if (!phoneStr) {
@@ -16,25 +17,24 @@ function deleteSelectedPhonesFromLS(id: number) {
   }
 
   const phones = JSON.parse(phoneStr)
-    .filter((phone: Phone) => phone.id !== id);
+    .filter((phone: Phone) => phone.name.toLowerCase() !== name.toLowerCase());
 
   localStorage.setItem('cart', JSON.stringify(phones));
 }
 
-function countCurrentAddedPhone(id: number) {
+function countCurrentAddedPhone(name: string) {
   const phones: Phone[] = JSON.parse(localStorage.getItem('cart') || '[]');
 
-  return phones.filter(phone => phone.id === id)
+  return phones.filter(phone => phone.name.toLowerCase() === name.toLowerCase())
     .length;
 }
 
 export const CartItem: React.FC<Props> = ({ phone, image }) => {
   const {
-    id,
     name,
     price,
   } = phone;
-  const [countPhones, setCountPhones] = useState(countCurrentAddedPhone(id));
+  const [countPhones, setCountPhones] = useState(countCurrentAddedPhone(name));
 
   function addPhoneToLocaleStorage() {
     togglePhone('cart', true, phone);
@@ -51,7 +51,7 @@ export const CartItem: React.FC<Props> = ({ phone, image }) => {
       <div className="cart__item-wrapper">
         <button
           type="button"
-          onClick={() => deleteSelectedPhonesFromLS(phone.id)}
+          onClick={() => deleteSelectedPhonesFromLS(phone.name)}
           className="cart__item-close_button"
         >
           <img
@@ -88,13 +88,14 @@ export const CartItem: React.FC<Props> = ({ phone, image }) => {
         <div className="cart__item-wrapper-counter">
           <button
             type="button"
-            className="cart__item-button"
+            className={classNames('cart__item-button', {
+              'cart__item--disable': countPhones === 1,
+            })}
             onClick={removePhoneFromLocaleStorage}
           >
             <img
               alt="-"
               src="icons/Minus.svg"
-              // className="cart__item-button_img"
             />
           </button>
 
@@ -110,12 +111,11 @@ export const CartItem: React.FC<Props> = ({ phone, image }) => {
             <img
               alt="+"
               src="icons/Plus.svg"
-              // className="cart__item-button_img"
             />
           </button>
         </div>
         <span className="cart__item-price">
-          {price}
+          {`$${price}`}
         </span>
       </div>
     </div>
