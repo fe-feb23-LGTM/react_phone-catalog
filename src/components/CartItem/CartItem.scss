@@ -20,8 +20,15 @@
   }
 
   &-close_button {
-    color: #b4bdc3;
+    background-color: $cWhite;
+    border: none;
     margin-right: 34px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+
+    &:hover {
+      transform: rotate(180deg);
+    }
   }
 
   &-close_img {
@@ -36,10 +43,10 @@
 
   &-image--picture {
     height: 66px;
-    width: 66px;
   }
 
   &-name {
+    width: 308px;
     font-family: "Mont", Arial, sans-serif;
     font-weight: 600;
     font-size: 14px;
@@ -64,21 +71,15 @@
     justify-content: center;
     align-items: center;
 
-    border: 1px solid #e2e6e9;
+    border: 1px solid $cGrayIcon;
     border-radius: 50%;
 
     margin-right: 13px;
-    transition: all 0.3, ease;
+    transition: border 0.3, ease;
+    background-color: $cWhite;
 
-    :hover {
-      height: 30px;
-      min-width: 30px;
-      border: 1px solid $cBlueAccent;
-      border-radius: 50%;
-    }
-
-    :active {
-      border: 2px solid $cBlueAccent;
+    &:hover {
+      border: 1px solid $cGrayPrimary;
     }
   }
 
