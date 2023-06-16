@@ -1,6 +1,7 @@
 .product-wrapper {
   margin-left: 21px;
   margin-right: 17px;
+  max-width: 1136px;
 }
 
 .product__navigation {
@@ -35,7 +36,6 @@
 
   &-phone {
     text-transform: capitalize;
-    font-family: "Mont", sans-serif;
     font-style: normal;
     font-weight: 600;
     font-size: 15px;
@@ -79,8 +79,6 @@
     text-transform: capitalize;
     margin-top: 16px;
     margin-bottom: 38px;
-
-    font-family: "Mont", sans-serif;
     font-style: normal;
     font-weight: 800;
     font-size: 22px;
@@ -99,10 +97,6 @@
     display: flex;
     justify-content: center;
     gap: 8px;
-
-    // @media (min-width: 640px) {
-    //   flex-direction: column;
-    // }
   }
 
   &__image-option {
@@ -111,7 +105,18 @@
     width: 50px;
     height: 49px;
     padding: 5px;
+    cursor: pointer;
+    transition: border 0.3s;
+
+    &:hover {
+      border: 1px solid $cGraySecondary;
+    }
   }
+}
+
+.activeImage {
+  border: 1px solid $cGrayPrimary;
+  border-radius: 4px;
 }
 
 .colors {
@@ -136,6 +141,16 @@
 
 .color {
   border: 1px solid $cGrayElements;
+  border-radius: 48px;
+  transition: border 0.3s;
+
+  &:hover {
+    border: 1px solid $cGraySecondary;
+  }
+}
+
+.activeColor {
+  border: 1px solid $cGrayPrimary;
   border-radius: 48px;
 }
 
@@ -172,11 +187,20 @@
   }
 }
 
+.activeCapacity {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 7px 8px 4px;
+  margin-top: 8px;
+  background-color: $cGrayPrimary;
+  color: $cWhite;
+}
+
 .price {
   display: flex;
   align-items: center;
   gap: 8px;
-  font-family: "Mont", sans-serif;
   font-style: normal;
   margin-top: 32px;
 
@@ -216,7 +240,6 @@
   display: flex;
   justify-content: space-between;
   margin-top: 32px;
-  font-family: "Mont", sans-serif;
   font-style: normal;
 
   &__title {
@@ -243,7 +266,6 @@
 
 .about {
   margin-top: 56px;
-  font-family: "Mont", sans-serif;
   font-style: normal;
 
   &__main-title {
@@ -277,7 +299,6 @@
 }
 
 .tech-specs {
-  font-family: "Mont", sans-serif;
   font-style: normal;
   margin: 56px 0;
 
@@ -314,5 +335,136 @@
     display: flex;
     justify-content: space-between;
     margin-top: 16px;
+  }
+}
+
+@media (min-width: 641px) {
+  .activeImage {
+    border: 1px solid $cGrayPrimary;
+    border-radius: 4px;
+    width: 50px;
+    height: 49px;
+    padding: 5px;
+    cursor: pointer;
+  }
+
+  .tablet-wrapper {
+    display: flex;
+  }
+
+  .tablet-wrapper__aside {
+    margin-left: 50px;
+  }
+
+  .phone__image-container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .phone__images {
+    display: flex;
+    flex-direction: row-reverse;
+    gap: 30px;
+  }
+
+  .phone__image-main {
+    width: 200px;
+    height: 200px;
+  }
+
+  .phone__image-option {
+    margin-left: 15px;
+    transition: border 0.3s;
+
+    &:hover {
+      border: 1px solid $cGraySecondary;
+    }
+  }
+}
+
+@media (min-width: 1201px) {
+  .product-wrapper {
+    margin: 0 auto;
+  }
+
+  .phone {
+    display: block;
+
+    &__title {
+      font-size: 32px;
+      line-height: 41px;
+      letter-spacing: -0.01em;
+    }
+  }
+  .tablet-wrapper {
+    display: flex;
+    justify-content: flex-start;
+  }
+
+  .tablet-wrapper__aside {
+    margin-left: 130px;
+    margin-right: 200px;
+  }
+
+  .phone__image-container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .phone__images {
+    display: flex;
+    flex-direction: row-reverse;
+    gap: 80px;
+  }
+
+  .phone__image-main {
+    width: 400px;
+    height: 400px;
+  }
+
+  .phone__image-option {
+    margin-left: 32px;
+    border: 1px solid $cGrayElements;
+    border-radius: 4px;
+    width: 80px;
+    height: 80px;
+    padding: 5px;
+    transition: border 0.3s;
+
+    &:hover {
+      border: 1px solid $cGraySecondary;
+    }
+  }
+
+  .activeImage {
+    margin-left: 32px;
+    border: 1px solid $cGrayPrimary;
+    border-radius: 4px;
+    width: 80px;
+    height: 80px;
+    padding: 5px;
+    cursor: pointer;
+  }
+
+  .colors-container {
+    gap: 55px;
+  }
+
+  .color {
+    width: 30px;
+    height: 30px;
+  }
+
+  .about-wrapper {
+    display: flex;
+    gap: 64px;
+  }
+
+  .about {
+    max-width: 650px;
+  }
+
+  .tech-specs__table {
+    gap: 100px;
   }
 }

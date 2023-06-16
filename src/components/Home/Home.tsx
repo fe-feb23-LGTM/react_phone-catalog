@@ -1,28 +1,92 @@
+import { useEffect, useState } from 'react';
 import { Phone } from '../../types/Phone';
 import { Card } from '../Card/Card';
 import { HomeSlider } from '../HomeSlider';
+import { Slider } from '../Slider';
+import { getAllPhones } from '../../api/phones';
 
 export const Home: React.FC = () => {
-  const phone: Phone = {
-    id: 1,
-    category: 'phones',
-    phoneId: 'apple-iphone-7-32gb-black',
-    itemId: 'apple-iphone-7-32gb-black',
-    name: 'Apple iPhone 7 32GB Black',
-    fullPrice: 400,
-    price: 375,
-    screen: "4.7' IPS",
-    capacity: '32GB',
-    color: 'black',
-    ram: '2GB',
-    year: 2016,
-    image: 'img/phones/apple-iphone-7/black/00.jpg',
+  const [brandNewModels, setBrandNewModels] = useState<Phone[]>([]);
+  const [hotPriceModels, setHotPriceModels] = useState<Phone[]>([]);
+
+  const getAll = async () => {
+    try {
+      const phones = await getAllPhones();
+
+      setBrandNewModels(phones.sort(
+        (a, b) => Number(b.year) - Number(a.year),
+      ).slice(8));
+
+      setHotPriceModels(phones.sort(
+        (a, b) => {
+          if (a.fullPrice && b.fullPrice) {
+            return (b.fullPrice - b.price) - (a.fullPrice - a.price);
+          }
+
+          return -1;
+        },
+      ));
+    } catch (err) {
+      // eslint-disable-next-line no-console
+      console.log(`homePage fetch error ${err}`);
+    }
   };
 
+  useEffect(() => {
+    getAll();
+  }, []);
+
   return (
-    <>
-      <HomeSlider />
-      <Card phone={phone} />
-    </>
+    <div className="home">
+      <h1 className="home__heading">Welcome to Nice Gadgets Store</h1>
+
+      <div className="home__topSlider">
+        <HomeSlider />
+      </div>
+
+      <div className="home__newSlider">
+        <Slider title="Brand new models" selectedPhones={brandNewModels} />
+      </div>
+
+      <div className="home__categorys">
+        <h2 className="home__categorys__heading">Shop by category</h2>
+
+        <div className="home__categorys__wraper">
+          <div className="home__categorysItem">
+            <img
+              className="home__categorysItem__img img_bc_1"
+              src="img/catphones.png"
+              alt="categorysItemImg"
+            />
+            <h3 className="home__categorysItem__heading">Mobile phones</h3>
+            <span className="home__categorysItem__count">71 models</span>
+          </div>
+
+          <div className="home__categorysItem">
+            <img
+              className="home__categorysItem__img img_bc_2"
+              src="img/cattablets.png"
+              alt="categorysItemImg"
+            />
+            <h3 className="home__categorysItem__heading">Tablets</h3>
+            <span className="home__categorysItem__count">0 models</span>
+          </div>
+
+          <div className="home__categorysItem">
+            <img
+              className="home__categorysItem__img img_bc_3"
+              src="img/catacc.png"
+              alt="categorysItemImg"
+            />
+            <h3 className="home__categorysItem__heading">Accessories</h3>
+            <span className="home__categorysItem__count">0 models</span>
+          </div>
+        </div>
+      </div>
+
+      <div className="home__hotSlider">
+        <Slider title="Hot prices" selectedPhones={hotPriceModels} />
+      </div>
+    </div>
   );
 };

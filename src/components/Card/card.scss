@@ -14,7 +14,7 @@
   transition: all ease-in-out 0.15s;
 
   &:hover {
-    box-shadow: 0 0 11px rgba(33, 33, 33, 0.2); ;
+    box-shadow: 0 0 11px rgba(33, 33, 33, 0.2);
   }
 
   & * {
@@ -40,6 +40,7 @@
 
   &__name {
     padding-top: 24px;
+    height: 66px;
     font-style: normal;
     font-weight: 600;
     font-size: 14px;

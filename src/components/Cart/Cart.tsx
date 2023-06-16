@@ -1,16 +1,85 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { CheckoutModal } from '../CheckoutModal';
 import { CartItem } from '../CartItem';
+import { Phone } from '../../types/Phone';
+import { awsGetPhoto } from '../../_utils/awsGetPhoto';
+
+type FetchedPhotos = {
+  [key: string]: string | null;
+};
+
+function getTotalPrice() {
+  const phoneStr = localStorage.getItem('cart');
+
+  if (!phoneStr) {
+    return 0;
+  }
+
+  return JSON.parse(phoneStr)
+    .reduce((acc: number, el: Phone) => acc + el.price, 0);
+}
+
+function countPhonesInLS() {
+  const phoneStr = localStorage.getItem('cart');
+
+  if (!phoneStr) {
+    return 0;
+  }
+
+  return JSON.parse(phoneStr).length;
+}
+
+function getPhonesFromLocalStorage() {
+  const phoneStr = localStorage.getItem('cart');
+
+  if (!phoneStr) {
+    return [];
+  }
+
+  return JSON.parse(phoneStr)
+    .filter((el: Phone, ind: number, arr: Phone[]) => (
+      ind === arr.findIndex(findEl => (
+        findEl.name.toLowerCase() === el.name.toLowerCase()
+      ))))
+    .sort((a: Phone, b: Phone) => a.id - b.id);
+}
 
 export const Cart = () => {
-  const [cartItems, setCartItems] = useState([1, 2, 3, 4, 5]);
+  const [countItems, setCountItems] = useState(countPhonesInLS());
   const [showModal, setShowModal] = useState(false);
+  const [totalPrice, setTotalPrice] = useState(getTotalPrice());
+  const [fetchedPhotos, setFetchedPhotos] = useState<FetchedPhotos>({});
+  // const [phones, setPhones] = useState(getPhonesFromLocalStorage());
+  const phones: Phone[] = getPhonesFromLocalStorage();
+
+  const fetchPhoto = async (phone: Phone) => {
+    try {
+      const photo = await awsGetPhoto(phone.image);
+
+      setFetchedPhotos(prevState => ({
+        ...prevState,
+        [phone.id]: photo,
+      }));
+    } catch (error) {
+      // eslint-disable-next-line no-console
+      console.log(error);
+    }
+  };
+
+  setInterval(() => {
+    setCountItems(countPhonesInLS());
+    setTotalPrice(getTotalPrice());
+  }, 500);
+
+  useEffect(() => {
+    phones.map(phone => fetchPhoto(phone));
+  }, []);
 
   const handleClearCart = () => {
-    setCartItems([]);
+    localStorage.setItem('cart', '[]');
     setShowModal(false);
   };
 
@@ -41,17 +110,21 @@ export const Cart = () => {
 
         <div className="cart__listAndCheckout">
           <div className="cart__itemList">
-            {cartItems.map(item => (
-              <CartItem key={item} />
+            {phones.map((phone) => (
+              <CartItem
+                key={phone.id}
+                phone={phone}
+                image={fetchedPhotos[phone.id]}
+              />
             ))}
           </div>
 
           <div className="cart__checkout">
             <div className="cart__checkoutTotal">
-              $777
+              {`$${totalPrice}`}
             </div>
             <div className="cart__checkoutCount">
-              {`Total for ${cartItems.length} items`}
+              {`Total for ${countItems} items`}
             </div>
             <hr className="is-marginless" />
             <div
@@ -64,7 +137,7 @@ export const Cart = () => {
             </div>
             {showModal && (
               <CheckoutModal
-                cartItems={cartItems}
+                cartItems={countItems}
                 onClear={handleClearCart}
                 onClose={handleCloseModal}
               />

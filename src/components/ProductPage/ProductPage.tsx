@@ -1,7 +1,11 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/control-has-associated-label */
+/* eslint-disable no-console */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable max-len */
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useMemo } from 'react';
 import { Link } from 'react-router-dom';
+import cn from 'classnames';
 import { ProductPhone } from '../../types/ProductPhone';
 import { Recommended } from '../Recommended/Recommended';
 import { awsGetPhoto } from '../../_utils/awsGetPhoto';
@@ -9,12 +13,10 @@ import { AddToCartFav } from '../AddToCartFav/AddToCartFav';
 
 export const ProductPage = () => {
   const [img, setImg] = useState<string[]>([]);
-
-  const getPhoneId = () => {
-    const phoneID = Math.random().toString().slice(-6);
-
-    return phoneID;
-  };
+  const [mainImage, setMainImage] = useState<string | null>(null);
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const [selectedColor, setSelectedColor] = useState<string | null>(null);
+  const [selectedCapacity, setSelectedCapacity] = useState<string | null>(null);
 
   const phone: ProductPhone = {
     id: 'apple-iphone-11-pro-64gb-gold',
@@ -61,14 +63,24 @@ export const ProductPage = () => {
     cell: ['GPRS', 'EDGE', 'WCDMA', 'UMTS', 'HSPA', 'LTE'],
   };
 
+  const getPhoneId = () => {
+    const phoneID = Math.random().toString().slice(-6);
+
+    return phoneID;
+  };
+
   useEffect(() => {
     const fetchPhoto = async () => {
       try {
         const getImg = await Promise.all(phone.images.map(image => awsGetPhoto(image)));
 
         setImg(getImg);
+        setMainImage(getImg[0]);
+        setSelectedImage(getImg[0]);
+        setSelectedColor(phone.color);
+        setSelectedCapacity(phone.capacity);
       } catch (error) {
-        // eslint-disable-next-line no-console
+        console.log(img);
         console.error(error);
       }
     };
@@ -78,12 +90,26 @@ export const ProductPage = () => {
 
   const favPhone = {
     id: Math.random() * 10,
-    name: phone.id,
+    name: phone.id.split('-').map(word => word[0].toUpperCase() + word.slice(1)).join(' '),
     price: phone.priceDiscount,
+    fullPrice: phone.priceRegular,
     screen: phone.screen,
     capacity: phone.capacity,
     ram: phone.ram,
-    image: img[0],
+    image: phone.images[0],
+  };
+
+  const onPhotoSelect = (image: string) => {
+    setSelectedImage(image);
+    setMainImage(image);
+  };
+
+  const onColorSelect = (color: string) => {
+    setSelectedColor(color);
+  };
+
+  const onCapacitySelect = (capacity: string) => {
+    setSelectedCapacity(capacity);
   };
 
   return (
@@ -137,149 +163,181 @@ export const ProductPage = () => {
           {phone.id.split('-').join(' ')}
         </div>
 
-        <div className="phone__images">
-          <div className="phone__image-main">
-            <div>
-              <img src={`${img[0]}`} alt="IphoneImg" />
-            </div>
-          </div>
-
-          <div className="phone__image-container">
-            {img.map(phoneImage => (
-              <div className="phone__image-option" key={phoneImage}>
-                <div
-                  style={
-                    {
-                      backgroundImage: `url(${phoneImage})`,
-                      backgroundSize: 'contain',
-                      backgroundPosition: 'center',
-                      backgroundRepeat: 'no-repeat',
-                      height: '100%',
-                    }
-                  }
-                />
-              </div>
-            ))}
-          </div>
-        </div>
-
-        <div className="colors-container">
-          <div className="colors">
-            <div className="colors__title">Available colors</div>
-            <div className="colors__items-wrapper">
-              {phone.colorsAvailable.map(color => (
-                <div className="colors__item" key={color}>
-                  <img
-                    src={`icons/colors/${color}.svg`}
-                    alt="midnightColor"
-                    className="color"
-                  />
+        <div className="tablet-wrapper">
+          <div>
+            <div className="phone__images">
+              <div className="phone__image-main">
+                <div>
+                  <img src={`${mainImage}`} alt="IphoneImg" />
                 </div>
-              ))}
+              </div>
+
+              <div className="phone__image-container">
+                {img.map(phoneImage => (
+                  <div
+                    className={cn('phone__image-option', {
+                      activeImage: selectedImage === phoneImage,
+                    })}
+                    key={phoneImage}
+                  >
+                    <div
+                      tabIndex={0}
+                      role="button"
+                      style={
+                        {
+                          backgroundImage: `url(${phoneImage})`,
+                          backgroundSize: 'contain',
+                          backgroundPosition: 'center',
+                          backgroundRepeat: 'no-repeat',
+                          height: '100%',
+                        }
+                      }
+                      onClick={() => onPhotoSelect(phoneImage)}
+                    />
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
 
-          <div className="phoneId">
-            ID:
-            {' '}
-            {getPhoneId()}
+          <div className="tablet-wrapper__aside">
+            <div className="colors-container">
+              <div className="colors">
+                <div className="colors__title">Available colors</div>
+                <div className="colors__items-wrapper">
+                  {phone.colorsAvailable.map(color => (
+                    <div
+                      role="button"
+                      tabIndex={0}
+                      className="colors__item"
+                      key={color}
+                      onClick={() => onColorSelect(color)}
+                    >
+                      <img
+                        src={`icons/colors/${color}.svg`}
+                        alt={`${color}`}
+                        className={cn('color', {
+                          activeColor: selectedColor === color,
+                        })}
+                      />
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div className="phoneId">
+                ID:
+                {' '}
+                {useMemo(() => getPhoneId(), [])}
+              </div>
+            </div>
+
+            <hr className="is-marginless" />
+
+            <div className="capacity">
+              <div className="capacity__title">Select capacity</div>
+              <div className="capacity__wrapper">
+                {phone.capacityAvailable.map(memory => (
+                  <div
+                    role="button"
+                    tabIndex={0}
+                    className={cn('capacity__item', {
+                      activeCapacity: selectedCapacity === memory,
+                    })}
+                    key={memory}
+                    onClick={() => onCapacitySelect(memory)}
+                  >
+                    {memory}
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <hr className="is-marginless" />
+
+            <div className="price">
+              <div className="price__regular">
+                {phone.priceDiscount}
+              </div>
+
+              <div className="price__discount">
+                {phone.priceRegular}
+              </div>
+            </div>
+
+            <div className="action__product">
+              <AddToCartFav phone={favPhone} width="240px" />
+            </div>
+
+            <div className="short-tech">
+              <div className="short-tech__title">
+                <div>Screen</div>
+                <div>Resolution</div>
+                <div>Processor</div>
+                <div>RAM</div>
+              </div>
+
+              <div className="short-tech__value">
+                <div>{phone.screen}</div>
+                <div>{phone.resolution}</div>
+                <div>{phone.processor}</div>
+                <div>{phone.ram}</div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
 
-      <hr className="is-marginless" />
+      <div className="about-wrapper">
+        <div className="about">
+          <div className="about__main-title">About</div>
 
-      <div className="capacity">
-        <div className="capacity__title">Select capacity</div>
-        <div className="capacity__wrapper">
-          {phone.capacityAvailable.map(memory => (
-            <div className="capacity__item" key={memory}>
-              {memory}
+          <hr className="is-marginless" />
+
+          {phone.description.map(paragraph => (
+            <div key={paragraph.title}>
+              <div className="about__title">
+                {paragraph.title}
+              </div>
+              <div className="about__text">
+
+                <div className="about__text-first">
+                  {paragraph.text[0]}
+                </div>
+                {'      '}
+                {paragraph.text[1]}
+              </div>
             </div>
           ))}
         </div>
-      </div>
 
-      <hr className="is-marginless" />
+        <div className="tech-specs">
+          <div className="tech-specs__title">Tech specs</div>
 
-      <div className="price">
-        <div className="price__regular">
-          {phone.priceDiscount}
-        </div>
+          <hr className="is-marginless" />
 
-        <div className="price__discount">
-          {phone.priceRegular}
-        </div>
-      </div>
-
-      <div className="action__product">
-        <AddToCartFav phone={favPhone} width="240px" />
-      </div>
-
-      <div className="short-tech">
-        <div className="short-tech__title">
-          <div>Screen</div>
-          <div>Resolution</div>
-          <div>Processor</div>
-          <div>RAM</div>
-        </div>
-
-        <div className="short-tech__value">
-          <div>{phone.screen}</div>
-          <div>{phone.resolution}</div>
-          <div>{phone.processor}</div>
-          <div>{phone.ram}</div>
-        </div>
-      </div>
-
-      <div className="about">
-        <div className="about__main-title">About</div>
-
-        <hr className="is-marginless" />
-
-        {phone.description.map(paragraph => (
-          <div key={paragraph.title}>
-            <div className="about__title">
-              {paragraph.title}
+          <div className="tech-specs__table">
+            <div className="tech-specs__titles">
+              <div>Screen</div>
+              <div>Resolution</div>
+              <div>Processor</div>
+              <div>RAM</div>
+              <div>Built in memory</div>
+              <div>Camera</div>
+              <div>Zoom</div>
+              <div>Cell</div>
             </div>
-            <div className="about__text">
 
-              <div className="about__text-first">
-                {paragraph.text[0]}
-              </div>
-              {'      '}
-              {paragraph.text[1]}
+            <div className="tech-specs__value">
+              <div>{phone.screen}</div>
+              <div>{phone.resolution}</div>
+              <div>{phone.processor}</div>
+              <div>{phone.ram}</div>
+              <div>{phone.capacity}</div>
+              <div>{phone.camera}</div>
+              <div>{phone.zoom}</div>
+              <div>{phone.cell.slice(-3).join(', ')}</div>
             </div>
-          </div>
-        ))}
-      </div>
-
-      <div className="tech-specs">
-        <div className="tech-specs__title">Tech specs</div>
-
-        <hr className="is-marginless" />
-
-        <div className="tech-specs__table">
-          <div className="tech-specs__titles">
-            <div>Screen</div>
-            <div>Resolution</div>
-            <div>Processor</div>
-            <div>RAM</div>
-            <div>Built in memory</div>
-            <div>Camera</div>
-            <div>Zoom</div>
-            <div>Cell</div>
-          </div>
-
-          <div className="tech-specs__value">
-            <div>{phone.screen}</div>
-            <div>{phone.resolution}</div>
-            <div>{phone.processor}</div>
-            <div>{phone.ram}</div>
-            <div>{phone.capacity}</div>
-            <div>{phone.camera}</div>
-            <div>{phone.zoom}</div>
-            <div>{phone.cell.slice(-3).join(', ')}</div>
           </div>
         </div>
       </div>
