@@ -17,8 +17,6 @@
 
   &__topSlider {
     height: 340px;
-
-    background-color: yellow;
     margin-bottom: 66px;
   }
 
@@ -55,10 +53,10 @@
     background-color: #6d6474;
   }
   .img_bc_2 {
-    background-color: #8D8D92;
+    background-color: #8d8d92;
   }
   .img_bc_3 {
-    background-color: #973D5F;
+    background-color: #973d5f;
   }
 
   &__categorysItem {
@@ -83,7 +81,8 @@
       font-style: normal;
       font-weight: 700;
       font-size: 20px;
-      line-height: 26px;color: $cGrayPrimary;
+      line-height: 26px;
+      color: $cGrayPrimary;
     }
 
     &__count {
