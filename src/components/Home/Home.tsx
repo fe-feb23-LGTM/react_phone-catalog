@@ -14,7 +14,7 @@ export const Home: React.FC = () => {
 
       setBrandNewModels(phones.sort(
         (a, b) => Number(b.year) - Number(a.year),
-      ).slice(8));
+      ).splice(0, 11));
 
       setHotPriceModels(phones.sort(
         (a, b) => {
