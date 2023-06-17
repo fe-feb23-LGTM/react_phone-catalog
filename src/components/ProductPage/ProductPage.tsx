@@ -13,6 +13,27 @@ import { AddToCartFav } from '../AddToCartFav/AddToCartFav';
 import { getPhoneAboutById } from '../../api/phones';
 import { LoaderSimple } from '../LoaderSimple/LoaderSimple';
 
+type ColorName =
+  | 'midnightgreen'
+  | 'spacegray'
+  | 'rosegold'
+  | 'green'
+  | 'purple'
+  | 'gold'
+  | 'yellow';
+
+type ColorValue = Readonly<string>;
+
+const colorMap: Readonly<Record<ColorName, ColorValue>> = {
+  midnightgreen: '#39513D',
+  spacegray: '#505050',
+  rosegold: '#ffb9b9',
+  green: '#91ffd1',
+  purple: '#df9fff',
+  gold: '#ffe4ca',
+  yellow: '#ffdf40',
+};
+
 export const ProductPage = () => {
   const [img, setImg] = useState<string[]>([]);
   const [mainImage, setMainImage] = useState<string | null>(null);
@@ -89,6 +110,34 @@ export const ProductPage = () => {
     setSelectedCapacity(capacity);
   };
 
+  const handleChangeUrlWithColor = (phoneColor: string) => {
+    if (phone !== null) {
+      const idParts = phone.id.split('-');
+      const neededIdParts = idParts.slice(0, idParts.length - 1);
+      const neededUrlParts = [...neededIdParts, phoneColor];
+      const foundUrl = neededUrlParts.join('-');
+
+      return foundUrl;
+    }
+
+    return null;
+  };
+
+  const handleChangeUrlWithCapacity = (phoneCapacity: string) => {
+    if (phone !== null) {
+      const normalizeCapacity = `${phoneCapacity.slice(
+        0,
+        phoneCapacity.length - 2,
+      )}gb`;
+      const oldValue = /(\d+gb)/;
+      const foundUrl = phone.id.replace(oldValue, normalizeCapacity);
+
+      return foundUrl;
+    }
+
+    return null;
+  };
+
   return (
     <div className="product-wrapper">
       <div className="product__navigation">
@@ -154,9 +203,7 @@ export const ProductPage = () => {
                       height: '100%',
                     }
                   }
-                >
-                  {/* <img src={`${mainImage}`} alt="IphoneImg" /> */}
-                </div>
+                />
               </div>
 
               <div className="phone__image-container">
@@ -192,31 +239,33 @@ export const ProductPage = () => {
               <div className="colors">
                 <div className="colors__title">Available colors</div>
                 <div className="colors__items-wrapper">
-                  {phone ? (phone.colorsAvailable.map(color => (
-                    <div
-                      role="button"
-                      tabIndex={0}
-                      className="colors__item"
-                      key={color}
-                      onClick={() => onColorSelect(color)}
-                    >
-                      <img
-                        src={`icons/colors/${color}.svg`}
-                        alt={`${color}`}
-                        className={cn('color', {
+                  {phone ? (phone?.colorsAvailable.map((color: ColorName | string) => {
+                    const colorValue
+                      = colorMap[color as ColorName] || color;
+                    const styles = {
+                      backgroundColor: colorValue,
+                    };
+
+                    return (
+                      <Link
+                        to={`../phones/${handleChangeUrlWithColor(color)}`}
+                        key={color}
+                        className={cn('colors_item', {
                           activeColor: selectedColor === color,
                         })}
-                      />
-                    </div>
-                  )))
-                    : <LoaderSimple />}
+                        onClick={() => onColorSelect(color)}
+                      >
+                        <div className="color" style={styles} />
+                      </Link>
+                    );
+                  })) : <LoaderSimple />}
                 </div>
               </div>
 
               <div className="phoneId">
                 ID:
                 {' '}
-                {useMemo(() => getPhoneId(), [])}
+                {useMemo(() => getPhoneId(), [phone?.capacity, phone?.color])}
               </div>
             </div>
 
@@ -226,17 +275,16 @@ export const ProductPage = () => {
               <div className="capacity__title">Select capacity</div>
               <div className="capacity__wrapper">
                 {phone ? (phone.capacityAvailable.map(memory => (
-                  <div
-                    role="button"
-                    tabIndex={0}
+                  <Link
+                    to={`../phones/${handleChangeUrlWithCapacity(memory)}`}
                     className={cn('capacity__item', {
                       activeCapacity: selectedCapacity === memory,
                     })}
                     key={memory}
                     onClick={() => onCapacitySelect(memory)}
                   >
-                    {memory}
-                  </div>
+                    <div className="memory">{memory}</div>
+                  </Link>
                 ))) : <LoaderSimple />}
               </div>
             </div>

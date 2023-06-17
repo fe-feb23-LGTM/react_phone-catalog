@@ -142,10 +142,12 @@
 .color {
   border: 1px solid $cGrayElements;
   border-radius: 48px;
-  transition: border 0.3s;
+  transition: border 0.3s,
+    transform 0.3s;
+  margin: 1px;
 
   &:hover {
-    border: 1px solid $cGraySecondary;
+    transform: scale(110%);
   }
 }
 
@@ -187,6 +189,10 @@
   }
 }
 
+.memory {
+  color: $cGrayPrimary;
+}
+
 .activeCapacity {
   display: flex;
   justify-content: center;
@@ -197,6 +203,10 @@
   color: $cWhite;
   transition: background-color 0.3s,
     color 0.3s;
+
+  .memory {
+    color: $cWhite;
+  }
 }
 
 .price {
