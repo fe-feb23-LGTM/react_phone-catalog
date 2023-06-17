@@ -21,8 +21,7 @@ ReactDOM.render(
         <Route index element={<Home />} />
         <Route path="/home" element={<Navigate to="/" />} />
         <Route path="/phones" element={<ProductTable />} />
-        <Route path="/tablets" element={<ProductPage />} />
-        <Route path="/accessories" element={<h1>accessories</h1>} />
+        <Route path="/accessories" element={<NotFound />} />
         <Route path="/favourites" element={<Favorites />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/phones/:phoneId" element={<ProductPage />} />
