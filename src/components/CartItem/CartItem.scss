@@ -36,13 +36,15 @@
     width: 10px;
   }
 
-  &-image--comtainer {
+  &-image--container {
     padding: 7px;
     margin-right: 24px;
   }
 
   &-image--picture {
-    height: 66px;
+
+    max-height: 66px;
+    margin-right: 5px;
   }
 
   &-name {
