@@ -4,12 +4,14 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable max-len */
 import { useEffect, useState, useMemo } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import cn from 'classnames';
 import { ProductPhone } from '../../types/ProductPhone';
 import { Recommended } from '../Recommended/Recommended';
 import { awsGetPhoto } from '../../_utils/awsGetPhoto';
 import { AddToCartFav } from '../AddToCartFav/AddToCartFav';
+import { getPhoneAboutById } from '../../api/phones';
+import { LoaderSimple } from '../LoaderSimple/LoaderSimple';
 
 export const ProductPage = () => {
   const [img, setImg] = useState<string[]>([]);
@@ -17,51 +19,8 @@ export const ProductPage = () => {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const [selectedColor, setSelectedColor] = useState<string | null>(null);
   const [selectedCapacity, setSelectedCapacity] = useState<string | null>(null);
-
-  const phone: ProductPhone = {
-    id: 'apple-iphone-11-pro-64gb-gold',
-    namespaceId: 'apple-iphone-11-pro',
-    name: 'Apple iPhone 11 Pro 64GB Gol\'d',
-    capacityAvailable: ['64GB', '256GB', '512GB'],
-    capacity: '64GB',
-    priceRegular: 1312,
-    priceDiscount: 1270,
-    colorsAvailable: ['spacegray', 'midnightgreen', 'gold', 'silver'],
-    color: 'gold',
-    images: [
-      'img/phones/apple-iphone-11-pro/gold/00.jpg',
-      'img/phones/apple-iphone-11-pro/gold/01.jpg',
-      'img/phones/apple-iphone-11-pro/gold/02.jpg',
-    ],
-    description: [
-      {
-        title: 'And then there was Pro',
-        text: [
-          ' A transformative triple-camera system that adds tons of capability without complexity.',
-          'An unprecedented leap in battery life. And a mind-blowing chip that doubles down on machine learning and pushes the boundaries of what a smartphone can do. Welcome to the first iPhone powerful enough to be called Pro.',
-        ],
-      },
-      {
-        title: 'Camera',
-        text: [
-          ' Meet the first triple-camera system to combine cutting-edge technology with the legendary simplicity of iPhone. Capture up to four times more scene. Get beautiful images in drastically lower light. Shoot the highest-quality video in a smartphone — then edit with the same tools you love for photos. You’ve never shot with anything like it.',
-        ],
-      },
-      {
-        title: 'Shoot it. Flip it. Zoom it. Crop it. Cut it. Light it. Tweak it. Love it.',
-        text: [
-          'iPhone 11 Pro lets you capture videos that are beautifully true to life, with greater detail and smoother motion. Epic processing power means it can shoot 4K video with extended dynamic range and cinematic video stabilization — all at 60 fps. You get more creative control, too, with four times more scene and powerful new editing tools to play with.',
-        ],
-      },
-    ],
-    screen: '5.8\' OLED',
-    resolution: '2436х1125',
-    processor: 'Apple A13 Bionic',
-    ram: '4GB',
-    camera: '12 Mp + 12 Mp + 12MP',
-    zoom: 'Digital, 10x / Optical, 2x',
-    cell: ['GPRS', 'EDGE', 'WCDMA', 'UMTS', 'HSPA', 'LTE'],
-  };
+  const [phone, setPhone] = useState<ProductPhone | null>(null);
+  const { phoneId } = useParams();
 
   const getPhoneId = () => {
     const phoneID = Math.random().toString().slice(-6);
@@ -70,15 +29,31 @@ export const ProductPage = () => {
   };
 
   useEffect(() => {
+    const fetchPhoneAbout = async () => {
+      try {
+        const fetchedPhoneAbout = await getPhoneAboutById(phoneId || '');
+
+        setPhone(fetchedPhoneAbout);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchPhoneAbout();
+  }, [phoneId]);
+
+  useEffect(() => {
     const fetchPhoto = async () => {
       try {
-        const getImg = await Promise.all(phone.images.map(image => awsGetPhoto(image)));
+        if (phone) {
+          const getImg = await Promise.all(phone.images.map(image => awsGetPhoto(image)));
 
-        setImg(getImg);
-        setMainImage(getImg[0]);
-        setSelectedImage(getImg[0]);
-        setSelectedColor(phone.color);
-        setSelectedCapacity(phone.capacity);
+          setImg(getImg);
+          setMainImage(getImg[0]);
+          setSelectedImage(getImg[0]);
+          setSelectedColor(phone.color);
+          setSelectedCapacity(phone.capacity);
+        }
       } catch (error) {
         console.log(img);
         console.error(error);
@@ -86,18 +61,20 @@ export const ProductPage = () => {
     };
 
     fetchPhoto();
-  }, []);
+  }, [phone]);
 
-  const favPhone = {
-    id: Math.random() * 10,
-    name: phone.id.split('-').map(word => word[0].toUpperCase() + word.slice(1)).join(' '),
-    price: phone.priceDiscount,
-    fullPrice: phone.priceRegular,
-    screen: phone.screen,
-    capacity: phone.capacity,
-    ram: phone.ram,
-    image: phone.images[0],
-  };
+  const favPhone = phone
+    ? {
+      id: Math.random() * 10,
+      name: phone.id.split('-').map(word => word[0].toUpperCase() + word.slice(1)).join(' '),
+      price: phone.priceDiscount,
+      fullPrice: phone.priceRegular,
+      screen: phone.screen,
+      capacity: phone.capacity,
+      ram: phone.ram,
+      image: phone.images[0],
+    }
+    : null;
 
   const onPhotoSelect = (image: string) => {
     setSelectedImage(image);
@@ -140,7 +117,7 @@ export const ProductPage = () => {
         />
 
         <div className="product__navigation-phone">
-          {phone.id.split('-').join(' ')}
+          {phone ? phone.id.split('-').join(' ') : <LoaderSimple />}
         </div>
       </div>
 
@@ -160,7 +137,7 @@ export const ProductPage = () => {
 
       <div className="phone">
         <div className="phone__title">
-          {phone.id.split('-').join(' ')}
+          {phone ? phone.id.split('-').join(' ') : <LoaderSimple />}
         </div>
 
         <div className="tablet-wrapper">
@@ -215,7 +192,7 @@ export const ProductPage = () => {
               <div className="colors">
                 <div className="colors__title">Available colors</div>
                 <div className="colors__items-wrapper">
-                  {phone.colorsAvailable.map(color => (
+                  {phone ? (phone.colorsAvailable.map(color => (
                     <div
                       role="button"
                       tabIndex={0}
@@ -231,7 +208,8 @@ export const ProductPage = () => {
                         })}
                       />
                     </div>
-                  ))}
+                  )))
+                    : <LoaderSimple />}
                 </div>
               </div>
 
@@ -247,7 +225,7 @@ export const ProductPage = () => {
             <div className="capacity">
               <div className="capacity__title">Select capacity</div>
               <div className="capacity__wrapper">
-                {phone.capacityAvailable.map(memory => (
+                {phone ? (phone.capacityAvailable.map(memory => (
                   <div
                     role="button"
                     tabIndex={0}
@@ -259,7 +237,7 @@ export const ProductPage = () => {
                   >
                     {memory}
                   </div>
-                ))}
+                ))) : <LoaderSimple />}
               </div>
             </div>
 
@@ -267,16 +245,18 @@ export const ProductPage = () => {
 
             <div className="price">
               <div className="price__regular">
-                {phone.priceDiscount}
+                {phone ? phone.priceDiscount : <LoaderSimple />}
               </div>
 
               <div className="price__discount">
-                {phone.priceRegular}
+                {phone ? phone.priceRegular : <LoaderSimple />}
               </div>
             </div>
 
             <div className="action__product">
-              <AddToCartFav phone={favPhone} width="240px" />
+              {favPhone
+                ? (<AddToCartFav phone={favPhone} width="240px" />)
+                : <LoaderSimple />}
             </div>
 
             <div className="short-tech">
@@ -288,10 +268,10 @@ export const ProductPage = () => {
               </div>
 
               <div className="short-tech__value">
-                <div>{phone.screen}</div>
-                <div>{phone.resolution}</div>
-                <div>{phone.processor}</div>
-                <div>{phone.ram}</div>
+                <div>{phone ? phone.screen : <LoaderSimple />}</div>
+                <div>{phone ? phone.resolution : <LoaderSimple />}</div>
+                <div>{phone ? phone.processor : <LoaderSimple />}</div>
+                <div>{phone ? phone.ram : <LoaderSimple />}</div>
               </div>
             </div>
           </div>
@@ -304,7 +284,7 @@ export const ProductPage = () => {
 
           <hr className="is-marginless" />
 
-          {phone.description.map(paragraph => (
+          {phone ? (phone.description.map(paragraph => (
             <div key={paragraph.title}>
               <div className="about__title">
                 {paragraph.title}
@@ -318,7 +298,7 @@ export const ProductPage = () => {
                 {paragraph.text[1]}
               </div>
             </div>
-          ))}
+          ))) : <LoaderSimple />}
         </div>
 
         <div className="tech-specs">
@@ -339,14 +319,14 @@ export const ProductPage = () => {
             </div>
 
             <div className="tech-specs__value">
-              <div>{phone.screen}</div>
-              <div>{phone.resolution}</div>
-              <div>{phone.processor}</div>
-              <div>{phone.ram}</div>
-              <div>{phone.capacity}</div>
-              <div>{phone.camera}</div>
-              <div>{phone.zoom}</div>
-              <div>{phone.cell.slice(-3).join(', ')}</div>
+              <div>{phone ? phone.screen : <LoaderSimple />}</div>
+              <div>{phone ? phone.resolution : <LoaderSimple />}</div>
+              <div>{phone ? phone.processor : <LoaderSimple />}</div>
+              <div>{phone ? phone.ram : <LoaderSimple />}</div>
+              <div>{phone ? phone.capacity : <LoaderSimple />}</div>
+              <div>{phone ? phone.camera : <LoaderSimple />}</div>
+              <div>{phone ? phone.zoom : <LoaderSimple />}</div>
+              <div>{phone ? phone.cell.slice(-3).join(', ') : <LoaderSimple />}</div>
             </div>
           </div>
         </div>

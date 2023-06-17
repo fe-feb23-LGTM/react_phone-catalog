@@ -70,3 +70,16 @@ export const getPhoneById = async (id: string): Promise<Phone> => {
       return response.json();
     });
 };
+
+export const getPhoneAboutById = async (id: string) => {
+  const phonesAboutUrl = 'https://backend-phone-catalog.onrender.com/products';
+
+  return fetch(`${phonesAboutUrl}/${id}`)
+    .then(response => {
+      if (!response.ok) {
+        throw new Error();
+      }
+
+      return response.json();
+    });
+};

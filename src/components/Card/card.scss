@@ -11,10 +11,11 @@
   border-radius: 8px;
   font-family: "Mont", Arial, Helvetica, sans-serif;
 
-  transition: all ease-in-out 0.15s;
+  transition: transform ease-in-out 0.15s;
 
   &:hover {
-    box-shadow: 0 0 11px rgba(33, 33, 33, 0.2);
+    box-shadow: 0 0 11px rgba(33, 33, 33, 0.5);
+    transform: scale(1.04);
   }
 
   & * {

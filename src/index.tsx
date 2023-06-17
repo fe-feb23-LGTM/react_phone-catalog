@@ -25,6 +25,7 @@ ReactDOM.render(
         <Route path="/accessories" element={<h1>accessories</h1>} />
         <Route path="/favourites" element={<Favorites />} />
         <Route path="/cart" element={<Cart />} />
+        <Route path="/phones/:phoneId" element={<ProductPage />} />
 
         <Route path="/contacts" element={<h1>contacts</h1>} />
         <Route path="/rights" element={<License />} />

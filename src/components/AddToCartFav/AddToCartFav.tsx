@@ -55,7 +55,10 @@ export const AddToCartFav: React.FC<Props> = ({ phone, width }) => {
     isPhoneAdded(phone.name, 'cart'),
   );
 
-  const handleCardButton = () => {
+  const handleCardButton = (ev: React.MouseEvent) => {
+    ev.preventDefault();
+    ev.stopPropagation();
+
     if (isAddedToCart) {
       setIsAddedToCart(false);
       togglePhone('cart', false, phone);
@@ -67,7 +70,10 @@ export const AddToCartFav: React.FC<Props> = ({ phone, width }) => {
     togglePhone('cart', true, phone);
   };
 
-  const handleFavButton = () => {
+  const handleFavButton = (ev: React.MouseEvent) => {
+    ev.preventDefault();
+    ev.stopPropagation();
+
     if (isAddedToFav) {
       setIsAddedToFav(false);
       togglePhone('fav', false, phone);
