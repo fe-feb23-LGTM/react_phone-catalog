@@ -1,11 +1,15 @@
 import { useState, useEffect } from 'react';
-import { getAllPhones, getPhoneById } from '../../api/phones';
+import { getAllPhones } from '../../api/phones';
 import { Slider } from '../Slider';
 import { Phone } from '../../types/Phone';
+import { ProductPhone } from '../../types/ProductPhone';
 
-export const Recommended = () => {
+interface Props {
+  selectedPhone: ProductPhone | null;
+}
+
+export const Recommended: React.FC<Props> = ({ selectedPhone }) => {
   const [allPhones, setAllPhones] = useState<Phone[]>([]);
-  const [selectedPhone, setSelectedPhone] = useState<Phone>({} as Phone);
   const [phonesPrevYear, setPhonesPrevYear] = useState<Phone[]>([]);
   const [phonesNextYear, setPhonesNextYear] = useState<Phone[]>([]);
   const [phonesCurrentYear, setPhonesCurrentYear] = useState<Phone[]>([]);
@@ -17,26 +21,23 @@ export const Recommended = () => {
       setAllPhones(phones);
     };
 
-    const fetchPhone = async () => {
-      const phone = await getPhoneById('32');
-
-      setSelectedPhone(phone);
-    };
-
     fetchPhones();
-    fetchPhone();
   }, []);
 
+  const selectPhone = allPhones.find(
+    (phone) => phone.phoneId === selectedPhone?.id,
+  );
+
   useEffect(() => {
-    if (selectedPhone.year !== undefined) {
+    if (selectPhone?.year !== undefined) {
       const currentYear = allPhones.filter(
-        (phone) => phone.year === selectedPhone.year,
+        (phone) => phone.year === selectPhone?.year,
       );
       const prevYear = allPhones.filter(
-        (phone) => phone.year === (selectedPhone.year || 0) - 1,
+        (phone) => phone.year === (selectPhone?.year || 0) - 1,
       );
       const nextYear = allPhones.filter(
-        (phone) => phone.year === (selectedPhone.year || 0) + 1,
+        (phone) => phone.year === (selectPhone?.year || 0) + 1,
       );
 
       setPhonesCurrentYear(currentYear.slice(0, 4));
@@ -52,5 +53,9 @@ export const Recommended = () => {
   ];
   const title = 'You may also like';
 
-  return <Slider selectedPhones={recommendedPhones} title={title} />;
+  return (
+    <div className="small__slider">
+      <Slider selectedPhones={recommendedPhones} title={title} />
+    </div>
+  );
 };

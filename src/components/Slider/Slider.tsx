@@ -10,11 +10,13 @@ import { Card } from '../Card/Card';
 interface Props {
   title: string;
   selectedPhones: Phone[];
+  className?: string;
 }
 
 export const Slider: React.FC<Props> = ({
   title,
   selectedPhones,
+  className,
 }) => {
   const swiperRef = useRef<SwiperType>();
   const [isButtonPrev, setIsButtonPrev] = useState<boolean>(false);
@@ -34,7 +36,7 @@ export const Slider: React.FC<Props> = ({
   };
 
   return (
-    <div className="recommended-container">
+    <div className={`recommended-container ${className}`}>
       <div className="recommended-header">
         <h2 className="recommended-header-title">
           {title}

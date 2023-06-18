@@ -379,7 +379,7 @@ export const ProductPage = () => {
           </div>
         </div>
       </div>
-      <Recommended />
+      <Recommended selectedPhone={phone} />
     </div>
   );
 };
