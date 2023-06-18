@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Phone } from '../../types/Phone';
-// import { HomeSlider } from '../HomeSlider';
+import { HomeSlider } from '../HomeSlider';
 import { Slider } from '../Slider';
 import { getAllPhones } from '../../api/phones';
 
@@ -40,10 +40,10 @@ export const Home: React.FC = () => {
       <h1 className="home__heading">Welcome to Nice Gadgets Store</h1>
 
       <div className="home__topSlider">
-        {/* <HomeSlider /> */}
+        <HomeSlider />
       </div>
 
-      <div className="home__newSlider">
+      <div className="home__newSlider small__slider">
         <Slider title="Brand new models" selectedPhones={brandNewModels} />
       </div>
 
@@ -83,7 +83,7 @@ export const Home: React.FC = () => {
         </div>
       </div>
 
-      <div className="home__hotSlider">
+      <div className="home__hotSlider small__slider">
         <Slider title="Hot prices" selectedPhones={hotPriceModels} />
       </div>
     </div>

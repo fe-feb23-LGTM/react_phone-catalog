@@ -1,3 +1,4 @@
+@import '../../_utils/vars';
 // navigation
 .home__slider .swiper-button-prev,
 .home__slider .swiper-button-next {
@@ -28,7 +29,7 @@
     cursor: auto;
     pointer-events: none;
   }
-  .swiper-navigation-disabled & {
+  .home__slider .swiper-navigation-disabled & {
     display: none;
   }
   &:after {
@@ -36,16 +37,16 @@
   }
 }
 
-.swiper-button-prev,
-.swiper-rtl .swiper-button-next {
+.home__slider .swiper-button-prev,
+.home__slider .swiper-rtl .swiper-button-next {
   &:after {
     content: "prev";
   }
   left: 0px;
   right: auto;
 }
-.swiper-button-next,
-.swiper-rtl .swiper-button-prev {
+.home__slider .swiper-button-next,
+.home__slider .swiper-rtl .swiper-button-prev {
   &:after {
     content: 'next';
   }
@@ -71,12 +72,13 @@
     display: none ;
   }
 }
-.swiper-pagination-fraction,
-.swiper-pagination-custom,
-.swiper-horizontal > .swiper-pagination-bullets,
-.swiper-pagination-bullets.swiper-pagination-horizontal {
+.home__slider .swiper-pagination-fraction,
+.home__slider .swiper-pagination-custom,
+.home__slider .swiper-horizontal > .swiper-pagination-bullets,
+.home__slider .swiper-pagination-bullets.swiper-pagination-horizontal {
   bottom: 0px;
   width: 100%;
+  bottom: 0x;
 }
 
 .home__slider .swiper-pagination-bullet {
@@ -93,8 +95,8 @@
   background: $cGrayPrimary;
 }
 
-.swiper-horizontal > .swiper-pagination-bullets,
-.swiper-pagination-horizontal.swiper-pagination-bullets {
+.home__slider .swiper-horizontal > .swiper-pagination-bullets,
+.home__slider .swiper-pagination-horizontal.swiper-pagination-bullets {
   .swiper-pagination-bullet {
     margin: 0px  4px;
   }
@@ -118,11 +120,11 @@
 }
 
 .home__slider .slider__image {
-  width: 1040px;
+  width: 90%;
   object-fit: cover;
 
   @media (max-width: 1199px) {
-    width: 80%;
+    width: 88%;
   }
 
   @media (max-width: 639px) {
