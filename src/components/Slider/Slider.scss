@@ -58,7 +58,7 @@
   }
 }
 
-.swiper {
+.small__slider .swiper {
   display: flex;
   align-items: center;
   overflow: hidden;
@@ -88,12 +88,12 @@
   }
 }
 
-.swiper-autoheight .swiper-wrapper {
+.small__slider .swiper-autoheight .swiper-wrapper {
   align-items: flex-start;
   transition-property: transform, height;
 }
 
-.recommended-button {
+.small__slider .recommended-button {
   box-sizing: border-box;
   display: flex;
   margin: 0 auto;
@@ -108,7 +108,7 @@
   background-color: transparent;
 }
 
-.swiper-button-disabled {
+.small__slider .swiper-button-disabled {
   cursor: auto;
   border: 1px solid $cGrayElements;
 }
