@@ -145,6 +145,8 @@
   transition: border 0.3s,
     transform 0.3s;
   margin: 1px;
+  width: 30px;
+  height: 30px;
 
   &:hover {
     transform: scale(110%);
@@ -366,7 +368,6 @@
 
   .tablet-wrapper__aside {
     margin-top: -40px;
-    margin-left: 10px;
   }
 
   .phone__image-container {
@@ -377,7 +378,6 @@
   .phone__images {
     display: flex;
     flex-direction: row-reverse;
-    gap: 10px;
   }
 
   .phone__image-main {
@@ -461,11 +461,6 @@
 
   .colors-container {
     gap: 55px;
-  }
-
-  .color {
-    width: 30px;
-    height: 30px;
   }
 
   .about-wrapper {
