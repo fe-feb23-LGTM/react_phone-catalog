@@ -12,16 +12,26 @@ export const CheckoutModal: React.FC<Props> = ({ onClear, onClose }) => {
   return (
     <div className="modal">
       <div className="modal_wrapper">
-        <button
-          type="button"
-          className="modal_close"
-          onClick={onClose}
-        >
-          X
-        </button>
-        <h1 className="modal_title">
+        <div className="modal__top">
+          <button
+            type="button"
+            className="modal_close"
+            onClick={onClose}
+          >
+            X
+          </button>
+          <h1 className="modal_title">
+            Ooopss...
+          </h1>
+        </div>
+
+        <hr className="is-marginless" />
+
+        <h3 className="modal__text">
           Checkout is not implemented yet. Do you want to clear the Cart?
-        </h1>
+        </h3>
+
+        <hr className="is-marginless" />
 
         <div className="modal_btns">
           <Link to="/" className="modal_btn">
