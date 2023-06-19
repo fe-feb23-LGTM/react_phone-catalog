@@ -27,7 +27,7 @@ export const Home: React.FC = () => {
 
           return -1;
         },
-      ));
+      ).splice(0, 11));
     } catch (err) {
       // eslint-disable-next-line no-console
       console.log(`homePage fetch error ${err}`);
