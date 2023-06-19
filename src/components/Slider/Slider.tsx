@@ -1,56 +1,42 @@
-import { useState, useEffect } from 'react';
+/* eslint-disable no-constant-condition */
+/* eslint-disable import/no-unresolved */
+
+import { useRef, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import SwiperCore, { Navigation } from 'swiper';
+import { Swiper as SwiperType, Navigation } from 'swiper';
 import { Phone } from '../../types/Phone';
 import { Card } from '../Card/Card';
 
 interface Props {
   title: string;
   selectedPhones: Phone[];
+  className?: string;
 }
 
-export const Slider: React.FC<Props> = ({ title, selectedPhones }) => {
-  const [isPrevButtonDisabled, setIsPrevButtonDisabled] = useState(false);
-  const [isNextButtonDisabled, setIsNextButtonDisabled] = useState(false);
+export const Slider: React.FC<Props> = ({
+  title,
+  selectedPhones,
+  className,
+}) => {
+  const swiperRef = useRef<SwiperType>();
+  const [isButtonPrev, setIsButtonPrev] = useState<boolean>(false);
+  const [isButtonNext, setIsButtonNext] = useState<boolean>(false);
 
-  SwiperCore.use([Navigation]);
+  const handleReachEnd = () => {
+    setIsButtonNext(true);
+  };
 
-  useEffect(() => {
-    const updateButtonStates = () => {
-      const prevButton = document.querySelector('.recommended-button-prev');
-      const nextButton = document.querySelector('.recommended-button-next');
+  const handleSlideChange = () => {
+    const swiper = swiperRef.current;
 
-      if (prevButton
-        && prevButton.classList.contains('swiper-button-disabled')) {
-        setIsPrevButtonDisabled(true);
-      } else {
-        setIsPrevButtonDisabled(false);
-      }
-
-      if (nextButton
-        && nextButton.classList.contains('swiper-button-disabled')) {
-        setIsNextButtonDisabled(true);
-      } else {
-        setIsNextButtonDisabled(false);
-      }
-    };
-
-    const observer = new MutationObserver(updateButtonStates);
-    const prevButton = document.querySelector('.recommended-button-prev');
-    const nextButton = document.querySelector('.recommended-button-next');
-
-    if (prevButton && nextButton) {
-      observer.observe(prevButton, { attributes: true });
-      observer.observe(nextButton, { attributes: true });
+    if (swiper) {
+      setIsButtonPrev(swiper.activeIndex > 0);
+      setIsButtonNext(false);
     }
-
-    return () => {
-      observer.disconnect();
-    };
-  }, []);
+  };
 
   return (
-    <div className="recommended-container">
+    <div className={`recommended-container ${className}`}>
       <div className="recommended-header">
         <h2 className="recommended-header-title">
           {title}
@@ -59,9 +45,10 @@ export const Slider: React.FC<Props> = ({ title, selectedPhones }) => {
           <button
             className="recommended-button recommended-button-prev"
             type="button"
+            onClick={() => swiperRef.current?.slidePrev()}
           >
             <img
-              src={isPrevButtonDisabled
+              src={!isButtonPrev
                 ? 'icons/Chevron-Left.svg'
                 : 'icons/Vector(Stroke).svg'}
               alt="left"
@@ -70,9 +57,12 @@ export const Slider: React.FC<Props> = ({ title, selectedPhones }) => {
           <button
             className="recommended-button recommended-button-next"
             type="button"
+            onClick={() => {
+              swiperRef.current?.slideNext();
+            }}
           >
             <img
-              src={isNextButtonDisabled
+              src={isButtonNext
                 ? 'icons/Chevron-Left.svg'
                 : 'icons/Vector(Stroke).svg'}
               alt="right"
@@ -84,12 +74,16 @@ export const Slider: React.FC<Props> = ({ title, selectedPhones }) => {
         </div>
       </div>
       <Swiper
+        modules={[Navigation]}
         slidesPerView="auto"
         centeredSlidesBounds
         spaceBetween={16}
-        navigation={{
-          prevEl: '.recommended-button-prev',
-          nextEl: '.recommended-button-next',
+        onBeforeInit={(swiper) => {
+          swiperRef.current = swiper;
+        }}
+        onSlideChange={handleSlideChange}
+        onReachEnd={() => {
+          handleReachEnd();
         }}
       >
         {selectedPhones.map((phone) => (

@@ -44,7 +44,10 @@ export const Home: React.FC = () => {
       </div>
 
       <div className="home__newSlider small__slider">
-        <Slider title="Brand new models" selectedPhones={brandNewModels} />
+        <Slider
+          title="Brand new models"
+          selectedPhones={brandNewModels}
+        />
       </div>
 
       <div className="home__categorys">
@@ -84,7 +87,10 @@ export const Home: React.FC = () => {
       </div>
 
       <div className="home__hotSlider small__slider">
-        <Slider title="Hot prices" selectedPhones={hotPriceModels} />
+        <Slider
+          title="Hot prices"
+          selectedPhones={hotPriceModels}
+        />
       </div>
     </div>
   );
