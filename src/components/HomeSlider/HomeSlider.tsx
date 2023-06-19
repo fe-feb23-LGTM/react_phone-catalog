@@ -35,7 +35,7 @@ export const HomeSlider: React.FC = () => {
       'img/banner2.png',
       'img/banner3.webp',
       'img/banner4.png',
-      'img/banner5.jpeg',
+      'img/banner5.png',
       'img/banner6.jpeg',
     ];
 
