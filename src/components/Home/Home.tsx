@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { NavLink } from 'react-router-dom';
 import { Phone } from '../../types/Phone';
 import { HomeSlider } from '../HomeSlider';
 import { Slider } from '../Slider';
@@ -60,35 +61,47 @@ export const Home: React.FC = () => {
         <h2 className="home__categorys__heading">Shop by category</h2>
 
         <div className="home__categorys__wraper">
-          <div className="home__categorysItem">
-            <img
-              className="home__categorysItem__img img_bc_1"
-              src="img/catphones.png"
-              alt="categorysItemImg"
-            />
-            <h3 className="home__categorysItem__heading">Mobile phones</h3>
-            <span className="home__categorysItem__count">71 models</span>
-          </div>
+          <NavLink to="/phones">
+            <div className="home__categorysItem">
+              <div className="img_bc img_bc_1">
+                <img
+                  className="home__categorysItem__img"
+                  src="img/catphones.png"
+                  alt="categorysItemImg"
+                />
+              </div>
+              <h3 className="home__categorysItem__heading">Mobile phones</h3>
+              <span className="home__categorysItem__count">71 models</span>
+            </div>
+          </NavLink>
 
-          <div className="home__categorysItem">
-            <img
-              className="home__categorysItem__img img_bc_2"
-              src="img/cattablets.png"
-              alt="categorysItemImg"
-            />
-            <h3 className="home__categorysItem__heading">Tablets</h3>
-            <span className="home__categorysItem__count">0 models</span>
-          </div>
+          <NavLink to="/tablets">
+            <div className="home__categorysItem">
+              <div className="img_bc img_bc_2">
+                <img
+                  className="home__categorysItem__img"
+                  src="img/cattablets.png"
+                  alt="categorysItemImg"
+                />
+              </div>
+              <h3 className="home__categorysItem__heading">Tablets</h3>
+              <span className="home__categorysItem__count">0 models</span>
+            </div>
+          </NavLink>
 
-          <div className="home__categorysItem">
-            <img
-              className="home__categorysItem__img img_bc_3"
-              src="img/catacc.png"
-              alt="categorysItemImg"
-            />
-            <h3 className="home__categorysItem__heading">Accessories</h3>
-            <span className="home__categorysItem__count">0 models</span>
-          </div>
+          <NavLink to="/accessories">
+            <div className="home__categorysItem">
+              <div className="img_bc img_bc_3">
+                <img
+                  className="home__categorysItem__img"
+                  src="img/catacc.png"
+                  alt="categorysItemImg"
+                />
+              </div>
+              <h3 className="home__categorysItem__heading">Accessories</h3>
+              <span className="home__categorysItem__count">0 models</span>
+            </div>
+          </NavLink>
         </div>
       </div>
 

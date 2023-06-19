@@ -62,7 +62,7 @@ export const Favorites = () => {
             ))}
           </div>
         ) : (
-          <h1>Favorites is is empty!</h1>
+          <h1>Favorites is empty!</h1>
         )}
       </div>
     </div>
