@@ -13,6 +13,7 @@ import { NotFound } from './components/NotFound/NotFound';
 import { License } from './components/License/License';
 import { ProductPage } from './components/ProductPage';
 import { Favorites } from './components/Favorites';
+import { ComingSoon } from './components/ComingSoon/ComingSoon';
 
 ReactDOM.render(
   <HashRouter>
@@ -21,7 +22,18 @@ ReactDOM.render(
         <Route index element={<Home />} />
         <Route path="/home" element={<Navigate to="/" />} />
         <Route path="/phones" element={<ProductTable />} />
-        <Route path="/accessories" element={<NotFound />} />
+        <Route
+          path="/accessories"
+          element={
+            <ComingSoon title="Accessories" />
+          }
+        />
+        <Route
+          path="/tablets"
+          element={
+            <ComingSoon title="Tablets" />
+          }
+        />
         <Route path="/favourites" element={<Favorites />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/phones/:phoneId" element={<ProductPage />} />
