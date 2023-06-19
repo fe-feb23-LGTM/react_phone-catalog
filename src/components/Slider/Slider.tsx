@@ -4,6 +4,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Swiper as SwiperType, Navigation } from 'swiper';
+import classNames from 'classnames';
 import { Phone } from '../../types/Phone';
 import { Card } from '../Card/Card';
 import { Loader } from '../Loader';
@@ -48,7 +49,10 @@ export const Slider: React.FC<Props> = ({
         </h2>
         <div className="recommended-header-buttons">
           <button
-            className="recommended-button recommended-button-prev"
+            className={classNames(
+              'recommended-button',
+              { 'swiper-button-disabled': isBeginning },
+            )}
             type="button"
             onClick={() => swiperRef.current?.slidePrev()}
           >
@@ -60,7 +64,10 @@ export const Slider: React.FC<Props> = ({
             />
           </button>
           <button
-            className="recommended-button recommended-button-next"
+            className={classNames(
+              'recommended-button',
+              { 'swiper-button-disabled': isEnd },
+            )}
             type="button"
             onClick={() => {
               swiperRef.current?.slideNext();

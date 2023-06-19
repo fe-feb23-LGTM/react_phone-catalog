@@ -105,9 +105,17 @@
   border-radius: 48px;
   cursor: pointer;
   background-color: transparent;
+
+  &:hover {
+    border: 1px solid $cGrayPrimary;
+  }
 }
 
 .small__slider .swiper-button-disabled {
   cursor: auto;
   border: 1px solid $cGrayElements;
+
+  &:hover {
+    border: 1px solid $cGrayElements;
+  }
 }
