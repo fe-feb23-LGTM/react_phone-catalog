@@ -137,7 +137,7 @@ export const Header: React.FC = () => {
           />
         )}
       </header>
-      <div className="header__top" />
+      <div className="header__top" id="header__top" />
     </>
   );
 };
