@@ -14,6 +14,7 @@ export const Recommended: React.FC<Props> = ({ selectedPhone }) => {
   const [phonesNextYear, setPhonesNextYear] = useState<Phone[]>([]);
   const [phonesCurrentYear, setPhonesCurrentYear] = useState<Phone[]>([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [sliderKey, setSliderKey] = useState(0);
 
   useEffect(() => {
     const fetchPhones = async () => {
@@ -36,20 +37,25 @@ export const Recommended: React.FC<Props> = ({ selectedPhone }) => {
   useEffect(() => {
     if (selectPhone?.year !== undefined) {
       const currentYear = allPhones.filter(
-        (phone) => phone.year === selectPhone?.year,
+        (phone) => phone.year === selectPhone?.year
+          && phone.phoneId !== selectPhone?.phoneId,
       );
       const prevYear = allPhones.filter(
-        (phone) => phone.year === (selectPhone?.year || 0) - 1,
+        (phone) => phone.year === (selectPhone?.year || 0) - 1
+          && phone.phoneId !== selectPhone?.phoneId,
       );
       const nextYear = allPhones.filter(
-        (phone) => phone.year === (selectPhone?.year || 0) + 1,
+        (phone) => phone.year === (selectPhone?.year || 0) + 1
+          && phone.phoneId !== selectPhone?.phoneId,
       );
 
       setPhonesCurrentYear(currentYear.slice(0, 4));
       setPhonesPrevYear(prevYear.slice(0, 4));
       setPhonesNextYear(nextYear.slice(0, 4));
+
+      setSliderKey((prevKey) => prevKey + 1);
     }
-  }, [allPhones, selectedPhone]);
+  }, [selectPhone]);
 
   const recommendedPhones = [
     ...phonesNextYear,
@@ -61,6 +67,7 @@ export const Recommended: React.FC<Props> = ({ selectedPhone }) => {
   return (
     <div className="small__slider">
       <Slider
+        key={sliderKey}
         selectedPhones={recommendedPhones}
         title={title}
         isLoading={isLoading}
