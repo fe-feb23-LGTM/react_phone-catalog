@@ -9,6 +9,10 @@
   justify-content: space-between;
   align-items: center;
 
+  position: fixed;
+  top: 0;
+  z-index: 10;
+
   @media (max-width: 1200px) {
     height: 48px;
   }
@@ -138,9 +142,10 @@
   overflow: hidden;
 }
 
-.header.sticky {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  z-index: 10;
+.header__top {
+  height: 64px;
+
+  @media (max-width: 1200px) {
+    height: 48px;
+  }
 }
