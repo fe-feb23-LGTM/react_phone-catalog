@@ -7,7 +7,6 @@ import { CartCounter } from '../CartCounter';
 
 export const Header: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [isSticky, setIsSticky] = useState(false);
 
   const openMenu = () => {
     setIsOpen(true);
@@ -35,124 +34,110 @@ export const Header: React.FC = () => {
     };
   }, [isOpen]);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      const scrollTop = window.scrollY || document.documentElement.scrollTop;
-
-      setIsSticky(scrollTop > 0);
-    };
-
-    window.addEventListener('scroll', handleScroll);
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
-
   return (
-    <header
-      id="header"
-      className={classNames(
-        'header',
-        { sticky: isSticky },
-      )}
-    >
-      <NavLink to="/" className="header_logo">
-        <img
-          src="icons/logo/Logo.svg"
-          alt="logo"
-        />
-      </NavLink>
-      <nav className="nav">
-        <ul className="nav_list">
-          <li className="nav_item">
-            <NavLink
-              className={({ isActive }) => classNames(
-                'nav_link',
-                { 'is-active': isActive },
-              )}
-              to="/"
-            >
-              Home
-            </NavLink>
-          </li>
-
-          <li className="nav_item">
-            <NavLink
-              className={({ isActive }) => classNames(
-                'nav_link',
-                { 'is-active': isActive },
-              )}
-              to="/phones"
-            >
-              Phones
-            </NavLink>
-          </li>
-
-          <li className="nav_item">
-            <NavLink
-              className={({ isActive }) => classNames(
-                'nav_link',
-                { 'is-active': isActive },
-              )}
-              to="/tablets"
-            >
-              Tablets
-            </NavLink>
-          </li>
-
-          <li className="nav_item">
-            <NavLink
-              className={({ isActive }) => classNames(
-                'nav_link',
-                { 'is-active': isActive },
-              )}
-              to="/accessories"
-            >
-              Accessories
-            </NavLink>
-          </li>
-        </ul>
-      </nav>
-      <div className="header__actions">
-        <NavLink
-          to="/favourites"
-          className={({ isActive }) => classNames(
-            'action',
-            { 'bottom-active': isActive },
-          )}
-        >
-          <FavoritesCounter />
-        </NavLink>
-
-        <NavLink
-          to="/cart"
-          className={({ isActive }) => classNames(
-            'action',
-            { 'bottom-active': isActive },
-          )}
-        >
-          <CartCounter />
-        </NavLink>
-
-        <NavLink
-          to="#menu"
-          className="action burger-button"
-          onClick={openMenu}
-        >
+    <>
+      <header
+        id="header"
+        className="header"
+      >
+        <NavLink to="/" className="header_logo">
           <img
-            src="icons/Menu.svg"
-            alt="burger-icon"
-            className="action__burger"
+            src="icons/logo/Logo.svg"
+            alt="logo"
           />
         </NavLink>
-      </div>
-      {isOpen && (
-        <BurgerMenu
-          isMenuOpen={isOpen}
-          onMenuClose={closeMenu}
-        />
-      )}
-    </header>
+        <nav className="nav">
+          <ul className="nav_list">
+            <li className="nav_item">
+              <NavLink
+                className={({ isActive }) => classNames(
+                  'nav_link',
+                  { 'is-active': isActive },
+                )}
+                to="/"
+              >
+                Home
+              </NavLink>
+            </li>
+
+            <li className="nav_item">
+              <NavLink
+                className={({ isActive }) => classNames(
+                  'nav_link',
+                  { 'is-active': isActive },
+                )}
+                to="/phones"
+              >
+                Phones
+              </NavLink>
+            </li>
+
+            <li className="nav_item">
+              <NavLink
+                className={({ isActive }) => classNames(
+                  'nav_link',
+                  { 'is-active': isActive },
+                )}
+                to="/tablets"
+              >
+                Tablets
+              </NavLink>
+            </li>
+
+            <li className="nav_item">
+              <NavLink
+                className={({ isActive }) => classNames(
+                  'nav_link',
+                  { 'is-active': isActive },
+                )}
+                to="/accessories"
+              >
+                Accessories
+              </NavLink>
+            </li>
+          </ul>
+        </nav>
+        <div className="header__actions">
+          <NavLink
+            to="/favourites"
+            className={({ isActive }) => classNames(
+              'action',
+              { 'bottom-active': isActive },
+            )}
+          >
+            <FavoritesCounter />
+          </NavLink>
+
+          <NavLink
+            to="/cart"
+            className={({ isActive }) => classNames(
+              'action',
+              { 'bottom-active': isActive },
+            )}
+          >
+            <CartCounter />
+          </NavLink>
+
+          <NavLink
+            to="#menu"
+            className="action burger-button"
+            onClick={openMenu}
+          >
+            <img
+              src="icons/Menu.svg"
+              alt="burger-icon"
+              className="action__burger"
+            />
+          </NavLink>
+        </div>
+        {isOpen && (
+          <BurgerMenu
+            isMenuOpen={isOpen}
+            onMenuClose={closeMenu}
+          />
+        )}
+      </header>
+      <div className="header__top" />
+    </>
   );
 };
