@@ -1,5 +1,6 @@
 .cartWraper {
   background-color: $cWhiteHower;
+
   @media (min-width: 1200px) {
     display: flex;
     justify-content: center;
@@ -9,13 +10,13 @@
 .cart {
   display: flex;
   flex-flow: column;
-  padding: 27.33px 16px 60px;
+  padding: 27.33px 16px 10px;
 
   min-width: 320px;
   max-width: 1200px;
 
   @media (min-width: 639px) {
-    padding: 27.33px 24px 60px;
+    padding: 27.33px 24px 10px;
   }
 
   &__backIcon {
@@ -24,7 +25,6 @@
     height: 9.33;
     box-sizing: border-box;
 
-    // background-image: url('./Plus.svg');
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
@@ -52,7 +52,7 @@
 
     letter-spacing: -0.01em;
     color: $cGrayPrimary;
-    margin: 24px 0 32px;
+    margin: 24px 0 7px;
   }
 
   &__listAndCheckout {
@@ -65,10 +65,25 @@
     }
   }
 
+  &__emptyCart {
+    max-width: 100%;
+  }
+
+  &__empty-cart-img {
+    max-height: 400px;
+    max-width: 600px;
+  }
+
+  &__empty-cart-name {
+    text-align: center;
+  }
+
   &__itemList {
-    @media (min-width: 1199px) {
-      width: 752px;
-    }
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
   }
 
   &__checkout {
@@ -119,7 +134,7 @@
     font-size: 14px;
     line-height: 48px;
     text-align: center;
-    
+
     &:hover {
       background-color: #6b48ff;
       cursor: pointer;

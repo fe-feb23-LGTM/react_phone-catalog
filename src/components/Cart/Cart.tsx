@@ -52,7 +52,6 @@ export const Cart = () => {
   const [showModal, setShowModal] = useState(false);
   const [totalPrice, setTotalPrice] = useState(getTotalPrice());
   const [fetchedPhotos, setFetchedPhotos] = useState<FetchedPhotos>({});
-  // const [phones, setPhones] = useState(getPhonesFromLocalStorage());
   const phones: Phone[] = getPhonesFromLocalStorage();
 
   const fetchPhoto = async (phone: Phone) => {
@@ -69,13 +68,14 @@ export const Cart = () => {
     }
   };
 
-  setInterval(() => {
-    setCountItems(countPhonesInLS());
-    setTotalPrice(getTotalPrice());
-  }, 500);
-
   useEffect(() => {
     phones.map(phone => fetchPhoto(phone));
+    const intervalId = setInterval(() => {
+      setCountItems(countPhonesInLS());
+      setTotalPrice(getTotalPrice());
+    }, 500);
+
+    return () => clearInterval(intervalId);
   }, []);
 
   const handleClearCart = () => {
@@ -110,13 +110,33 @@ export const Cart = () => {
 
         <div className="cart__listAndCheckout">
           <div className="cart__itemList">
-            {phones.map((phone) => (
-              <CartItem
-                key={phone.id}
-                phone={phone}
-                image={fetchedPhotos[phone.id]}
-              />
-            ))}
+            {phones.length ? (
+              phones.map((phone) => (
+                <CartItem
+                  key={phone.id}
+                  phone={phone}
+                  image={fetchedPhotos[phone.id]}
+                />
+              )))
+              : (
+                <>
+                  {countItems === 0 && (
+                    <img
+                      src="icons/emptyCart.svg"
+                      alt="empty cart"
+                      className="cart__empty-cart-img"
+                    />
+                  )}
+
+                  {countItems === 0 && (
+                    <h2 className="cart__empty-cart-name">
+                      Your cart is currently empty. You can explore our
+                      <Link to="/phones">&nbsp;products</Link>
+                      .
+                    </h2>
+                  )}
+                </>
+              )}
           </div>
 
           <div className="cart__checkout">
