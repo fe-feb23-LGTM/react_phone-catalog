@@ -36,7 +36,6 @@ export const HomeSlider: React.FC = () => {
       'img/banner3.png',
       'img/banner4.png',
       'img/banner5.jpeg',
-      'img/banner6.jpeg',
     ];
 
     sliderPhotoPaths.map(photoPath => fetchPhoto(photoPath));
