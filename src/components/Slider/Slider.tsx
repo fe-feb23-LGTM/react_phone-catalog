@@ -6,17 +6,20 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Swiper as SwiperType, Navigation } from 'swiper';
 import { Phone } from '../../types/Phone';
 import { Card } from '../Card/Card';
+import { Loader } from '../Loader';
 
 interface Props {
   title: string;
   selectedPhones: Phone[];
   className?: string;
+  isLoading: boolean;
 }
 
 export const Slider: React.FC<Props> = ({
   title,
   selectedPhones,
   className,
+  isLoading,
 }) => {
   const swiperRef = useRef<SwiperType>();
   const [isButtonPrev, setIsButtonPrev] = useState<boolean>(false);
@@ -73,25 +76,31 @@ export const Slider: React.FC<Props> = ({
           </button>
         </div>
       </div>
-      <Swiper
-        modules={[Navigation]}
-        slidesPerView="auto"
-        centeredSlidesBounds
-        spaceBetween={16}
-        onBeforeInit={(swiper) => {
-          swiperRef.current = swiper;
-        }}
-        onSlideChange={handleSlideChange}
-        onReachEnd={() => {
-          handleReachEnd();
-        }}
-      >
-        {selectedPhones.map((phone) => (
-          <SwiperSlide key={phone.id}>
-            <Card phone={phone} />
-          </SwiperSlide>
-        ))}
-      </Swiper>
+      {
+        isLoading ? (
+          <Loader />
+        ) : (
+          <Swiper
+            modules={[Navigation]}
+            slidesPerView="auto"
+            centeredSlidesBounds
+            spaceBetween={16}
+            onBeforeInit={(swiper) => {
+              swiperRef.current = swiper;
+            }}
+            onSlideChange={handleSlideChange}
+            onReachEnd={() => {
+              handleReachEnd();
+            }}
+          >
+            {selectedPhones.map((phone) => (
+              <SwiperSlide key={phone.id}>
+                <Card phone={phone} />
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        )
+      }
     </div>
   );
 };

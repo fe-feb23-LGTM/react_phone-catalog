@@ -13,12 +13,17 @@ export const Recommended: React.FC<Props> = ({ selectedPhone }) => {
   const [phonesPrevYear, setPhonesPrevYear] = useState<Phone[]>([]);
   const [phonesNextYear, setPhonesNextYear] = useState<Phone[]>([]);
   const [phonesCurrentYear, setPhonesCurrentYear] = useState<Phone[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const fetchPhones = async () => {
+      setIsLoading(true);
+
       const phones = await getAllPhones();
 
       setAllPhones(phones);
+
+      setIsLoading(false);
     };
 
     fetchPhones();
@@ -55,7 +60,11 @@ export const Recommended: React.FC<Props> = ({ selectedPhone }) => {
 
   return (
     <div className="small__slider">
-      <Slider selectedPhones={recommendedPhones} title={title} />
+      <Slider
+        selectedPhones={recommendedPhones}
+        title={title}
+        isLoading={isLoading}
+      />
     </div>
   );
 };

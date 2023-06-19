@@ -1,8 +1,17 @@
-.loader__wrap {
-  width: 60vw;
-  height: 60vh;
-
+.homeLoaderSpinner {
   display: flex;
+  justify-content: center;
   align-items: center;
-  // justify-content: center;
- }
+
+  height: 300px;
+}
+
+.loader__custom {
+  height: 100px;
+  width: 100px;
+
+  border-radius: 50%;
+  border: 7px dotted $cBlueAccent;
+  border-right-color: transparent;
+  animation: spinAround 1700ms infinite linear;
+}

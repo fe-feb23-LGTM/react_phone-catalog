@@ -38,7 +38,7 @@ export const ProductTable = () => {
 
   const setPagination = async () => {
     const allPhones = await getAllPhones();
-    const pageCount = (allPhones.length / Number(itemsOnPage)) + 1;
+    const pageCount = allPhones.length / Number(itemsOnPage) + 1;
     const pageCountArr = [];
 
     // eslint-disable-next-line no-plusplus
@@ -57,145 +57,151 @@ export const ProductTable = () => {
 
   return (
     <div className="productTable__wraper">
-      {isLoading ? (
-        <Loader />
-      ) : (
-        <div className="productTable">
-          <div className="productTable__path">
-            <NavLink to="/">
-              <img
-                src="icons/Home.svg"
-                alt="icons/Home"
-                className="icons productTable__path__homeIcon"
-              />
-            </NavLink>
-
+      <div className="productTable">
+        <div className="productTable__path">
+          <NavLink to="/">
             <img
-              alt="Vector(Stroke)"
-              src="icons/Vector(Stroke).svg"
-              className="icons productTable__path__arrow"
+              src="icons/Home.svg"
+              alt="icons/Home"
+              className="icons productTable__path__homeIcon"
             />
+          </NavLink>
 
-            <span className="productTable__path__text">Phones</span>
-          </div>
+          <img
+            alt="Vector(Stroke)"
+            src="icons/Vector(Stroke).svg"
+            className="icons productTable__path__arrow"
+          />
 
-          <h2 className="productTable__heading">Mobile phones</h2>
+          <span className="productTable__path__text">Phones</span>
+        </div>
 
-          <div className="productTable__modelsCount">{`${phonesTotalCount} models`}</div>
+        <h2 className="productTable__heading">Mobile phones</h2>
 
-          <div className="productTable__selects">
-            <label htmlFor="sortBy">
-              <div>
-                <div className="productTable__selects__text">Sort by</div>
+        {isLoading ? (
+          <Loader />
+        ) : (
+          <>
+            <div className="productTable__modelsCount">
+              {`${phonesTotalCount} models`}
+            </div>
 
-                <select
-                  name="sortBy"
-                  id="sortBy"
-                  className="select productTable__selects__sortby"
-                  value={sortBy}
-                  onChange={(event) => {
-                    setSortBy(event.target.value);
-                  }}
-                >
-                  <option value="newest">Newest</option>
-                  <option value="oldest">Oldest</option>
-                  <option value="low">Low Price</option>
-                  <option value="high">High Price</option>
-                </select>
-              </div>
-            </label>
+            <div className="productTable__selects">
+              <label htmlFor="sortBy">
+                <div>
+                  <div className="productTable__selects__text">Sort by</div>
 
-            <label htmlFor="itemsOnPage">
-              <div>
-                <div className="productTable__selects__text">Items on page</div>
-
-                <select
-                  name="itemsOnPage"
-                  id="itemsOnPage"
-                  className="select productTable__selects__itemsOnPage"
-                  value={itemsOnPage}
-                  onChange={(event) => {
-                    setPagination();
-                    setItemsOnPage(event.target.value);
-                  }}
-                >
-                  <option value="8">8</option>
-                  <option value="16">16</option>
-                  <option value="32">32</option>
-                  <option value="64">64</option>
-                </select>
-              </div>
-            </label>
-          </div>
-
-          <div className="productTable__productList">
-            {phones.map((phone) => (
-              <Card phone={phone} key={phone.id} />
-            ))}
-          </div>
-
-          <div className="pagination_container">
-            <nav
-              className="pagination is-rounded is-small is-centered"
-              role="navigation"
-              aria-label="pagination"
-            >
-              <ul className="pagination-list">
-                <li
-                  className="pagination-link"
-                  onClick={() => {
-                    if (currentPage === '1') {
-                      return;
-                    }
-
-                    setCurrentPage((prev) => (Number(prev) - 1).toString());
-                  }}
-                >
-                  <img
-                    alt="Vector(Stroke)"
-                    src="icons/Vector(Stroke).svg"
-                    className="pagination-icon"
-                  />
-                </li>
-
-                {allPageCount.map((page) => (
-                  <li
-                    key={page}
-                    className={cn('pagination-link', {
-                      'is-current': currentPage === page,
-                    })}
-                    aria-label="Goto page 1"
-                    onClick={() => {
-                      setCurrentPage(page);
+                  <select
+                    name="sortBy"
+                    id="sortBy"
+                    className="select productTable__selects__sortby"
+                    value={sortBy}
+                    onChange={(event) => {
+                      setSortBy(event.target.value);
                     }}
                   >
-                    {page}
-                  </li>
-                ))}
+                    <option value="newest">Newest</option>
+                    <option value="oldest">Oldest</option>
+                    <option value="low">Low Price</option>
+                    <option value="high">High Price</option>
+                  </select>
+                </div>
+              </label>
 
+              <label htmlFor="itemsOnPage">
+                <div>
+                  <div className="productTable__selects__text">
+                    Items on page
+                  </div>
+
+                  <select
+                    name="itemsOnPage"
+                    id="itemsOnPage"
+                    className="select productTable__selects__itemsOnPage"
+                    value={itemsOnPage}
+                    onChange={(event) => {
+                      setPagination();
+                      setItemsOnPage(event.target.value);
+                    }}
+                  >
+                    <option value="8">8</option>
+                    <option value="16">16</option>
+                    <option value="32">32</option>
+                    <option value="64">64</option>
+                  </select>
+                </div>
+              </label>
+            </div>
+
+            <div className="productTable__productList">
+              {phones.map((phone) => (
+                <Card phone={phone} key={phone.id} />
+              ))}
+            </div>
+          </>
+        )}
+
+        <div className="pagination_container">
+          <nav
+            className="pagination is-rounded is-small is-centered"
+            role="navigation"
+            aria-label="pagination"
+          >
+            <ul className="pagination-list">
+              <li
+                className="pagination-link"
+                onClick={() => {
+                  if (currentPage === '1') {
+                    return;
+                  }
+
+                  setCurrentPage((prev) => (Number(prev) - 1).toString());
+                }}
+              >
+                <img
+                  alt="Vector(Stroke)"
+                  src="icons/Vector(Stroke).svg"
+                  className="pagination-icon"
+                />
+              </li>
+
+              {allPageCount.map((page) => (
                 <li
-                  className="pagination-next"
+                  key={page}
+                  className={cn('pagination-link', {
+                    'is-current': currentPage === page,
+                  })}
+                  aria-label="Goto page 1"
                   onClick={() => {
-                    if (currentPage === allPageCount.length.toString()) {
-                      return;
-                    }
-
-                    setCurrentPage((prev) => (Number(prev) + 1).toString());
+                    setCurrentPage(page);
                   }}
                 >
-                  <img
-                    alt="Vector(Stroke)"
-                    src="icons/Vector(Stroke).svg"
-                    className="pagination-next-icon"
-                  />
+                  {page}
                 </li>
-              </ul>
-            </nav>
-          </div>
+              ))}
 
-          {error && <div className="productTable__error">{error}</div>}
+              <li
+                className="pagination-next"
+                onClick={() => {
+                  if (currentPage === allPageCount.length.toString()) {
+                    return;
+                  }
+
+                  setCurrentPage((prev) => (Number(prev) + 1).toString());
+                }}
+              >
+                <img
+                  alt="Vector(Stroke)"
+                  src="icons/Vector(Stroke).svg"
+                  className="pagination-next-icon"
+                />
+              </li>
+            </ul>
+          </nav>
         </div>
-      )}
+
+        {error && <div className="productTable__error">{error}</div>}
+      </div>
     </div>
   );
 };
