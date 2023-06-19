@@ -33,7 +33,7 @@ export const HomeSlider: React.FC = () => {
     const sliderPhotoPaths = [
       'img/banner1.png',
       'img/banner2.png',
-      'img/banner3.png',
+      'img/banner3.webp',
       'img/banner4.png',
       'img/banner5.jpeg',
       'img/banner6.jpeg',
