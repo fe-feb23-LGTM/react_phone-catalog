@@ -1,7 +1,7 @@
 /* eslint-disable no-constant-condition */
 /* eslint-disable import/no-unresolved */
 
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Swiper as SwiperType, Navigation } from 'swiper';
 import { Phone } from '../../types/Phone';
@@ -11,35 +11,37 @@ import { Loader } from '../Loader';
 interface Props {
   title: string;
   selectedPhones: Phone[];
-  className?: string;
   isLoading: boolean;
 }
 
 export const Slider: React.FC<Props> = ({
   title,
   selectedPhones,
-  className,
   isLoading,
 }) => {
   const swiperRef = useRef<SwiperType>();
-  const [isButtonPrev, setIsButtonPrev] = useState<boolean>(false);
-  const [isButtonNext, setIsButtonNext] = useState<boolean>(false);
+  const [isBeginning, setIsBeginning] = useState(true);
+  const [isEnd, setIsEnd] = useState(false);
 
-  const handleReachEnd = () => {
-    setIsButtonNext(true);
-  };
+  useEffect(() => {
+    if (swiperRef.current) {
+      swiperRef.current.on('reachBeginning', () => {
+        setIsBeginning(true);
+      });
 
-  const handleSlideChange = () => {
-    const swiper = swiperRef.current;
+      swiperRef.current.on('reachEnd', () => {
+        setIsEnd(true);
+      });
 
-    if (swiper) {
-      setIsButtonPrev(swiper.activeIndex > 0);
-      setIsButtonNext(false);
+      swiperRef.current.on('fromEdge', () => {
+        setIsBeginning(false);
+        setIsEnd(false);
+      });
     }
-  };
+  }, [isLoading]);
 
   return (
-    <div className={`recommended-container ${className}`}>
+    <div className="recommended-container">
       <div className="recommended-header">
         <h2 className="recommended-header-title">
           {title}
@@ -51,7 +53,7 @@ export const Slider: React.FC<Props> = ({
             onClick={() => swiperRef.current?.slidePrev()}
           >
             <img
-              src={!isButtonPrev
+              src={isBeginning
                 ? 'icons/Chevron-Left.svg'
                 : 'icons/Vector(Stroke).svg'}
               alt="left"
@@ -65,7 +67,7 @@ export const Slider: React.FC<Props> = ({
             }}
           >
             <img
-              src={isButtonNext
+              src={isEnd
                 ? 'icons/Chevron-Left.svg'
                 : 'icons/Vector(Stroke).svg'}
               alt="right"
@@ -88,9 +90,8 @@ export const Slider: React.FC<Props> = ({
             onBeforeInit={(swiper) => {
               swiperRef.current = swiper;
             }}
-            onSlideChange={handleSlideChange}
-            onReachEnd={() => {
-              handleReachEnd();
+            onSwiper={(swiper) => {
+              swiperRef.current = swiper;
             }}
           >
             {selectedPhones.map((phone) => (
