@@ -30,8 +30,6 @@ export const ProductTable = () => {
       setPhones(phonesFromServer);
       setIsLoading(false);
     } catch (err) {
-      // eslint-disable-next-line no-console
-      console.log(err);
       setError('can not load phones error!');
     }
   };
@@ -57,7 +55,7 @@ export const ProductTable = () => {
 
   return (
     <div className="productTable__wraper">
-      <div className="productTable">
+      <div className="productTable width_when_loading">
         <div className="productTable__path">
           <NavLink to="/">
             <img
