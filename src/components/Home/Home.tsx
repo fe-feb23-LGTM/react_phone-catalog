@@ -7,9 +7,12 @@ import { getAllPhones } from '../../api/phones';
 export const Home: React.FC = () => {
   const [brandNewModels, setBrandNewModels] = useState<Phone[]>([]);
   const [hotPriceModels, setHotPriceModels] = useState<Phone[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   const getAll = async () => {
     try {
+      setIsLoading(true);
+
       const phones = await getAllPhones();
 
       setBrandNewModels(phones.sort(
@@ -29,6 +32,8 @@ export const Home: React.FC = () => {
       // eslint-disable-next-line no-console
       console.log(`homePage fetch error ${err}`);
     }
+
+    setIsLoading(false);
   };
 
   useEffect(() => {
@@ -47,6 +52,7 @@ export const Home: React.FC = () => {
         <Slider
           title="Brand new models"
           selectedPhones={brandNewModels}
+          isLoading={isLoading}
         />
       </div>
 
@@ -90,6 +96,7 @@ export const Home: React.FC = () => {
         <Slider
           title="Hot prices"
           selectedPhones={hotPriceModels}
+          isLoading={isLoading}
         />
       </div>
     </div>
