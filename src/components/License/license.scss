@@ -4,9 +4,15 @@ $font-size: 16px;
 $line-height: 1.5;
 
 .license-text {
-  text-align: center;
+  max-width: 1200px;
+  display: flex;
+  flex-direction: column;
   font-family: Arial, sans-serif;
   margin: 20px;
+
+  @media (min-width: 1200px) {
+    margin: 20px auto;
+  }
 }
 
 .title {
@@ -32,6 +38,7 @@ $line-height: 1.5;
 .link {
   color: $primary-color;
   text-decoration: none;
+  transition: text-decoration 0.3s ease-in-out;
   &:hover {
     text-decoration: underline;
   }
