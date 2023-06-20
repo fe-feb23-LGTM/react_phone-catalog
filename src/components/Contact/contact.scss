@@ -94,6 +94,7 @@ $imgDiameter: 170px;
     border: 4px solid #2b1875;
     object-fit: cover;
     position: relative;
+    transition: transform 0.3s ease-in-out;
   }
 
   &__img:hover {
