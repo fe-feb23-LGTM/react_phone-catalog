@@ -7,7 +7,7 @@ interface Props {
 export const ComingSoon: React.FC<Props> = ({ title }) => {
   return (
     <div className="coming_soon container">
-      <div>{`${title} Page coming soon`}</div>
+      <div className="coming_soon_text coming_soon_heading">{`${title} Page coming soon`}</div>
 
       <div className="coming_soon__banner">
         <svg className="bike" viewBox="0 0 48 30" width="48px" height="30px">
@@ -96,9 +96,11 @@ export const ComingSoon: React.FC<Props> = ({ title }) => {
       </div>
 
       <div className="coming_soon__links">
-        <div>Check Out:</div>
-        <NavLink to="/">Home</NavLink>
-        <NavLink to="/phones">Phones</NavLink>
+        <div className="coming_soon_text ">Explore other:</div>
+        <div className="coming_soon_links">
+          <NavLink className="button" to="/">Home</NavLink>
+          <NavLink className="button" to="/phones">Phones</NavLink>
+        </div>
       </div>
     </div>
   );
