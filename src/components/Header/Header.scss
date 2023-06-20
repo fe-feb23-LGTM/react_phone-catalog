@@ -51,7 +51,6 @@
   }
 
   &_link {
-    // font-family: "Mont";
     font-weight: 800;
     font-size: 12px;
 
@@ -85,14 +84,6 @@
   width: 64px;
   box-shadow: -1px 0 0 $cGrayElements;
 
-  border-bottom: 3px solid transparent;
-
-  transition: border-bottom 0.3s;
-
-  &:hover {
-    border-bottom: 3px solid $cGrayPrimary;
-  }
-
   @media (max-width: 1200px) {
     height: 48px;
     width: 48px;
@@ -104,11 +95,15 @@
 }
 
 .burger-button {
+  box-sizing: border-box;
   display: none;
   height: 48px;
   width: 48px;
 
   box-shadow: -1px 0 0 $cGrayElements;
+  border-bottom: 2px solid transparent;
+
+  transition: border 0.3s;
 
   @media (max-width: 640px) {
     margin-right: 0;
@@ -116,11 +111,26 @@
     align-items: center;
     justify-content: center;
   }
+
+  &:hover {
+    border-bottom: 2px solid $cGrayPrimary;
+  }
 }
 
 .is-active {
   position: relative;
   color: $cGrayPrimary;
+}
+
+@keyframes menuFadeIn {
+  0% {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 .is-active:after {
@@ -132,6 +142,7 @@
   top: 36px;
   display: block;
   background: $cGrayPrimary;
+  animation: menuFadeIn 0.3s ease-in-out;
 
   @media (max-width: 1200px) {
     top: 28px;
