@@ -101,7 +101,7 @@ export const Header: React.FC = () => {
           <NavLink
             to="/favourites"
             className={({ isActive }) => classNames(
-              'action',
+              'action action--favourites',
               { 'bottom-active': isActive },
             )}
           >
@@ -111,7 +111,7 @@ export const Header: React.FC = () => {
           <NavLink
             to="/cart"
             className={({ isActive }) => classNames(
-              'action',
+              'action action--cart',
               { 'bottom-active': isActive },
             )}
           >
