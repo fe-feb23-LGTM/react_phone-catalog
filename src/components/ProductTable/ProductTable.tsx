@@ -1,12 +1,14 @@
+/* eslint-disable no-console */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
-import { useEffect, useState } from 'react';
+import { ChangeEventHandler, useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import cn from 'classnames';
 import { getPhones, getAllPhones } from '../../api/phones';
 import { Phone } from '../../types/Phone';
 import { Loader } from '../Loader';
 import { Card } from '../Card/Card';
+import { Search } from '../Search';
 
 export const ProductTable = () => {
   const [phones, setPhones] = useState<Phone[]>([]);
@@ -17,6 +19,7 @@ export const ProductTable = () => {
   const [allPageCount, setAllPageCount] = useState<string[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [phonesTotalCount, setPhonesTotalCount] = useState('');
+  const [query, setQuery] = useState('');
 
   const getPhonesFromServer = async () => {
     try {
@@ -25,6 +28,7 @@ export const ProductTable = () => {
         sortBy,
         itemsOnPage,
         currentPage,
+        query,
       );
 
       setPhones(phonesFromServer);
@@ -49,9 +53,28 @@ export const ProductTable = () => {
   };
 
   useEffect(() => {
-    getPhonesFromServer();
     setPagination();
-  }, [sortBy, itemsOnPage, currentPage]);
+  }, [itemsOnPage, currentPage]);
+
+  useEffect(() => {
+    const debounceTimer = setTimeout(() => {
+      getPhonesFromServer();
+    }, 500);
+
+    return () => {
+      clearTimeout(debounceTimer);
+    };
+  }, [sortBy, currentPage, query]);
+
+  const handleInputChange: ChangeEventHandler<HTMLInputElement> = (event) => {
+    const currentQuert = event.target.value;
+
+    setQuery(currentQuert);
+  };
+
+  const handleClear = () => {
+    setQuery('');
+  };
 
   return (
     <div className="productTable__wraper">
@@ -129,6 +152,12 @@ export const ProductTable = () => {
                   </select>
                 </div>
               </label>
+
+              <Search
+                query={query}
+                onChange={handleInputChange}
+                onClear={handleClear}
+              />
             </div>
 
             <div className="productTable__productList">

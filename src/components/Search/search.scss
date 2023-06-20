@@ -1,0 +1,114 @@
+h1.demo {
+  text-align: center;
+  font-size: 2.4rem;
+  font-weight: normal;
+  margin-bottom: 1rem;
+  color: #f5f6ff;
+}
+
+a.demo {
+  text-align: center;
+  font-size: 1.6rem;
+  font-weight: normal;
+  color: rgba(202, 205, 239, 0.8);
+  margin-bottom: 3rem;
+}
+
+.demo-flex-spacer {
+  flex-grow: 1;
+}
+
+.search-container {
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0 15px;
+  margin-top: 15px;
+}
+
+$input-background: rgba(57, 63, 84, 0.8);
+$input-text-inactive: #7881a1;
+$input-text-active: #bfd2ff;
+
+@keyframes gradient {
+  0% {
+    background-position: 0, 0;
+  }
+
+  100% {
+    background-position: 100%, 0;
+  }
+}
+
+.search-style-input {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+  border-radius: 2px;
+  padding: 2px;
+  border-style: none;
+  background: transparent;
+  outline: none;
+  &:after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 999;
+    height: 2px;
+    border-bottom-left-radius: 2px;
+    border-bottom-right-radius: 2px;
+    background-position: 0% 0%;
+    background-color: linear-gradient(to right,
+    #4800ff,
+    #4800ff,
+    #e2d1fa,
+    #4800ff,
+    #4800ff,
+    #4800ff);
+    background-size: 500% auto;
+    animation: gradient 3s linear infinite;
+  }
+}
+
+.search-style-input input {
+  flex-grow: 1;
+  color: $input-text-active;
+  font-size: 1.1rem;
+  line-height: 1rem;
+  vertical-align: middle;
+  border-style: none;
+  background: transparent;
+  outline: none;
+  &::-webkit-input-placeholder {
+    color: $input-text-inactive;
+  }
+}
+
+.search-style-input button {
+  color: $input-text-inactive;
+  font-size: 1rem;
+  line-height: 2rem;
+  vertical-align: middle;
+  transition: color 0.3s;
+  cursor: pointer;
+
+  &:hover {
+    color: $input-text-active;
+  }
+}
+
+.search {
+  width: 30px;
+}
+
+.clear {
+  padding: 0;
+  background: none;
+  border: none;
+  outline: none;
+}
