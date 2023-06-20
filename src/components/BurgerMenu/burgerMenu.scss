@@ -126,14 +126,6 @@
 
       width: 50%;
       height: 64px;
-
-      border-bottom: 3px solid transparent;
-
-      transition: border-bottom 0.3s;
-
-      &:hover {
-        border-bottom: 3px solid $cGrayPrimary;
-      }
     }
 
     &__item:last-child {
@@ -142,10 +134,23 @@
   }
 }
 
-.is-active {
+.bottom-active {
+  position: relative;
   color: $cGrayPrimary;
 }
 
-.bottom-active {
-  border-bottom: 3px solid $cGrayPrimary;
+.bottom-active:after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 3px;
+  left: 0;
+  bottom: 0;
+  display: block;
+  background: $cGrayPrimary;
+  animation: menuFadeIn 0.3s ease-in-out;
+
+  @media (max-width: 639px) {
+    height: 2px;
+  }
 }
