@@ -14,6 +14,7 @@ import { License } from './components/License/License';
 import { ProductPage } from './components/ProductPage';
 import { Favorites } from './components/Favorites';
 import { ComingSoon } from './components/ComingSoon/ComingSoon';
+import { Contacts } from './components/Contacts/Contacts';
 
 ReactDOM.render(
   <HashRouter>
@@ -38,7 +39,7 @@ ReactDOM.render(
         <Route path="/cart" element={<Cart />} />
         <Route path="/phones/:phoneId" element={<ProductPage />} />
 
-        <Route path="/contacts" element={<h1>contacts</h1>} />
+        <Route path="/contacts" element={<Contacts />} />
         <Route path="/rights" element={<License />} />
         <Route path="*" element={<NotFound />} />
       </Route>
