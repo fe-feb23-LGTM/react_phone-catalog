@@ -4,9 +4,15 @@ $font-size: 16px;
 $line-height: 1.5;
 
 .license-text {
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  max-width: 1200px;
   font-family: Arial, sans-serif;
   margin: 20px;
+
+  @media (min-width: 1201px) {
+    margin: 20px auto;
+  }
 }
 
 .title {
