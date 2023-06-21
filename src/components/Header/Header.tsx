@@ -7,6 +7,7 @@ import { CartCounter } from '../CartCounter';
 
 export const Header: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [isloged, setIsloged] = useState<string | null>('false');
 
   const openMenu = () => {
     setIsOpen(true);
@@ -14,6 +15,11 @@ export const Header: React.FC = () => {
 
   const closeMenu = () => {
     setIsOpen(false);
+  };
+
+  const handleLogOut = () => {
+    setIsloged('false');
+    localStorage.setItem('log', 'false');
   };
 
   useEffect(() => {
@@ -33,6 +39,10 @@ export const Header: React.FC = () => {
       document.body.style.width = 'auto';
     };
   }, [isOpen]);
+
+  useEffect(() => {
+    setIsloged(localStorage.getItem('log'));
+  });
 
   return (
     <>
@@ -130,27 +140,31 @@ export const Header: React.FC = () => {
             />
           </NavLink>
 
-          <NavLink
-            to="/authorization/logedout"
-            className="action authorization"
-          >
-            <img
-              className="authorization_icon"
-              src="icons/exit-sign-icon.svg"
-              alt="signupicon"
-            />
-          </NavLink>
-          {/* conditional rendering */}
-          <NavLink
-            to="/authorization"
-            className="action authorization"
-          >
-            <img
-              className="authorization_icon"
-              src="icons/log-in-icon.svg"
-              alt="signupicon"
-            />
-          </NavLink>
+          {isloged === 'true' ? (
+            <NavLink
+              to="/"
+              className="action authorization"
+              onClick={handleLogOut}
+            >
+              <img
+                className="authorization_icon"
+                src="icons/exit-sign-icon.svg"
+                alt="signupicon"
+              />
+            </NavLink>
+          ) : (
+            <NavLink
+              to="/authorization"
+              className="action authorization"
+            >
+              <img
+                className="authorization_icon"
+                src="icons/log-in-icon.svg"
+                alt="signupicon"
+              />
+            </NavLink>
+          )}
+
         </div>
         {isOpen && (
           <BurgerMenu
