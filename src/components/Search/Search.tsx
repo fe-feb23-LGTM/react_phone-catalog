@@ -1,30 +1,17 @@
 /* eslint-disable jsx-a11y/no-autofocus */
 import {
   ChangeEventHandler,
-  // useEffect,
   useRef,
-  // useState,
 } from 'react';
 
 type Props = {
-  query: string;
-  onChange: ChangeEventHandler<HTMLInputElement>;
-  onClear: () => void;
+  query?: string;
+  onChange?: ChangeEventHandler<HTMLInputElement>;
+  onClear?: () => void;
 };
 
 export const Search: React.FC<Props> = ({ query, onChange, onClear }) => {
   const inputRef = useRef<HTMLInputElement>(null);
-  // const [shouldAutofocus, setShouldAutofocus] = useState(false);
-
-  // useEffect(() => {
-  //   if (shouldAutofocus && inputRef.current) {
-  //     inputRef.current.focus();
-  //   }
-  // }, [shouldAutofocus]);
-
-  // const handleClick = () => {
-  //   setShouldAutofocus(true);
-  // };
 
   return (
     <div>
