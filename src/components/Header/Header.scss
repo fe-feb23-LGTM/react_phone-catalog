@@ -145,12 +145,9 @@
   }
 }
 
-.burger-button-menu {
-  display: none;
-}
-
 .burger-button {
   box-sizing: border-box;
+  display: none;
   height: 48px;
   width: 48px;
 
@@ -218,4 +215,43 @@
 .authorization_icon {
   height: 26px;
   width: 26px;
+}
+
+.authorization {
+  border-bottom: 2px solid transparent;
+
+  transition: border 0.3s;
+
+  @media (max-width: 639px) {
+    display: flex;
+
+    &:hover {
+      border-bottom: 2px solid $cGrayPrimary;
+    }
+  }
+
+  @media (min-width: 640px) {
+    &::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 40%;
+      height: 40%;
+      background: radial-gradient(ellipse at center,
+      rgba(56, 105, 219, 0.9) 0%,
+      rgba(123, 162, 238, 0.7) 40%,
+      rgba(56, 105, 219, 0.2) 80%);
+      border-radius: 50%;
+      box-shadow: 0 0 10px 5px rgba(56, 105, 219, 0.3);
+      z-index: -1;
+      opacity: 0;
+      transition: opacity 0.3s ease-in-out;
+    }
+
+    &:hover::before {
+      opacity: 1;
+    }
+  }
 }

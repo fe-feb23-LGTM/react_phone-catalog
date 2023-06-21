@@ -134,7 +134,7 @@ export const Header: React.FC = () => {
 
           <NavLink
             to="#menu"
-            className="action burger-button burger-button-menu"
+            className="action burger-button"
             onClick={openMenu}
           >
             <img
@@ -147,7 +147,7 @@ export const Header: React.FC = () => {
           {isloged === 'true' ? (
             <NavLink
               to="/"
-              className="action authorization burger-button"
+              className="action authorization"
               onClick={handleLogOut}
             >
               <img
@@ -159,7 +159,7 @@ export const Header: React.FC = () => {
           ) : (
             <NavLink
               to="/authorization"
-              className="action authorization burger-button"
+              className="action authorization"
             >
               <img
                 className="authorization_icon"
