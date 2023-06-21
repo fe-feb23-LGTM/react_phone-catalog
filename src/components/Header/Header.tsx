@@ -1,3 +1,4 @@
+/* eslint-disable no-alert */
 import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import classNames from 'classnames';
@@ -7,7 +8,7 @@ import { CartCounter } from '../CartCounter';
 
 export const Header: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [isloged, setIsloged] = useState<string | null>('false');
+  const [isloged, setIsloged] = useState<string | null>(null);
 
   const openMenu = () => {
     setIsOpen(true);
@@ -20,6 +21,7 @@ export const Header: React.FC = () => {
   const handleLogOut = () => {
     setIsloged('false');
     localStorage.setItem('log', 'false');
+    alert('loged out');
   };
 
   useEffect(() => {
@@ -41,8 +43,10 @@ export const Header: React.FC = () => {
   }, [isOpen]);
 
   useEffect(() => {
-    setIsloged(localStorage.getItem('log'));
-  });
+    setInterval(() => {
+      setIsloged(localStorage.getItem('log'));
+    }, 1000);
+  }, []);
 
   return (
     <>
