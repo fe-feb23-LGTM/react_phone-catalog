@@ -1,0 +1,104 @@
+@import url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css);
+
+$timing : 265ms;
+
+$iconColor : #9e8ce0;
+$accent : #1d0d5a;
+$bluefade : #4a2cb5;
+$gradient : #aa99ea;
+
+@mixin transformScale($size: 1) {
+  transform: scale($size);
+  -ms-transform: scale($size);
+  -webkit-transform: scale($size);
+}
+
+.contact__socials {
+  padding: 0;
+  list-style: none;
+  margin: 1em;
+
+  li {
+    display: inline-block;
+    margin: 0.15em;
+    position: relative;
+    font-size: 1.2em;
+
+  }
+
+  i {
+    color: #fff;
+    position: absolute;
+    top: 21px;
+    left: 21px;
+    transition: all $timing ease-out;
+  }
+
+  a {
+    display: inline-block;
+
+    &:before {
+      @include transformScale();
+      content: " ";
+      width: 60px;
+      height: 60px;
+      border-radius: 100%;
+      display: block;
+      background: linear-gradient(45deg, $iconColor, $accent);
+      transition: all $timing ease-out;
+    }
+
+    &:hover:before {
+      transform: scale(0);
+      transition: all $timing ease-in;
+    }
+
+    &:hover i {
+      @include transformScale(2.2);
+      color: $iconColor;
+      background: -webkit-linear-gradient(45deg, $iconColor, $accent);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      transition: all $timing ease-in;
+    }
+  }
+}
+
+$imgDiameter: 170px;
+
+.contact {
+  display: flex;
+  width: 500px;
+  padding: 10px;
+  background-color: #f6f4fc;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(138, 43, 226, 0.5);
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    justify-content: center;
+  }
+
+  &__name {
+    padding-left: 14px;
+    font-size: 30px;
+  }
+
+  &__img {
+    height: $imgDiameter;
+    width: $imgDiameter;
+    border-radius: 50%;
+
+    border: 4px solid #2b1875;
+    object-fit: cover;
+    position: relative;
+    transition: transform 0.3s ease-in-out;
+  }
+
+  &__img:hover {
+    z-index: 1;
+    transform: scale(1.4);
+  }
+}

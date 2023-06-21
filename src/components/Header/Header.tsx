@@ -101,7 +101,7 @@ export const Header: React.FC = () => {
           <NavLink
             to="/favourites"
             className={({ isActive }) => classNames(
-              'action',
+              'action action--favourites',
               { 'bottom-active': isActive },
             )}
           >
@@ -111,7 +111,7 @@ export const Header: React.FC = () => {
           <NavLink
             to="/cart"
             className={({ isActive }) => classNames(
-              'action',
+              'action action--cart',
               { 'bottom-active': isActive },
             )}
           >
@@ -127,6 +127,28 @@ export const Header: React.FC = () => {
               src="icons/Menu.svg"
               alt="burger-icon"
               className="action__burger"
+            />
+          </NavLink>
+
+          <NavLink
+            to="/authorization/logedout"
+            className="action authorization"
+          >
+            <img
+              className="authorization_icon"
+              src="icons/exit-sign-icon.svg"
+              alt="signupicon"
+            />
+          </NavLink>
+          {/* conditional rendering */}
+          <NavLink
+            to="/authorization"
+            className="action authorization"
+          >
+            <img
+              className="authorization_icon"
+              src="icons/log-in-icon.svg"
+              alt="signupicon"
             />
           </NavLink>
         </div>
