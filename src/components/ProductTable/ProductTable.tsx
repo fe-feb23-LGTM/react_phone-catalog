@@ -199,6 +199,7 @@ export const ProductTable = () => {
                 query={query}
                 onChange={handleInputChange}
                 onClear={handleClear}
+                phonesLength={phones.length}
               />
             </div>
 
@@ -273,6 +274,7 @@ export const ProductTable = () => {
             query={query}
             onChange={handleInputChange}
             onClear={handleClear}
+            phonesLength={phones.length}
           />
         )}
         {error && <div className="productTable__error">{error}</div>}
