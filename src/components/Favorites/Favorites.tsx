@@ -62,7 +62,10 @@ export const Favorites = () => {
             ))}
           </div>
         ) : (
-          <h1>Favorites is empty!</h1>
+          <div>
+            <h1 className="favorites__text">Favorites is empty!</h1>
+            <img src="icons/Favorites/NoFavorites.svg" alt="noFavorites" />
+          </div>
         )}
       </div>
     </div>
