@@ -145,9 +145,12 @@
   }
 }
 
+.burger-button-menu {
+  display: none;
+}
+
 .burger-button {
   box-sizing: border-box;
-  display: none;
   height: 48px;
   width: 48px;
 
