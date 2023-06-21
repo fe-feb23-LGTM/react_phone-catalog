@@ -6,6 +6,7 @@ import { CheckoutModal } from '../CheckoutModal';
 import { CartItem } from '../CartItem';
 import { Phone } from '../../types/Phone';
 import { awsGetPhoto } from '../../_utils/awsGetPhoto';
+import { EmptyCartModal } from '../EmptyCartModal';
 
 type FetchedPhotos = {
   [key: string]: string | null;
@@ -155,10 +156,17 @@ export const Cart = () => {
             >
               Checkout
             </div>
-            {showModal && (
-              <CheckoutModal
+            {showModal && countItems > 0
+              && (
+                <CheckoutModal
+                  cartItems={countItems}
+                  onClear={handleClearCart}
+                  onClose={handleCloseModal}
+                />
+              )}
+            {showModal && countItems === 0 && (
+              <EmptyCartModal
                 cartItems={countItems}
-                onClear={handleClearCart}
                 onClose={handleCloseModal}
               />
             )}

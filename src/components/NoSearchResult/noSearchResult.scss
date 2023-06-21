@@ -1,0 +1,19 @@
+.no-search-results {
+  margin-top: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  gap: 20px;
+
+  &__title {
+    font-weight: 700;
+    font-size: 20px;
+    color: $cGrayPrimary;
+  }
+
+  &__text {
+    color: $cGraySecondary;
+  }
+}
