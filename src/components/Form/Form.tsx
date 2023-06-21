@@ -1,5 +1,7 @@
+/* eslint-disable no-console */
 import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
+import { register } from '../../api/auth';
 
 interface Props {
   formType?: string;
@@ -58,7 +60,10 @@ export const Form: React.FC<Props> = ({ formType }) => {
     if (!emailError && !passwordError && !repeatPasswordError) {
       // eslint-disable-next-line no-console
       console.log('submitted');
-      // Add your form submission logic here
+      register(email, password)
+        .then(data => {
+          console.log('Registration successful:', data);
+        });
     }
   };
 
