@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import { Phone } from '../types/Phone';
 
 // https://backend-phone-catalog.onrender.com/phones?sortBy=year&sortOrder=DESC&from=13&to=16
@@ -29,14 +30,18 @@ export const getPhones = async (
   sortby: string,
   itemsOnPage: string,
   page: string,
+  query: string,
 ): Promise<Phone[]> => {
   const startItem = page === '1'
     ? '1'
     : ((Number(itemsOnPage) * Number(page)) - Number(itemsOnPage)).toString();
 
+  const newQuery = query.trim().toLocaleLowerCase().split(' ').join('-');
+
   const sortByCase = sortBySwitch(sortby);
   const startAndQuantity = `&from=${startItem}&to=${itemsOnPage}`;
-  const URL = phonesUrl + sortByCase + startAndQuantity;
+  const queryParam = query ? `&query=${encodeURIComponent(newQuery)}` : '';
+  const URL = phonesUrl + sortByCase + startAndQuantity + queryParam;
 
   return wait(100)
     .then(() => fetch(URL))
