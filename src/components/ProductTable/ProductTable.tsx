@@ -4,11 +4,14 @@
 import { ChangeEventHandler, useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import cn from 'classnames';
+import debounce from 'lodash/debounce';
 import { getPhones, getAllPhones } from '../../api/phones';
 import { Phone } from '../../types/Phone';
 import { Loader } from '../Loader';
 import { Card } from '../Card/Card';
 import { Search } from '../Search';
+
+const debounceTimer = 1000;
 
 export const ProductTable = () => {
   const [phones, setPhones] = useState<Phone[]>([]);
@@ -20,6 +23,7 @@ export const ProductTable = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [phonesTotalCount, setPhonesTotalCount] = useState('');
   const [query, setQuery] = useState('');
+  const [appliedQuery, setAppliedQuery] = useState('');
 
   const getPhonesFromServer = async () => {
     try {
@@ -28,7 +32,7 @@ export const ProductTable = () => {
         sortBy,
         itemsOnPage,
         currentPage,
-        query,
+        appliedQuery,
       );
 
       setPhones(phonesFromServer);
@@ -52,28 +56,41 @@ export const ProductTable = () => {
     setAllPageCount(pageCountArr);
   };
 
+  const debouncedQuery = debounce(setAppliedQuery, debounceTimer);
+
   useEffect(() => {
     setPagination();
-  }, [itemsOnPage, currentPage]);
+    getPhonesFromServer();
+  }, [itemsOnPage, currentPage, sortBy, appliedQuery]);
 
-  useEffect(() => {
-    const debounceTimer = setTimeout(() => {
-      getPhonesFromServer();
-    }, 500);
+  // useEffect(() => {
+  //   if (query) {
+  //     const debounceTimer = setTimeout(() => {
+  //       getPhonesFromServer();
+  //     }, 1000);
 
-    return () => {
-      clearTimeout(debounceTimer);
-    };
-  }, [sortBy, currentPage, query]);
+  //     setTimeout(() => {
+  //       clearTimeout(debounceTimer);
+  //     }, 1000);
+
+  //     return () => {
+  //       clearTimeout(debounceTimer);
+  //     };
+  //   }
+
+  //   return () => {};
+  // }, [query]);
 
   const handleInputChange: ChangeEventHandler<HTMLInputElement> = (event) => {
-    const currentQuert = event.target.value;
+    const currentQuery = event.target.value;
 
-    setQuery(currentQuert);
+    setQuery(currentQuery);
+    debouncedQuery(currentQuery);
   };
 
   const handleClear = () => {
     setQuery('');
+    setAppliedQuery('');
   };
 
   return (
