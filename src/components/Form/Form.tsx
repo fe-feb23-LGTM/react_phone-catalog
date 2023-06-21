@@ -1,18 +1,23 @@
+/* eslint-disable no-alert */
+/* eslint-disable no-console */
 import { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
+import { register, login } from '../../api/auth';
 
 interface Props {
   formType?: string;
 }
 
 export const Form: React.FC<Props> = ({ formType }) => {
-  const [name, setName] = useState('');
+  // const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [repeatPassword, setRepeatPassword] = useState('');
   const [emailError, setEmailError] = useState('');
   const [passwordError, setPasswordError] = useState('');
   const [repeatPasswordError, setRepeatPasswordError] = useState('');
+
+  const navigate = useNavigate();
 
   const validateEmail = (value: string) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -56,16 +61,33 @@ export const Form: React.FC<Props> = ({ formType }) => {
 
     // Perform form submission if all fields are valid
     if (!emailError && !passwordError && !repeatPasswordError) {
-      // eslint-disable-next-line no-console
-      console.log('submitted');
-      // Add your form submission logic here
+      if (formType !== 'login') {
+        console.log('register');
+        register(email, password)
+          .then(regedUser => {
+            console.log('Registration successful:', regedUser);
+          });
+      } else {
+        login(email, password)
+          .then(resp => {
+            if (resp === 'correct password') {
+              alert('loged in');
+
+              localStorage.setItem('log', 'true');
+
+              navigate('/');
+            } else {
+              alert('login or password is incorrect');
+            }
+          });
+      }
     }
   };
 
   return (
     <div className="form">
       <form onSubmit={handleSubmit}>
-        {formType !== 'login' && (
+        {/* {formType !== 'login' && (
           <div className="field">
             <label className="label">
               Name
@@ -82,7 +104,7 @@ export const Form: React.FC<Props> = ({ formType }) => {
               </div>
             </label>
           </div>
-        )}
+        )} */}
 
         <div className="field">
           <label className="label">
