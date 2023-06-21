@@ -52,6 +52,7 @@ $input-text-active: #bfd2ff;
   max-width: 400px;
   margin: 0 auto;
   @media (max-width: 639px) {
+    max-width: 260px;
     margin: 0;
   }
   border-radius: 2px;
@@ -81,6 +82,14 @@ $input-text-active: #bfd2ff;
     #4800ff);
     background-size: 500% auto;
     animation: gradient 3s linear infinite;
+  }
+}
+
+.activeNotFound {
+  margin-top: 20px;
+
+  .search-style-input {
+    margin: 0 auto;
   }
 }
 

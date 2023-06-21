@@ -1,21 +1,33 @@
 /* eslint-disable jsx-a11y/no-autofocus */
+import cn from 'classnames';
 import {
   ChangeEventHandler,
   useRef,
 } from 'react';
 
 type Props = {
-  query?: string;
-  onChange?: ChangeEventHandler<HTMLInputElement>;
-  onClear?: () => void;
+  query: string;
+  onChange: ChangeEventHandler<HTMLInputElement>;
+  onClear: () => void;
+  phonesLength: number;
 };
 
-export const Search: React.FC<Props> = ({ query, onChange, onClear }) => {
+export const Search: React.FC<Props> = ({
+  query,
+  onChange,
+  onClear,
+  phonesLength,
+}) => {
   const inputRef = useRef<HTMLInputElement>(null);
 
   return (
     <div>
-      <div className="search-container">
+      <div className={cn(
+        'search-container', {
+          activeNotFound: phonesLength === 0,
+        },
+      )}
+      >
         <div className="demo-flex-spacer" />
         <div className="search-style-input">
           <img
