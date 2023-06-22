@@ -192,11 +192,13 @@ export const Form: React.FC<Props> = ({ formType }) => {
             </button>
           </div>
           <div className="control">
-            <button type="button" className="button is-link is-light">
-              <NavLink to="/authorization">
-                back
-              </NavLink>
-            </button>
+            {(formType !== 'login') && (
+              <button type="button" className="button is-link is-light">
+                <NavLink to="/authorization">
+                  Back
+                </NavLink>
+              </button>
+            )}
           </div>
           { formType === 'login' && (
             <div className="control">
