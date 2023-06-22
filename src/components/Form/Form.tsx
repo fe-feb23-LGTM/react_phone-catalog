@@ -69,6 +69,7 @@ export const Form: React.FC<Props> = ({ formType }) => {
               alert('your account was created');
 
               localStorage.setItem('log', 'true');
+              localStorage.setItem('userEmail', email);
 
               navigate('/');
               // console.log('Registration successful:', regedUser);
