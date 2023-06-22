@@ -120,7 +120,7 @@ export const Header: React.FC = () => {
             <>
               <div className="userLogin">
                 <span className="userLogin_email">{userEmail}</span>
-                <div className="action">
+                <div className="action authorization">
                   <img
                     className="userLogin_icon authorization_icon"
                     src="icons/loged.svg"
