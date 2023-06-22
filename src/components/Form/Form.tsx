@@ -65,7 +65,16 @@ export const Form: React.FC<Props> = ({ formType }) => {
         console.log('register');
         register(email, password)
           .then(regedUser => {
-            console.log('Registration successful:', regedUser);
+            if (regedUser.email === email) {
+              alert('your account was created');
+
+              localStorage.setItem('log', 'true');
+
+              navigate('/');
+              // console.log('Registration successful:', regedUser);
+            } else {
+              setEmailError('failed to create account');
+            }
           });
       } else {
         login(email, password)
