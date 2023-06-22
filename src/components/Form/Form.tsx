@@ -1,23 +1,22 @@
 /* eslint-disable no-alert */
 /* eslint-disable no-console */
 import { useState } from 'react';
-import { NavLink, useNavigate } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { register, login } from '../../api/auth';
+import { EmptyCartModal } from '../EmptyCartModal';
 
 interface Props {
   formType?: string;
 }
 
 export const Form: React.FC<Props> = ({ formType }) => {
-  // const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [repeatPassword, setRepeatPassword] = useState('');
   const [emailError, setEmailError] = useState('');
   const [passwordError, setPasswordError] = useState('');
   const [repeatPasswordError, setRepeatPasswordError] = useState('');
-
-  const navigate = useNavigate();
+  const [showModal, setShowModal] = useState('');
 
   const validateEmail = (value: string) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -66,12 +65,8 @@ export const Form: React.FC<Props> = ({ formType }) => {
         register(email, password)
           .then(regedUser => {
             if (regedUser.email === email) {
-              alert('your account was created');
-
               localStorage.setItem('log', 'true');
-
-              navigate('/');
-              // console.log('Registration successful:', regedUser);
+              setShowModal('Your account was created');
             } else {
               setEmailError('failed to create account');
             }
@@ -80,11 +75,9 @@ export const Form: React.FC<Props> = ({ formType }) => {
         login(email, password)
           .then(resp => {
             if (resp === 'correct password') {
-              alert('loged in');
-
               localStorage.setItem('log', 'true');
 
-              navigate('/');
+              setShowModal('You was logged in');
             } else {
               alert('login or password is incorrect');
             }
@@ -96,24 +89,6 @@ export const Form: React.FC<Props> = ({ formType }) => {
   return (
     <div className="form">
       <form onSubmit={handleSubmit}>
-        {/* {formType !== 'login' && (
-          <div className="field">
-            <label className="label">
-              Name
-              <div className="control">
-                <input
-                  className="input"
-                  type="text"
-                  placeholder="Name"
-                  value={name}
-                  onChange={(event) => {
-                    setName(event.target.value);
-                  }}
-                />
-              </div>
-            </label>
-          </div>
-        )} */}
 
         <div className="field">
           <label className="label">
@@ -213,6 +188,13 @@ export const Form: React.FC<Props> = ({ formType }) => {
               </NavLink>
             </button>
           </div>
+          <div className="control">
+            <button type="button" className="button is-link is-light">
+              <NavLink to="/authorization">
+                back
+              </NavLink>
+            </button>
+          </div>
           { formType === 'login' && (
             <div className="control">
               <button type="button" className="button is-link is-light">
@@ -231,6 +213,14 @@ export const Form: React.FC<Props> = ({ formType }) => {
           ) }
         </div>
       </form>
+
+      {showModal && (
+        <EmptyCartModal
+          isCloseNeeded={false}
+          msg={showModal}
+          title="Congratulations!"
+        />
+      )}
     </div>
   );
 };

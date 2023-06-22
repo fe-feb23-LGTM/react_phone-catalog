@@ -166,7 +166,6 @@ export const Cart = () => {
               )}
             {showModal && countItems === 0 && (
               <EmptyCartModal
-                cartItems={countItems}
                 onClose={handleCloseModal}
               />
             )}
