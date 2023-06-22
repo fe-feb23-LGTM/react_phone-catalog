@@ -5,11 +5,13 @@ import classNames from 'classnames';
 import { BurgerMenu } from '../BurgerMenu';
 import { FavoritesCounter } from '../FavoritesCounter/FavoritesCounter';
 import { CartCounter } from '../CartCounter';
+import { EmptyCartModal } from '../EmptyCartModal';
 
 export const Header: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isloged, setIsloged] = useState<string | null>(null);
   const [userEmail, setUserEmail] = useState<string | null>(null);
+  const [showModal, setShowModal] = useState('');
 
   const openMenu = () => {
     setIsOpen(true);
@@ -21,9 +23,13 @@ export const Header: React.FC = () => {
 
   const handleLogOut = () => {
     setIsloged('false');
+
     localStorage.removeItem('log');
     localStorage.removeItem('userEmail');
-    alert('loged out');
+    setShowModal('you was logged out');
+    setTimeout(() => {
+      setShowModal('');
+    }, 2000);
   };
 
   useEffect(() => {
@@ -196,6 +202,14 @@ export const Header: React.FC = () => {
         )}
       </header>
       <div className="header__top" id="header__top" />
+
+      {showModal && (
+        <EmptyCartModal
+          isCloseNeeded={false}
+          msg={showModal}
+          title="Congratulations!"
+        />
+      )}
     </>
   );
 };

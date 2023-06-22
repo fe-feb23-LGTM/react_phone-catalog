@@ -28,7 +28,7 @@ export const CheckoutModal: React.FC<Props> = ({ onClear, onClose }) => {
         <hr className="is-marginless" />
 
         <h3 className="modal__text">
-          Checkout is not implemented yet. Do you want to clear the Cart?
+          Do you want to clear the Cart?
         </h3>
 
         <hr className="is-marginless" />
