@@ -83,6 +83,7 @@ export const Form: React.FC<Props> = ({ formType }) => {
               alert('loged in');
 
               localStorage.setItem('log', 'true');
+              localStorage.setItem('userEmail', email);
 
               navigate('/');
             } else {
