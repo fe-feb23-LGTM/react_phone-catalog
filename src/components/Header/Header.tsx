@@ -9,6 +9,7 @@ import { CartCounter } from '../CartCounter';
 export const Header: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isloged, setIsloged] = useState<string | null>(null);
+  const [userEmail, setUserEmail] = useState<string | null>(null);
 
   const openMenu = () => {
     setIsOpen(true);
@@ -20,7 +21,8 @@ export const Header: React.FC = () => {
 
   const handleLogOut = () => {
     setIsloged('false');
-    localStorage.setItem('log', 'false');
+    localStorage.removeItem('log');
+    localStorage.removeItem('userEmail');
     alert('loged out');
   };
 
@@ -45,6 +47,7 @@ export const Header: React.FC = () => {
   useEffect(() => {
     setInterval(() => {
       setIsloged(localStorage.getItem('log'));
+      setUserEmail(localStorage.getItem('userEmail'));
     }, 1000);
   }, []);
 
@@ -111,7 +114,22 @@ export const Header: React.FC = () => {
             </li>
           </ul>
         </nav>
+
         <div className="header__actions">
+          {userEmail && (
+            <>
+              <div className="userLogin">
+                <span className="userLogin_email">{userEmail}</span>
+                <div className="action">
+                  <img
+                    className="userLogin_icon authorization_icon"
+                    src="icons/loged.svg"
+                    alt="loged"
+                  />
+                </div>
+              </div>
+            </>
+          )}
           <NavLink
             to="/favourites"
             className={({ isActive }) => classNames(

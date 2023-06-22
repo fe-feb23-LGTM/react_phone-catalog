@@ -32,7 +32,7 @@
 .nav {
   flex-grow: 1;
 
-  @media (max-width: 640px) {
+  @media (max-width: 700px) {
     display: none;
   }
 
@@ -90,7 +90,7 @@
     width: 48px;
   }
 
-  @media (max-width: 640px) {
+  @media (max-width: 700px) {
     display: none;
   }
 
@@ -156,7 +156,7 @@
 
   transition: border 0.3s;
 
-  @media (max-width: 640px) {
+  @media (max-width: 700px) {
     margin-right: 0;
     display: flex;
     align-items: center;
@@ -222,7 +222,7 @@
 
   transition: border 0.3s;
 
-  @media (max-width: 639px) {
+  @media (max-width: 700px) {
     display: flex;
 
     &:hover {
@@ -230,7 +230,7 @@
     }
   }
 
-  @media (min-width: 640px) {
+  @media (min-width: 700px) {
     &::before {
       content: "";
       position: absolute;
@@ -254,4 +254,32 @@
       opacity: 1;
     }
   }
+}
+
+.userLogin {
+  display: flex;
+
+  &_icon {
+    height: 30px;
+    width: 30px;
+  }
+
+  &_email {
+    font-weight: 800;
+    font-size: 20px;
+
+    height: 100%;
+    color: $cGraySecondary;
+
+    align-self: center;
+    margin-right: 1rem;
+
+    @media (max-width: 920px) {
+      display: none;
+    }
+  }
+
+  // @media (max-width: 680px) {
+  //   display: none;
+  // }
 }
